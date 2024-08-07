@@ -4,8 +4,9 @@
 format: jb-book
 root: intro
 chapters:
-- file: content/mysql_install
-- file: content/data_definition_language
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: contents/syllabus
+- file: contents/mysql_install
+- file: contents/data_definition_language
+# - file: markdown
+# - file: notebooks
+# - file: markdown-notebooks
