@@ -4,7 +4,16 @@
 - MySQL Shellのインストール
 - Visual Studio Codeのインストール
 
-## Mac
+## Installing MySQL (Windows)
+
+1. [こちら](https://dev.mysql.com/downloads/mysql/)からMySQLのダウンロードページにアクセスします。
+
+2. **Windows (x86, 64-bit), MSI Installer**をダウンロードします。
+
+3. No thanks, just start my download.をクリックします。
+4. ダウンロードした「mysql-9.1.0-winx64.msi」を実行します。
+
+<!-- ## Mac
 
 ### Macに利用されているCPUアーキテクチャを確認する
 
@@ -34,7 +43,7 @@ Step 5で入力したパスワードは、MySQLのrootユーザのパスワー�
 1. [こちら](https://dev.mysql.com/downloads/)のページからMySQL Shellにアクセスします。
 2. CPUアーキテクチャに合わせてDMGファイルをダウンロードします。
 3. "No thanks, just start my download."をクリックします。
-4. ダウンロードしたDMGファイルを実行し、インストールを開始します。
+4. ダウンロードしたDMGファイルを実行し、インストールを開始します。 -->
 
 ## Windows
 
