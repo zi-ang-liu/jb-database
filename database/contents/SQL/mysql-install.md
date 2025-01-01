@@ -6,7 +6,10 @@
 
 ## Installing MySQL (Windows)
 
-1. [こちら](https://dev.mysql.com/downloads/installer/)からMySQLのダウンロードページにアクセスします。
+### MySQL Community Serverのインストール
+
+1. [こちら](https://dev.mysql.com/downloads/mysql/)からMySQLのダウンロードページにアクセスします。
+![web](./images/mysql-install/web.png)
 2. **Windows (x86, 64-bit), MSI Installer**をダウンロードします。
 3. No thanks, just start my download.をクリックします。
 4. ダウンロードした「mysql-9.1.0-winx64.msi」を実行します。
@@ -14,7 +17,22 @@
    Please install the Redistributable then run this installer again.」と表示された場合、
    [こちら](https://learn.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170)から
    「最新の Microsoft Visual C++ 再頒布可能パッケージ バージョン X64」をダウンロードし、インストールします。
-5. 
+5. インストーラが起動したら、**Next**をクリックします。
+![setup-1](./images/mysql-install/setup-1.png)
+6. **I accept the terms in the License Agreement**にチェックを入れ、**Next**をクリックします。
+![setup-2](./images/mysql-install/setup-2.png)
+7. **Typical**を選択し、**Next**をクリックします。
+![setup-3](./images/mysql-install/setup-3.png)
+8. **Install**をクリックします。
+![setup-4](./images/mysql-install/setup-4.png)
+9. インストールが完了したら、**Finish**をクリックします。
+![setup-5](./images/mysql-install/setup-5.png)
+
+### MySQL Configuratorの設定
+
+1. MySQL Community Serverのインストールが完了したら、MySQL Configuratorが起動します。
+2. **Add**をクリックします。
+
 <!-- ## Mac
 
 ### Macに利用されているCPUアーキテクチャを確認する
