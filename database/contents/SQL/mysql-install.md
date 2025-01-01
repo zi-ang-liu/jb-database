@@ -31,7 +31,47 @@
 ### MySQL Configuratorの設定
 
 1. MySQL Community Serverのインストールが完了したら、MySQL Configuratorが起動します。
-2. **Add**をクリックします。
+![setup-6](./images/mysql-install/setup-6.png)
+2. **Next**をクリックします。
+![setup-7](./images/mysql-install/setup-7.png)
+3. **Next**をクリックします。
+![setup-8](./images/mysql-install/setup-8.png)
+4. **MySQL Root Password**にパスワードを入力し、**Next**をクリックします。入力したパスワードを忘れないようにしてください。昨日はThe Lion Kingを見ましたので、パスワードは「hakunamatata」にしました。
+![setup-9](./images/mysql-install/setup-9.png)
+5. **Next**をクリックします。
+![setup-10](./images/mysql-install/setup-10.png)
+6. **Next**をクリックします。
+![setup-11](./images/mysql-install/setup-11.png)
+7. 必要に応じて、Sample databasesを選択し、**Next**をクリックします。
+![setup-12](./images/mysql-install/setup-12.png)
+8. **Execute**をクリックします。
+![setup-13](./images/mysql-install/setup-13.png)
+9. 実行が完了したら、**Next**をクリックします。
+![setup-14](./images/mysql-install/setup-14.png)
+10. **Finish**をクリックします。
+![setup-15](./images/mysql-install/setup-15.png)
+
+以上でMySQL Community Serverのインストールが完了しました。
+
+### インストールの確認
+
+インストールが完了したら、MySQL Command Line Clientを起動して、インストールが成功しているか確認します。
+
+1. スタートメニューからMySQL 9.1 Command Line Clientを起動します。
+![start-menu](./images/mysql-install/start-menu.png)
+
+2. Passwordを入力し、以下のように表示されたらインストール成功です。
+![command-line](./images/mysql-install/command-line.png)
+
+### MySQL Workbenchのインストール
+
+1. [こちら](https://dev.mysql.com/downloads/workbench/)からMySQL Workbenchのダウンロードページにアクセスします。
+![workbench-web](./images/mysql-install/workbench-web.png)
+2. **Windows (x86, 64-bit), MSI Installer**をダウンロードします。
+3. No thanks, just start my download.をクリックします。
+4. ダウンロードした「mysql-workbench-community-8.0.40-winx64.msi」を実行します。
+
+
 
 <!-- ## Mac
 
@@ -65,8 +105,7 @@ Step 5で入力したパスワードは、MySQLのrootユーザのパスワー�
 3. "No thanks, just start my download."をクリックします。
 4. ダウンロードしたDMGファイルを実行し、インストールを開始します。 -->
 
-## Windows
-
+<!-- 
 ### MySQL Community Serverのインストール
 
 ### MySQL Shellのインストール
@@ -107,4 +146,4 @@ Step 5で入力したパスワードは、MySQLのrootユーザのパスワー�
 | performance_schema |
 | sys                |
 +--------------------+
-```
+``` -->
