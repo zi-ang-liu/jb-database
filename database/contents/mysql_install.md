@@ -6,13 +6,15 @@
 
 ## Installing MySQL (Windows)
 
-1. [こちら](https://dev.mysql.com/downloads/mysql/)からMySQLのダウンロードページにアクセスします。
-
+1. [こちら](https://dev.mysql.com/downloads/installer/)からMySQLのダウンロードページにアクセスします。
 2. **Windows (x86, 64-bit), MSI Installer**をダウンロードします。
-
 3. No thanks, just start my download.をクリックします。
 4. ダウンロードした「mysql-9.1.0-winx64.msi」を実行します。
-
+   1. 「This application requires Visual Studio 2019 x64 Redistributable. 
+   Please install the Redistributable then run this installer again.」と表示された場合、
+   [こちら](https://learn.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170)から
+   「最新の Microsoft Visual C++ 再頒布可能パッケージ バージョン X64」をダウンロードし、インストールします。
+5. 
 <!-- ## Mac
 
 ### Macに利用されているCPUアーキテクチャを確認する
