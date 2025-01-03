@@ -109,12 +109,13 @@
 ## DB Connection
 
 1. **New Connection**をクリックします。
-2. **Caption**に「My First MySQL Connection」、**User Name**に「root」を入力します。
+2. **Caption**に「My New Connection」、**User Name**に「root」を入力します。
 ![vs-con-1](./images/mysql-install/vs-con-1.png)
 3. **Store Password**をクリックし、パスワードを入力します。
-![vs-con-2](./images/mysql-install/vs-con-2.png)
 4. **OK**をクリックします。
 5. **My First MySQL Connection**をクリックし、接続します。
+![vs-con-2](./images/mysql-install/vs-con-2.png)
+
 
 
 
