@@ -93,8 +93,11 @@
 
 1. Visual Studio Codeを開きます。
 2. Extensionsを開きます。
-   - Mac: <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>
-   - Windows: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>
+3. **MySQL Shell**を検索し、選択します。
+![mysql-vs-1](./images/mysql-install/mysql-vs-1.png)
+4. **Install**をクリックします。
+5. インストールが完了したら、アクティビティバーにあるMySQL Shelのアイコンをクリックします。
+
 
 
 
