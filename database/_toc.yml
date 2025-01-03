@@ -6,6 +6,7 @@ root: intro
 chapters:
 # - file: contents/syllabus
 - file: contents/SQL/mysql-install
+- file: contents/SQL/vscode-shell-install
 - file: contents/SQL/data_definition_language
 # - file: markdown
 # - file: notebooks

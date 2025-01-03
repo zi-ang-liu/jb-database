@@ -1,12 +1,6 @@
 # MySQLの環境構築
 
-- MySQL Community Serverのインストール
-- MySQL Shellのインストール
-- Visual Studio Codeのインストール
-
 ## Installing MySQL Server on Windows
-
-### MySQL Community Serverのインストール
 
 1. [こちら](https://dev.mysql.com/downloads/mysql/)からMySQLのダウンロードページにアクセスします。
 ![web](./images/mysql-install/web.png)
@@ -28,7 +22,7 @@
 9. インストールが完了したら、**Finish**をクリックします。
 ![setup-5](./images/mysql-install/setup-5.png)
 
-### MySQL Configuratorの設定
+## MySQL Configuratorの設定
 
 1. MySQL Community Serverのインストールが完了したら、MySQL Configuratorが起動します。
 ![setup-6](./images/mysql-install/setup-6.png)
@@ -53,92 +47,15 @@
 
 以上でMySQL Community Serverのインストールが完了しました。
 
-### 動作確認
+## 動作確認
 
 インストールが完了したら、MySQL Command Line Clientを起動して、インストールが成功しているか確認します。
 
 1. スタートメニューからMySQL 9.1 Command Line Clientを起動します。
 ![start-menu](./images/mysql-install/start-menu.png)
-
 2. Passwordを入力し、以下のように表示されたらインストール成功です。
 ![command-line](./images/mysql-install/command-line.png)
 
-### MySQL Workbenchのインストール
-
-1. [こちら](https://dev.mysql.com/downloads/workbench/)からMySQL Workbenchのダウンロードページにアクセスします。
-![workbench-web](./images/mysql-install/workbench-web.png)
-2. **Windows (x86, 64-bit), MSI Installer**をダウンロードします。
-3. No thanks, just start my download.をクリックします。
-4. ダウンロードした「mysql-workbench-community-8.0.40-winx64.msi」を実行します。
-5. インストーラが起動したら、**Next**をクリックします。
-![workbench-1](./images/mysql-install/workbench-1.png)
-6. **Next**をクリックします。
-![workbench-2](./images/mysql-install/workbench-2.png)
-7. **Complete**を選択し、**Next**をクリックします。
-![workbench-3](./images/mysql-install/workbench-3.png)
-8. **Install**をクリックします。
-![workbench-4](./images/mysql-install/workbench-4.png)
-9. インストールが完了したら、**Finish**をクリックします。
-
-以上でMySQL Workbenchのインストールが完了しました。
-
-### Setup New Connection
-
-1. MySQL Workbenchを起動します。
-2. **My SQL Connections**の右側にある**+**をクリックします。
-3. **Connection Name**に接続名を「Local instance」に設定します。
-4. **Password**のStore in Vaultをクリックし、パスワードを入力します。
-
-## Installing MySQL Shell for Visual Studio Code
-
-1. Visual Studio Codeを開きます。
-2. Extensionsを開きます。
-3. **MySQL Shell**を検索し、Installをクリックします。
-![mysql-vs-1](./images/mysql-install/mysql-vs-1.png)
-4. インストールが完了したら、アクティビティバーにあるMySQL Shelのアイコンをクリックします。
-![mysql-vs-2](./images/mysql-install/mysql-vs-2.png)
-5. **Next**をクリックします。
-![mysql-vs-3](./images/mysql-install/mysql-vs-3.png)
-6. **はい**をクリックします。
-![mysql-vs-4](./images/mysql-install/mysql-vs-4.png)
-7. **Reload**をクリックします。
-![mysql-vs-5](./images/mysql-install/mysql-vs-5.png)
-8. MySQL Shellがインストールされました。
-![mysql-vs-6](./images/mysql-install/mysql-vs-6.png)
-
-## DB Connection
-
-1. **New Connection**をクリックします。
-2. **Caption**に「My New Connection」、**User Name**に「root」を入力します。
-![vs-con-1](./images/mysql-install/vs-con-1.png)
-3. **Store Password**をクリックし、パスワードを入力します。
-4. **OK**をクリックします。
-5. **My First MySQL Connection**をクリックし、接続します。
-![vs-con-2](./images/mysql-install/vs-con-2.png)
-
-
-
-
-
-1. Visual Studio Codeを開きます。
-2. 左側のメニューから"MySQL Shell for VS Code"のアイコン🐬をクリックします。
-3. 左側のメニューから"DATABASE CONNECTIONS"を見つけて、➕をクリックします。
-4. `Caption`にconnectionの名前、`User Name`に`root`を入力します。
-5. OKをクリックします。
-6. 作成したconnectionをクリックし、接続します。
-7. パスワードを入力します。
-8. 接続が完了したら、`SHOW DATABASES;`を実行して、下記のデータベースが表示されたら接続成功です。
-    
-```bash
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-``` -->
 
 <!-- ## Mac
 
