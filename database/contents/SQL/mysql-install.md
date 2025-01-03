@@ -4,7 +4,7 @@
 - MySQL Shellのインストール
 - Visual Studio Codeのインストール
 
-## Installing MySQL (Windows)
+## Installing MySQL Server on Windows
 
 ### MySQL Community Serverのインストール
 
@@ -89,7 +89,12 @@
 3. **Connection Name**に接続名を「Local instance」に設定します。
 4. **Password**のStore in Vaultをクリックし、パスワードを入力します。
 
+## Installing MySQL Shell for Visual Studio Code
 
+1. Visual Studio Codeを開きます。
+2. Extensionsを開きます。
+   - Mac: <kbd>Command</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>
+   - Windows: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>
 
 
 
