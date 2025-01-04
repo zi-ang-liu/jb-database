@@ -2,13 +2,17 @@
 
 ## CREATE DATABASE
 
-`CREATE DATABASE`文は、データベースを作成するために使用されます。書式は次のとおりです。
+**CREATE DATABASE文**は、データベースを作成するために使用されます。
+
+### 構文
 
 ```sql
-CREATE DATABASE db_name;
+CREATE DATABASE database_name;
 ```
 
-`db_name`には、作成するデーギベースの名前を指定します。
+「database_name」には、作成するデータベースの名前を指定します。
+
+### 例
 
 例として、`test_db`というデータベースを作成する場合は、次のようにします。
 

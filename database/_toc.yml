@@ -8,6 +8,8 @@ chapters:
 - file: contents/SQL/mysql-install
 - file: contents/SQL/vscode-shell-install
 - file: contents/SQL/data_definition_language
+- file: contents/SQL/data_manipulation_language
+- file: contents/SQL/data_control_language
 # - file: markdown
 # - file: notebooks
 # - file: markdown-notebooks
