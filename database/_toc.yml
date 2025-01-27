@@ -3,16 +3,24 @@
 
 format: jb-book
 root: intro
-chapters:
-# - file: contents/syllabus
-- file: contents/database_model/introduction
-- file: contents/database_model/construct
-- file: contents/database_model/manipulation
-- file: contents/SQL/mysql-install
-- file: contents/SQL/vscode-shell-install
-- file: contents/SQL/data_definition_language
-- file: contents/SQL/data_manipulation_language
-- file: contents/SQL/data_control_language
-# - file: markdown
-# - file: notebooks
-# - file: markdown-notebooks
+parts:
+    - caption: Introduction
+      chapters:
+      - file: contents/introduction/introduction
+
+    - caption: Database Model
+      chapters:
+      - file: contents/database_model/construct
+      - file: contents/database_model/manipulation
+
+    - caption: SQL
+      chapters:
+      - file: contents/SQL/mysql-install
+      - file: contents/SQL/vscode-shell-install
+      - file: contents/SQL/data_definition_language
+
+    # - caption: Appendix
+    #   chapters:
+
+    #   - file: contents/appendix/powershell
+    #   - file: contents/appendix/vscode
