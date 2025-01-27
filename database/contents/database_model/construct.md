@@ -55,7 +55,9 @@ $$R = \{("Tom", 20), ("Mary", 30), ("Tom", 40)\}$$
 $R = \{(1, a), (2, b), (3, a)\}$の濃度は3、次数は2である。
 :::
 
-## テーブル
+### テーブル
+
+
 
 <!-- \documentclass{beamer}
 \usepackage{booktabs}  % For clean table lines
