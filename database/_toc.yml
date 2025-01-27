@@ -6,7 +6,7 @@ root: intro
 chapters:
 # - file: contents/syllabus
 - file: contents/database_model/introduction
-- file: contents/database_model/constuct
+- file: contents/database_model/construct
 - file: contents/database_model/manipulation
 - file: contents/SQL/mysql-install
 - file: contents/SQL/vscode-shell-install
