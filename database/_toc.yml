@@ -11,6 +11,7 @@ parts:
     - caption: Database Model
       chapters:
       - file: contents/database_model/structure
+      - file: contents/database_model/semantic
       - file: contents/database_model/manipulation
 
     - caption: SQL
