@@ -9,14 +9,14 @@
 - DBMSの主な機能を理解する。
 - SQL, NoSQL, DBMS, RDBMSなどの略語を使える。
 
-## 略語
+## 用語
 
 | 略語  | English                               | 日本語                                 |
 | ----- | ------------------------------------- | -------------------------------------- |
 | DBMS  | Database Management System            | データベース管理システム               |
 | RDBMS | Relational Database Management System | リレーショナルデータベース管理システム |
-| SQL   | Structured Query Language             |                                        |
-| NoSQL | Not Only SQL                          |                                        |
+| SQL   | Structured Query Language             | -                                      |
+| NoSQL | Not Only SQL                          | -                                      |
 | DDL   | Data Definition Language              | データ定義言語                         |
 | DML   | Data Manipulation Language            | データ操作言語                         |
 | DCL   | Data Control Language                 | データ制御言語                         |
@@ -27,12 +27,12 @@
 
 **情報（Information）** はある特定の目的について，適切な判断を下したり，行動の意思決定をするために役立つ資料や知識。
 
-:::{tip} 例1
+:::{admonition} 例1
 - データ：(太郎, M, 20)
 - 情報：太郎は20歳の男性です。
 :::
 
-:::{tip} 例2
+:::{admonition} 例2
 - データ：700-8530
 - 情報：訪問先は岡山大学です。
 :::
@@ -51,6 +51,9 @@
 
 **データベースシステム（DBS）** はデータベース、DBMS、アプリケーションプログラムの総称。
 
+## データモデル
+
+**データモデル（data model）** はコンピューターで，データベースシステムのデータを構造化するパターン。
 
 <!-- \documentclass{beamer}
 \usepackage{booktabs}  % For clean table lines
