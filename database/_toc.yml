@@ -15,12 +15,9 @@ parts:
 
     - caption: SQL
       chapters:
-      - file: contents/SQL/mysql-install
-      - file: contents/SQL/vscode-shell-install
       - file: contents/SQL/data_definition_language
 
-    # - caption: Appendix
-    #   chapters:
-
-    #   - file: contents/appendix/powershell
-    #   - file: contents/appendix/vscode
+    - caption: Appendix
+      chapters:
+      - file: contents/SQL/mysql-install
+      - file: contents/SQL/vscode-shell-install

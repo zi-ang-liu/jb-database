@@ -1,4 +1,4 @@
-# Installing MySQL Shell for Visual Studio Code
+# MySQL Shellのインストール
 
 1. Visual Studio Codeを開きます。
 2. Extensionsを開きます。
