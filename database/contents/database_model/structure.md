@@ -159,6 +159,7 @@ $\boldsymbol{R}$をリレーション名、$A_1, A_2, \ldots, A_n$を属性名�
 ドメインを複数のドメインの直積として定義する入れ子型リレーションは非第1正規形である。   
 
 ````{prf:example}
+:nonumber:
 
 $\text{dom}(\text{学生名}) = \text{dom}(\text{姓}) \times \text{dom}(\text{名})$のとき、次のリレーションは非第1正規形である。
 
@@ -180,6 +181,7 @@ $\text{dom}(\text{学生名}) = \text{dom}(\text{姓}) \times \text{dom}(\text{�
 べき集合（power set）として定義されるドメインも非第1正規形である。
 
 ````{prf:example}
+:nonumber:
 
 $\text{dom}(\text{科目}) = \mathcal{P}(\text{dom}(\text{科目名}))$のとき、次のリレーションは非第1正規形である。
 
