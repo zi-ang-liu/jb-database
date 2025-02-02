@@ -11,6 +11,7 @@
 
 ````{prf:definition}
 :label: definition-domain
+:nonumber:
 
 **ドメイン**（domain、定義域）は属性の取り得る値の集合である。一般に$D$で表す。
 ````
