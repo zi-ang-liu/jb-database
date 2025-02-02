@@ -150,14 +150,7 @@
 
 ### SQLとNoSQL
 
-**SQL（Structured Query Language）** はRDBMSにおいてデータの操作を行うためのドメイン固有言語．
-
-:::{admonition} 例
-30歳以上の従業員を検索するSQL文．
-```sql
-SELECT * FROM employees WHERE age > 30;
-```
-:::
+**SQL（Structured Query Language）** はRDBMSにおいてデータの操作を行うためのドメイン固有言語．**NoSQL（Not Only SQL）** はRDBMS以外のデータベースを指す用語．非リレーショナルデータベース．
 
 ````{prf:example}
 :label: sql-example-1
@@ -173,19 +166,17 @@ SELECT * FROM employees WHERE age > 30;
 ````
 
 :::{note}
-ドメイン固有言語（Domain-specific language）とは特定のタスク向けに設計されたコンピュータ言語である．代表的なドメイン固有言語には以下のようなものがある．
+**ドメイン固有言語**（Domain-specific language）とは特定のタスク向けに設計されたコンピュータ言語である．代表的なドメイン固有言語には以下のようなものがある．
 - SQL: データベース操作するための言語
 - HTML: ウェブページを作成するための言語
 - CSS: ウェブページのスタイルを設定するための言語
 - LaTeX: 文書を作成するための言語
 
-汎用プログラミング言語（General-purpose programming language）のはドメイン固有言語の対義語である．代表的な汎用プログラミング言語には以下のようなものがある．
+**汎用プログラミング言語**（General-purpose programming language）のはドメイン固有言語の対義語である．代表的な汎用プログラミング言語には以下のようなものがある．
 - Python
 - Java
 - C++
 :::
-
-**NoSQL（Not Only SQL）** はRDBMS以外のデータベースを指す用語．非リレーショナルデータベース．
 
 ### 主要なDBMS
 
