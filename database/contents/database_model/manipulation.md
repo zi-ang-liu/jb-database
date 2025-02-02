@@ -47,7 +47,7 @@ $R$と$S$を和両立なリレーションとするとき，$R$と$S$の和集�
 
 $$R \cup S = \{t \mid t \in R \text{ or } t \in S\}$$
 
-すなわち，$R$と$S$の和集合は，$R$または$S$に属するタプル全体の集合である．
+$R$と$S$の和集合は，$R$または$S$に属するタプル全体の集合である．
 ````
 
 ````{prf:example}
@@ -97,8 +97,6 @@ $$R \cup S = \{t \mid t \in R \text{ or } t \in S\}$$
 
 ### 差集合演算
 
-$R$と$S$の差集合は，$R$に属し，$S$に属さないタプル全体の集合である．
-
 ````{prf:definition}
 :label: definition-difference
 :nonumber:  
@@ -107,6 +105,7 @@ $R$と$S$を和両立なリレーションとするとき，$R$と$S$の差集�
 
 $$R - S = \{t \mid t \in R \text{ and } t \notin S\}$$
 
+$R$と$S$の差集合は，$R$に属し，$S$に属さないタプル全体の集合である．
 ````
 
 ````{prf:example}
@@ -121,7 +120,7 @@ $$R - S = \{t \mid t \in R \text{ and } t \notin S\}$$
 
 ### 共通集合演算
 
-$R$と$S$の共通集合は，$R$にも属し，$S$にも属するタプル全体の集合である．
+
 
 ````{prf:definition}
 :label: definition-intersection
@@ -131,6 +130,7 @@ $R$と$S$を和両立なリレーションとするとき，$R$と$S$の共通�
 
 $$R \cap S = \{t \mid t \in R \text{ and } t \in S\}$$
 
+$R$と$S$の共通集合は，$R$にも属し，$S$にも属するタプル全体の集合である．
 ````
 
 ````{prf:example}
@@ -191,13 +191,19 @@ $R(A_1, A_2, \ldots, A_n)$と$S(B_1, B_2, \ldots, B_m)$をリレーションと�
 
 ### 射影演算
 
+````{prf:definition}
+:label: definition-projection
+:nonumber:
+
 $R(A_1, A_2, \ldots, A_n)$をリレーション，$R$の全属性集合を$\{A_1, A_2, \ldots, A_n\}$の部分集合を$X=\{A_{i_1}, A_{i_2}, \ldots, A_{i_m}\}$，ここに$1 \leq i_1 < i_2 < \ldots < i_m \leq n$とする．$R$の$X$上の射影を$R[X]$で表す．その定義は次の通りである．
 
 $$R[X] = \{t[X] \mid t \in R\}$$
 
 ここに，$t=(a_1, a_2, \ldots, a_n) \in R$とするとき，$t[X]=(a_{i_1}, a_{i_2}, \ldots, a_{i_m})$である．
+````
 
-:::{admonition} Example
+````{prf:example}
+:nonumber:
 
 **商品**（商品番号，商品名，価格）
 | 商品番号 | 商品名 | 価格 |
@@ -211,9 +217,14 @@ $$R[X] = \{t[X] \mid t \in R\}$$
 | -------- | ------ |
 | 1        | りんご |
 | 2        | みかん |
-:::
+
+````
 
 ### 選択演算
+
+````{prf:definition}
+:label: definition-selection
+:nonumber:
 
 $R(A_1, A_2, \ldots, A_n)$をリレーション，$A_i$と$A_j$を$\theta$-比較可能な属性とする．ここに，$\theta$は比較演算子（$=, \neq, <, \leq, >, \geq$）である．$R$の$A_i$と$A_j$上の$\theta$-選択を$R\left[A_i \theta A_j\right]$で表す．その定義は次の通りである．
 
@@ -227,8 +238,10 @@ $$R\left[A_i \theta A_j\right]= \{t \mid t \in R \text{ and } t[A_i] \theta t[A_
 $R(A_1, A_2, \ldots, A_n)$の属性$A_i$と$c$に関する$\theta$-選択を$R\left[A_i \theta c\right]$で表す．
 
 $$R\left[A_i \theta c\right]= \{t \mid t \in R \text{ and } t[A_i] \theta c\}$$
+````
 
-:::{admonition} Example
+````{prf:example}
+:nonumber:
 
 **商品**（商品番号，商品名，価格）
 | 商品番号 | 商品名 | 価格 |
@@ -243,15 +256,23 @@ $$\text{商品}\left[\text{価格} \geq 100\right]$$
 | 商品番号 | 商品名 | 価格 |
 | -------- | ------ | ---- |
 | 1        | りんご | 100  |
-:::
+
+````
 
 ### 結合演算
+
+````{prf:definition}
+:label: definition-join
+:nonumber:
 
 $R(A_1, A_2, \ldots, A_n)$と$S(B_1, B_2, \ldots, B_m)$をリレーション，$A_i$と$B_j$を$\theta$-比較可能とする．$R$と$S$の$A_i$と$B_j$上の$\theta$-結合を$R \left[A_i \theta B_j\right] S$で表す．その定義は次の通りである．
 
 $$R \left[A_i \theta B_j\right] S = \left\{(r, s) \mid r \in R \text{ and } s \in S \text{ and } r[A_i] \theta s[B_j]\right\}$$
 
-:::{admonition} Example
+````
+
+````{prf:example}
+:nonumber:
 
 **社員**（社員番号，社員名，部署）
 
@@ -276,17 +297,22 @@ $\text{社員}\left[\text{部署} = \text{部署番号}\right] \text{部署}$の
 | 2             | 山田      | K2        | K2            | 開発        |
 | 3             | 佐藤      | E1        | E1            | 営業        |
 
-:::
+````
 
 ### 商演算
+
+````{prf:definition}
+:label: definition-division
+:nonumber:
 
 $R(A_1, A_2, \ldots, A_{n-m}, B_1, B_2, \ldots, B_m)$を$n$次，$S(B_1, B_2, \ldots, B_m)$を$m$次（$n \geq m$）のリレーションとする．$R$を$S$で割った商を$R \div S$で表す．その定義は次の通りである．
 
 $$R \div S = \{t \mid t \in R(A_1, A_2, \ldots, A_{n-m}) \text{ and } \forall u \in S, (t, u) \in R\}$$
 
+````
 
-
-:::{admonition} Example
+````{prf:example}
+:nonumber:
 
 学生 テーブル
 | 学籍番号 | 氏名     |
@@ -321,13 +347,17 @@ $$R \div S = \{t \mid t \in R(A_1, A_2, \ldots, A_{n-m}) \text{ and } \forall u 
 | 202401   |
 | 202403   |
 
-:::
+````
 
 ## リレーショナル代数表現
 
+````{prf:definition}
+:label: definition-relational-algebra-expression
+:nonumber:
+
 **実リレーション**（base relation）はデータベースに実際に格納されているリレーションである．リレーション演算から得られた結果もリレーションである．そのようなリレーションを**導出リレーション**（derived relation）と呼ぶ．
 
-:::{admonition} リレーショナル代数表現（Relational Algebra Expression）
+リレーショナル代数表現（Relational Algebra Expression）
 1. リレーショナルデータベースの実リレーション$R$は表現である．
 2. $R$と$S$を表現とするとき，$R$と$S$が和両立であるなら，$R \cup S$，$R - S$，$R \cap S$は表現である．
 3. $R$と$S$を表現とするとき，$R \times S$は表現である．
@@ -336,7 +366,8 @@ $$R \div S = \{t \mid t \in R(A_1, A_2, \ldots, A_{n-m}) \text{ and } \forall u 
 6. $R$と$S$を表現とするとき，$R \left[A_i \theta B_j\right] S$は表現である．
 7. $R$と$S$を表現とするとき，$R \div S$は表現である．
 8. 以上の定義によって得られた表現のみがリレーショナル代数表現である．
-:::
+
+````
 
 ### 演習
 
