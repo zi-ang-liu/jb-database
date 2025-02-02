@@ -9,46 +9,61 @@
 
 ## リレーション
 
-**ドメイン**（domain、定義域）は属性の取り得る値の集合である。一般に$D$で表す。
+````{prf:definition}
+:label: definition-domain
 
-:::{admonition} 例
+**ドメイン**（domain、定義域）は属性の取り得る値の集合である。一般に$D$で表す。
+````
+
+````{prf:example}
+:label: example-domain
+
 - 年齢：$D_1 = \{0, 1, 2, \ldots, 120\}$。
 - 性別：$D_2 = \{\text{"M"}, \text{"F"}, \text{"NULL"}\}$。
 - 人名：$D_3 = \{x \mid x \text{ は人名}\}$。
-:::
+````
 
+````{prf:definition}
+:label: definition-cartesian-product
 **直積**（Cartesian product）は集合$A$と$B$の直積であり、$A \times B = \{(a, b) \mid a \in A, b \in B\}$である。直積の要素は**タプル**（tuple、組）と呼ばれる。
+````
 
-:::{admonition} 例
+````{prf:example}
 
 $A = \{1, 2, 3\}$, $B = \{3, 4\}$のとき、$A$と$B$の直積は次のようになる。
 
 $$A \times B = \{(1, 3), (1, 4), (2, 3), (2, 4), (3, 3), (3, 4)\}$$
-:::
+````
+
+````{prf:definition}
 
 **リレーション**（relation）は$D_1, D_2, \ldots, D_n$をドメインとするとき、$D_1, D_2, \ldots, D_n$上のリレーション$R$とは$D_1 \times D_2 \times \ldots \times D_n$の任意の有限部分集合として定義する。
+````
 
-:::{admonition} 例
-
+````{prf:example}
 $D_1 = \{1, 2, 3\}$, $D_2 = \{a, b\}$のとき、リレーション$R$の例は次のようになる。
 
 $$R = \{(1, a), (2, b), (3, a)\}$$
+````
 
-:::
-
-:::{admonition} 例
+````{prf:definition}
 
 $D_1 = \{\text{"Tom"}, \text{"Mary"}\}$, $D_2 = \{1, 2, \ldots, 120\}$のとき、リレーション$R$の例は次のようになる。
 
 $$R = \{(\text{"Tom"}, 20), (\text{"Mary"}, 30), (\text{"Tom"}, 40)\}$$
-:::
+````
+
+````{prf:definition}
 
 **濃度**（cardinality）はリレーションのタプルの数をリレーションの濃度という。**次数**（degree）はリレーションが定義されるドメインの数をリレーションの次数という。
+````
 
-:::{admonition} 例
+````{prf:example}
 
 $R = \{(1, a), (2, b), (3, a)\}$の濃度は3、次数は2である。
-:::
+````
+
+<!-- ````{prf:definition} -->
 
 リレーションを**テーブル**（table）として表すことができる。テーブルの行はリレーションのタプルであり、テーブルの列はリレーションのドメインに対応する。
 
