@@ -18,6 +18,7 @@
 
 ````{prf:example}
 :label: example-domain
+:nonumber:
 
 - 年齢：$D_1 = \{0, 1, 2, \ldots, 120\}$。
 - 性別：$D_2 = \{\text{"M"}, \text{"F"}, \text{"NULL"}\}$。
@@ -26,10 +27,13 @@
 
 ````{prf:definition}
 :label: definition-cartesian-product
+:nonumber:
+
 **直積**（Cartesian product）は集合$A$と$B$の直積であり、$A \times B = \{(a, b) \mid a \in A, b \in B\}$である。直積の要素は**タプル**（tuple、組）と呼ばれる。
 ````
 
 ````{prf:example}
+:nonumber:
 
 $A = \{1, 2, 3\}$, $B = \{3, 4\}$のとき、$A$と$B$の直積は次のようになる。
 
@@ -37,17 +41,20 @@ $$A \times B = \{(1, 3), (1, 4), (2, 3), (2, 4), (3, 3), (3, 4)\}$$
 ````
 
 ````{prf:definition}
+:nonumber:
 
 **リレーション**（relation）は$D_1, D_2, \ldots, D_n$をドメインとするとき、$D_1, D_2, \ldots, D_n$上のリレーション$R$とは$D_1 \times D_2 \times \ldots \times D_n$の任意の有限部分集合として定義する。
 ````
 
 ````{prf:example}
+:nonumber:
 $D_1 = \{1, 2, 3\}$, $D_2 = \{a, b\}$のとき、リレーション$R$の例は次のようになる。
 
 $$R = \{(1, a), (2, b), (3, a)\}$$
 ````
 
 ````{prf:definition}
+:nonumber:
 
 $D_1 = \{\text{"Tom"}, \text{"Mary"}\}$, $D_2 = \{1, 2, \ldots, 120\}$のとき、リレーション$R$の例は次のようになる。
 
@@ -55,20 +62,25 @@ $$R = \{(\text{"Tom"}, 20), (\text{"Mary"}, 30), (\text{"Tom"}, 40)\}$$
 ````
 
 ````{prf:definition}
+:nonumber:
 
 **濃度**（cardinality）はリレーションのタプルの数をリレーションの濃度という。**次数**（degree）はリレーションが定義されるドメインの数をリレーションの次数という。
 ````
 
 ````{prf:example}
+:nonumber:
 
 $R = \{(1, a), (2, b), (3, a)\}$の濃度は3、次数は2である。
 ````
 
-<!-- ````{prf:definition} -->
-
+````{prf:definition}
+:nonumber:
 リレーションを**テーブル**（table）として表すことができる。テーブルの行はリレーションのタプルであり、テーブルの列はリレーションのドメインに対応する。
+````
 
-:::{admonition} 例
+````{prf:example}
+:nonumber:
+
 ドメイン$D_1 = \{\text{"Tom"}, \text{"Mary"}\}$, $D_2 = \{0, 1, 2, \ldots\}$のリレーション$R\{(\text{"Tom"}, 25), (\text{"Mary"}, 30)\}$をテーブルで表すと次のようになる。
 
 |      |     |
@@ -77,15 +89,19 @@ $R = \{(1, a), (2, b), (3, a)\}$の濃度は3、次数は2である。
 | Mary | 30  |
 
 - $D_2$を年齢のドメインとするとき、TomとMaryの年齢はそれぞれ25歳と30歳である。
-:::
+````
 
 ## リレーションスキーマとインスタンス
 
 **属性名**（attribute name）はテーブルの列の名前であり、**リレーション名**（relation name）はテーブルの名前である。
 
+````{prf:definition}
+:nonumber:
 $A_i$を属性名、$D_i$をドメイン、$i=1, 2, \ldots, n$とするとき、$\text{dom}: A_i \to D_i$を**ドメイン関数**（domain function）という。
+````
 
-:::{admonition} 例
+````{prf:example}
+:nonumber:
 $D_1=\{x \mid x \text{は人名}\}$, $D_2=\{0, 1, 2, \ldots\}$のリレーション$R\{(\text{"Tom"}, 25), (\text{"Mary"}, 30)\}$を考える。
 
 リレーション名は社員であり、属性名は名前と年齢である。テーブルで表すと次のようになる。
@@ -99,11 +115,18 @@ $D_1=\{x \mid x \text{は人名}\}$, $D_2=\{0, 1, 2, \ldots\}$のリレーショ
 
 $$\text{dom}(\text{名前}) = D_1 = \{x \mid x \text{は人名}\}$$
 $$\text{dom}(\text{年齢}) = D_2 = \{0, 1, 2, \ldots\}$$
-:::
 
+````
+
+````{prf:definition}
+:nonumber:
 リレーション$R$は$\text{dom}(A_1) \times \text{dom}(A_2) \times \ldots \times \text{dom}(A_n)$の有限部分集合である。
+````
+
+````{prf:definition}
 
 $\boldsymbol{R}$をリレーション名、$A_1, A_2, \ldots, A_n$を属性名、$\text{dom}$をドメイン関数とするとき、**リレーションスキーマ**（relation schema）は$\boldsymbol{R}(A_1, A_2, \ldots, A_n)$で表す。このとき、$R \subseteq \text{dom}(A_1) \times \text{dom}(A_2) \times \ldots \times \text{dom}(A_n)$を$\boldsymbol{R}$の**インスタンス**（instance）という。
+````
 
 :::{note}
 - リレーションスキーマはリレーションの構造を記述する。時間的に変化しない。
@@ -112,15 +135,17 @@ $\boldsymbol{R}$をリレーション名、$A_1, A_2, \ldots, A_n$を属性名�
 
 ## 第1正規形
 
+````{prf:definition}
 リレーションスキーマ$\boldsymbol{R}(A_1, A_2, \ldots, A_n)$が**第1正規形**（1NF, first normal form）であるとは、任意のドメインが**シンプル**であることをいう。
 
 シンプルはドメインの元が**原子的**（atomic）、即ち**分解不可能**（nondecomposable）な値であることを指す。
+````
 
 ### 非第1正規形
 
 ドメインを複数のドメインの直積として定義する入れ子型リレーションは非第1正規形である。   
 
-:::{admonition} 例
+````{prf:example}
 
 $\text{dom}(\text{学生名}) = \text{dom}(\text{姓}) \times \text{dom}(\text{名})$のとき、次のリレーションは非第1正規形である。
 
@@ -137,11 +162,11 @@ $\text{dom}(\text{学生名}) = \text{dom}(\text{姓}) \times \text{dom}(\text{�
 | 9375     | 田中 | 太郎 | ... |
 | 9376     | 山田 | 花子 | ... |
 | ...      | ...  | ...  | ... |
-:::
+````
 
 べき集合（power set）として定義されるドメインも非第1正規形である。
 
-:::{admonition} 例
+````{prf:example}
 
 $\text{dom}(\text{科目}) = \mathcal{P}(\text{dom}(\text{科目名}))$のとき、次のリレーションは非第1正規形である。
 
@@ -161,4 +186,4 @@ $\text{dom}(\text{科目}) = \mathcal{P}(\text{dom}(\text{科目名}))$のとき
 | 9376     | 英語 |
 | 9376     | 数学 |
 | ...      | ...  |
-:::
+````

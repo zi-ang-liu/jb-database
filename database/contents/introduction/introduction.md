@@ -29,6 +29,7 @@
 
 ````{prf:example}
 :label: data-info-example-1
+:nonumber:
 
 - データ：(太郎, M, 20)
 - 情報：太郎は20歳の男性です．
@@ -36,6 +37,7 @@
 
 ````{prf:example}
 :label: data-info-example-2
+:nonumber:
 
 - データ：JC 01
 - 情報：中央線快速の東京駅行きの電車です．
@@ -79,6 +81,7 @@
 
 ````{prf:example}
 :label: relational-model-example-1
+:nonumber:
 
 ある大学の学生と成績のデータをリレーショナルモデルで表現する．学生と成績のリレーションを以下の2つのテーブルで表現できる．
 
@@ -105,6 +108,7 @@
 
 ````{prf:example}
 :label: relational-model-example-2
+:nonumber:
 
 ある企業の社員と部署のデータをリレーショナルモデルで表現する．社員と部署のリレーションを以下の2つのテーブルで表現できる．
 
@@ -154,6 +158,7 @@
 
 ````{prf:example}
 :label: sql-example-1
+:nonumber:
 
 30歳以上の従業員を検索するSQL文．
 ```sql
