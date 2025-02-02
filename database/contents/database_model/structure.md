@@ -7,7 +7,9 @@
 - リレーションスキーマとインスタンスの違いを理解する。
 - 第1正規形の概念を理解し、非第1正規形リレーションを正規化できる。
 
-## リレーション
+## リレーションとは
+
+### ドメイン
 
 ````{prf:definition}
 :label: definition-domain
@@ -25,6 +27,7 @@
 - 人名：$D_3 = \{x \mid x \text{ は人名}\}$。
 ````
 
+### 直積
 ````{prf:definition}
 :label: definition-cartesian-product
 :nonumber:
@@ -40,6 +43,8 @@ $A = \{1, 2, 3\}$, $B = \{3, 4\}$のとき、$A$と$B$の直積は次のよう�
 $$A \times B = \{(1, 3), (1, 4), (2, 3), (2, 4), (3, 3), (3, 4)\}$$
 ````
 
+### リレーション
+
 ````{prf:definition}
 :nonumber:
 
@@ -53,13 +58,15 @@ $D_1 = \{1, 2, 3\}$, $D_2 = \{a, b\}$のとき、リレーション$R$の例は�
 $$R = \{(1, a), (2, b), (3, a)\}$$
 ````
 
-````{prf:definition}
+````{prf:example}
 :nonumber:
 
 $D_1 = \{\text{"Tom"}, \text{"Mary"}\}$, $D_2 = \{1, 2, \ldots, 120\}$のとき、リレーション$R$の例は次のようになる。
 
 $$R = \{(\text{"Tom"}, 20), (\text{"Mary"}, 30), (\text{"Tom"}, 40)\}$$
 ````
+
+### 濃度と次数
 
 ````{prf:definition}
 :nonumber:
@@ -73,10 +80,9 @@ $$R = \{(\text{"Tom"}, 20), (\text{"Mary"}, 30), (\text{"Tom"}, 40)\}$$
 $R = \{(1, a), (2, b), (3, a)\}$の濃度は3、次数は2である。
 ````
 
-````{prf:definition}
-:nonumber:
+### テーブルとリレーション
+
 リレーションを**テーブル**（table）として表すことができる。テーブルの行はリレーションのタプルであり、テーブルの列はリレーションのドメインに対応する。
-````
 
 ````{prf:example}
 :nonumber:
@@ -118,12 +124,17 @@ $$\text{dom}(\text{年齢}) = D_2 = \{0, 1, 2, \ldots\}$$
 
 ````
 
+### ドメイン関数を用いたリレーションの定義
+
 ````{prf:definition}
 :nonumber:
 リレーション$R$は$\text{dom}(A_1) \times \text{dom}(A_2) \times \ldots \times \text{dom}(A_n)$の有限部分集合である。
 ````
 
+### リレーションスキーマとインスタンス
+
 ````{prf:definition}
+:nonumber:
 
 $\boldsymbol{R}$をリレーション名、$A_1, A_2, \ldots, A_n$を属性名、$\text{dom}$をドメイン関数とするとき、**リレーションスキーマ**（relation schema）は$\boldsymbol{R}(A_1, A_2, \ldots, A_n)$で表す。このとき、$R \subseteq \text{dom}(A_1) \times \text{dom}(A_2) \times \ldots \times \text{dom}(A_n)$を$\boldsymbol{R}$の**インスタンス**（instance）という。
 ````
@@ -136,6 +147,8 @@ $\boldsymbol{R}$をリレーション名、$A_1, A_2, \ldots, A_n$を属性名�
 ## 第1正規形
 
 ````{prf:definition}
+:label: definition-1NF
+:nonumber:
 リレーションスキーマ$\boldsymbol{R}(A_1, A_2, \ldots, A_n)$が**第1正規形**（1NF, first normal form）であるとは、任意のドメインが**シンプル**であることをいう。
 
 シンプルはドメインの元が**原子的**（atomic）、即ち**分解不可能**（nondecomposable）な値であることを指す。
