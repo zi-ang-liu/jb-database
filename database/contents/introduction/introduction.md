@@ -30,33 +30,16 @@
 ````{prf:example}
 :label: my-example
 
-Next, we shut down randomness in demand and assume that the demand shock
-$\nu_t$ follows a deterministic path:
-
-
-```{math}
-\nu_t = \alpha + \rho \nu_{t-1}
-```
-
-Again, we’ll compute and display outcomes in some figures
-
-```python
-ex2 = SmoothingExample(C2=[[0], [0]])
-
-x0 = [0, 1, 0]
-ex2.simulate(x0)
-```
-````
-
-:::{admonition} 例1
 - データ：(太郎, M, 20)
 - 情報：太郎は20歳の男性です。
-:::
+````
 
-:::{admonition} 例2
+````{prf:example}
+:label: my-example
+
 - データ：JC 01
 - 情報：中央線快速の東京駅行きの電車です。
-:::
+````
 
 ### データと情報の違い
 
