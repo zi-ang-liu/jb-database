@@ -71,12 +71,6 @@ Without data, you're just another person with an opinion.
 
 **データモデル（data model）** はコンピューターで，データベースシステムのデータを構造化するパターンである．
 
-<!-- データベースを作成するには，一般的に以下の三種類のデータモデルを順番に設計する． -->
-
-<!-- 1. **概念モデル**（Conceptual Data Model）：ある記号系を用いて実世界の構造と意味を表現するモデル．
-2. **論理モデル**（Logical Data Model）：概念モデルを実装可能な形式に変換したモデル．
-3. **物理モデル**（Physical Data Model）：物理的な観点で記述されるデータモデル． -->
-
 ### 代表的なモデル
 
 - 階層データモデル
@@ -84,10 +78,6 @@ Without data, you're just another person with an opinion.
 - リレーショナルデータモデル
 - オブジェクト指向データモデル
 - XMLデータモデル
-
-<!-- :::{note}
-リレーショナルデータベースの設計において，概念モデルは**実体関連モデル**（entity-relationship model, ERモデル）が用いられることが多い．実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ．実体関連モデルはリレーショナルデータベーススキーマ（relational database schema）に変換される．
-::: -->
 
 
 
