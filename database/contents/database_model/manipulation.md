@@ -1,5 +1,10 @@
 # 操作記述
 
+```{epigraph}
+Young man, in mathematics you don't understand things. You just get used to them.
+-- John von Neumann
+```
+
 ## 学習目標
 
 ## リレーショナル代数

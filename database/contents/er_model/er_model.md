@@ -31,15 +31,21 @@
 - **関連**（Relationship）と**関連型**（Relationship Type）
 - **属性**（Attribute）
 
-自然言語の記述を実体関連モデルに変換するためのガイドラインは以下の通りである．
+:::{note}
 
-| 品詞 | ER構造 |
-| :--- | :----- |　
-| 一般名詞 | 実体型 |
-| 固有名詞 | 実体   |
-| 他動詞 | 関連型 |
-| 自動詞   | 属性型 |
+チェンの論文では，英語
+
+- P. P.-S. Chen, “English, Chinese and ER diagrams,” Data Knowl. Eng., vol. 23, no. 1, pp. 5–16, Jun. 1997.
+
+英語の
+(Correspondance between English sentences structure and ERD (Entity-Relationship Diagram) constructs.)
+
+| 品詞     | ER構造     |
+| :------- | :--------- |
+| 一般名詞 | 実体型     |
+| 固有名詞 | 実体       |
+| 他動詞   | 関連型     |
+| 自動詞   | 属性型     |
 | 形容詞   | 実体の属性 |
 | 副詞     | 関連の属性 |
-
-(P. P.-S. Chen, “English, Chinese and ER diagrams,” Data Knowl. Eng., vol. 23, no. 1, pp. 5–16, Jun. 1997.)
+:::
