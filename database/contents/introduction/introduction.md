@@ -78,7 +78,7 @@
 **リレーショナルモデル（relational model）** はエドガー・F・コッドが1970年に数学の集合論に基づいて提案したデータモデルで、あらゆるデータが**テーブル**として表現される。
 
 ````{prf:example}
-:label: 
+:label: relational-model-example-1
 
 **学生** テーブル
 | 学籍番号 | 氏名     | 学科       |
