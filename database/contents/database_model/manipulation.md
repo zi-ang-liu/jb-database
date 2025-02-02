@@ -351,11 +351,11 @@ $$R \div S = \{t \mid t \in R(A_1, A_2, \ldots, A_{n-m}) \text{ and } \forall u 
 
 ## リレーショナル代数表現
 
+**実リレーション**（base relation）はデータベースに実際に格納されているリレーションである．リレーション演算から得られた結果もリレーションである．そのようなリレーションを**導出リレーション**（derived relation）と呼ぶ．
+
 ````{prf:definition}
 :label: definition-relational-algebra-expression
 :nonumber:
-
-**実リレーション**（base relation）はデータベースに実際に格納されているリレーションである．リレーション演算から得られた結果もリレーションである．そのようなリレーションを**導出リレーション**（derived relation）と呼ぶ．
 
 リレーショナル代数表現（Relational Algebra Expression）
 1. リレーショナルデータベースの実リレーション$R$は表現である．

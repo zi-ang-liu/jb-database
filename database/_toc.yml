@@ -8,11 +8,15 @@ parts:
       chapters:
       - file: contents/introduction/introduction
 
-    - caption: Database Model
+    - caption: Relational Model
       chapters:
       - file: contents/database_model/structure
       - file: contents/database_model/semantic
       - file: contents/database_model/manipulation
+
+    - caption: Entity-Relationship Model
+      chapters:
+      - file: contents/er_model/er_model
 
     - caption: SQL
       chapters:

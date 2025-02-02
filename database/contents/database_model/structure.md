@@ -1,11 +1,29 @@
 # 構造記述
 
+```{epigraph}
+千里之行，始于足下．
+-- 老子
+```
+
 ## 学習目標
 
 - リレーションの概念を理解する．
 - 直積，濃度，次数の概念を理解し，計算できる．
 - リレーションスキーマとインスタンスの違いを理解する．
 - 第1正規形の概念を理解し，非第1正規形リレーションを正規化できる．
+
+## データモデルの要素
+
+- 構造記述：データベースの構成要素の記述
+- 意味記述：データベースの一貫性制約の記述
+- 操作記述：データベース操作言語
+
+> A data model is a combination of at least three components:
+> 1. A collection of data structure types (the database building, blocks);
+> 2. A collection of operators or rules of inference, which can be applied to any valid instances of the data types listed in (1), to retrieve, derive, or modify data from any parts of those structures in any combinations desired;
+> 3. A collection of general integrity rules, which implicitly or explicitly define the set of consistent database states or changes of state or both--these rules are general in the sense that they apply to any database using this model (incidentally, they may sometimes be expressed as insert-update-delete rules).   
+> 
+> E. F. Codd. 1982. Relational database: a practical foundation for productivity. Commun. ACM 25, 2 (Feb 1982), 109–117. https://doi.org/10.1145/358396.358400
 
 ## リレーションとは
 
