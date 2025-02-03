@@ -18,6 +18,11 @@ parts:
       chapters:
       - file: contents/er_model/er_model
 
+    - caption: Database Normalization
+      chapters:
+      - file: contents/normalization/2nf
+      - file: contents/normalization/3nf
+
     - caption: SQL
       chapters:
       - file: contents/SQL/data_definition_language
