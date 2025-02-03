@@ -8,7 +8,22 @@ Young man, in mathematics you don't understand things. You just get used to them
 
 ## 学習目標
 
+- 
+
 ## リレーショナル代数
+
+**リレーショナル代数**（relational algebra）はリレーションとして表現されたデータを操作するための代数的な演算の体系である．
+
+リレーション代数は次の基本演算から構成される．
+
+- 和集合演算
+- 差集合演算
+- 共通集合演算
+- 直積演算
+- 射影演算
+- 選択演算
+- 結合演算
+- 商演算
 
 ### 和両立
 
