@@ -4,6 +4,11 @@
 format: jb-book
 root: intro
 parts:
+
+    - caption: Front matter
+      chapters:
+      - file: contents/frontmatter/guide
+
     - caption: Introduction
       chapters:
       - file: contents/introduction/introduction
