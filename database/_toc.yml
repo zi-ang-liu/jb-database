@@ -5,9 +5,15 @@ format: jb-book
 root: intro
 parts:
 
+
     - caption: Front matter
       chapters:
-      - file: contents/frontmatter/guide
+      - file: contents/frontmatter/preface
+
+    - caption: 授業
+      chapters:
+      - file: contents/class/notes
+      - file: contents/class/guide
 
     - caption: Introduction
       chapters:
