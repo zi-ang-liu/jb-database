@@ -67,6 +67,13 @@ Without data, you're just another person with an opinion.
 
 **データベースシステム（DBS）** はデータベース，DBMS，アプリケーションプログラムの総称．
 
+:::{figure-md} foo
+<img src="./images/database.drawio.png" alt="Database System" width="200px">
+
+データベースシステム
+:::
+
+
 ## データモデル
 
 **データモデル（data model）** はコンピューターで，データベースシステムのデータを構造化するパターンである．
@@ -78,8 +85,6 @@ Without data, you're just another person with an opinion.
 - リレーショナルデータモデル
 - オブジェクト指向データモデル
 - XMLデータモデル
-
-
 
 ### リレーショナルモデル
 
