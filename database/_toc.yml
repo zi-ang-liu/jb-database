@@ -17,6 +17,7 @@ parts:
 
     - caption: Introduction
       chapters:
+      - file: contents/introduction/set
       - file: contents/introduction/introduction
 
     - caption: Relational Model
@@ -40,6 +41,5 @@ parts:
 
     - caption: Appendix
       chapters:
-      - file: contents/appendix/set
       - file: contents/appendix/mysql-install
       - file: contents/appendix/vscode-shell-install
