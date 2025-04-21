@@ -336,6 +336,10 @@ $$R \div S = \{t \mid t \in R(A_1, A_2, \ldots, A_{n-m}) \text{ and } \forall u 
 
 ````
 
+:::{note}
+$R \div S = T$とするとき，$S \times T \subseteq R$が成り立つ．
+:::
+
 ````{prf:example}
 :nonumber:
 
