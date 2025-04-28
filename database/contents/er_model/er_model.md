@@ -85,7 +85,7 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
 
-``` mermaid　
+```mermaid　
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER {
@@ -105,7 +105,7 @@ erDiagram
     }
 ```
 
-``` mermaid　
+```mermaid　
 ---
 title: Order example
 ---
@@ -115,7 +115,7 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-``` mermaid
+```mermaid
 flowchart LR
 A[Jupyter Notebook] --> C
 B[MyST Markdown] --> C
