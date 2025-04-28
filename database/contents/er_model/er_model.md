@@ -104,34 +104,3 @@ erDiagram
         float pricePerUnit
     }
 ```
-
-```mermaid　
----
-title: Order example
----
-erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    ORDER ||--|{ LINE-ITEM : contains
-    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
-```
-
-```mermaid
-flowchart LR
-A[Jupyter Notebook] --> C
-B[MyST Markdown] --> C
-C(mystmd) --> D{AST}
-D <--> E[LaTeX]
-E --> F[PDF]
-D --> G[Word]
-D --> H[React]
-D --> I[HTML]
-D <--> J[JATS]
-```
-
-```{mermaid}
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
