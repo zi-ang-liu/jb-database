@@ -104,8 +104,19 @@ title: CUSTOMER entity
 ---
 CUSTOMER {
         string name
-        string custNumber
+        string custNumber PK
         string sector
     }
 ```
 
+また、`ORDER`は、顧客の注文を表す実体型である。属性`orderNumber`、`deliveryAddress`を持つ。以下のように表現される。
+
+```{mermaid}
+---
+title: ORDER entity
+---
+ORDER {
+        int orderNumber
+        string deliveryAddress
+    }
+```
