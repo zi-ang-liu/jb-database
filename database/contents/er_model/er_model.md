@@ -79,7 +79,7 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 ## 実体関連図
 
-実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」の二つの記法がある。
+実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」の二つの記法が代表的な記法である。
 
 ここでは、Crow's Foot Notationを紹介する。
 
@@ -130,5 +130,20 @@ erDiagram
 
 ```{mermaid}
 erDiagram
-    A ||--o{ B 
+    ENTITY-A ||--|| ENTITY-B : 1-to-1
+```
+
+```{mermaid}
+erDiagram
+    ENTITY-A ||--o{ ENTITY-B : 1-to-0+
+```
+
+```{mermaid}
+erDiagram
+    ENTITY-A ||--|{ ENTITY-B : 1-to-1+
+```
+
+```{mermaid}
+erDiagram
+    ENTITY-A ||--o| ENTITY-B : 1-to-01
 ```
