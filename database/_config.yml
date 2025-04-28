@@ -39,3 +39,4 @@ html:
 sphinx:
   extra_extensions:
     - sphinx_proof
+    - sphinxcontrib.mermaid

@@ -84,3 +84,12 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 | 属性     | 楕円形 |
 
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
+
+
+---
+title: Order example
+---
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
