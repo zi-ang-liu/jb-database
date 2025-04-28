@@ -60,6 +60,16 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 例えば、「プログラミング」、「データベース」などの科目を実体とし、抽象化して「科目」という実体型を定義することができる。
 
+```{mermaid}
+erDiagram
+    SUBJECT {
+        string subject_id
+        string subject_name
+        int credit
+    }
+```
+    
+
 ### 関連と関連型
 
 **関連**（relationship）は、実体間の関係を表す。**関連型**（relationship type）は、実体型間の抽象化された関係を表す。
@@ -72,35 +82,30 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 例えば、「科目」という実体型には「科目ID」、「科目名」、「単位数」などの属性がある。
 
+:::{note}
+学術的には、「実体型」と「実体」は厳密に区別されるが、実務上は「実体」という用語が「実体型」を指すことが多い。
+:::
 
 ## 実体関連図
 
-実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。
+実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」の二つの記法がある。
 
-| ERモデル | ER図   |
-| :------- | :----- |
-| 実体型   | 四角形 |
-| 関連型   | 菱形   |
-| 属性     | 楕円形 |
+「Chen Notation」は、実体型を四角形、関連型を菱形、属性を楕円形で表現する。
+
+ここでは、Crow's Foot Notationを紹介する。
 
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
 
+実体型`CUSTOMER`は、顧客を表す実体型である。属性`name`、`custNumber`、`sector`を持つ。Crow's Foot Notationでは以下のように表現される。
+
 ```{mermaid}
-erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    CUSTOMER {
+---
+title: CUSTOMER entity
+---
+CUSTOMER {
         string name
         string custNumber
         string sector
     }
-    ORDER ||--|{ LINE-ITEM : contains
-    ORDER {
-        int orderNumber
-        string deliveryAddress
-    }
-    LINE-ITEM {
-        string productCode
-        int quantity
-        float pricePerUnit
-    }
 ```
+
