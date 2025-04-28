@@ -96,7 +96,7 @@ erDiagram
 
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
 
-実体型`CUSTOMER`は、顧客を表す実体型である。属性`name`、`custNumber`、`sector`を持つ。Crow's Foot Notationでは以下のように表現される。
+実体型`CUSTOMER`は、顧客を表す実体型である。属性`name`、`custNumber`、`sector`を持つ。`custNumber`は主キーである。Crow's Foot Notationでは以下のように表現される。
 
 ```{mermaid}
 ---
@@ -110,7 +110,7 @@ erDiagram
         }
 ```
 
-また、`ORDER`は、顧客の注文を表す実体型である。属性`orderNumber`、`deliveryAddress`を持つ。以下のように表現される。
+また、`ORDER`は、顧客の注文を表す実体型である。属性`orderNumber`、`deliveryAddress`を持つ。`orderNumber`は主キーである。Crow's Foot Notationでは以下のように表現される。
 
 ```{mermaid}
 ---
@@ -118,7 +118,23 @@ title: ORDER entity
 ---
 erDiagram
     ORDER {
-            int orderNumber
+            int orderNumber PK
             string deliveryAddress
         }
+```
+
+`CUSTOMER`と`ORDER`の間に発注という関連型がある。
+
+```{mermaid}
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+        string name
+        string custNumber
+        string sector
+    }
+    ORDER {
+        int orderNumber
+        string deliveryAddress
+    }
 ```
