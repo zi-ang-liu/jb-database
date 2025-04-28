@@ -86,6 +86,25 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
 
 
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+        string name
+        string custNumber
+        string sector
+    }
+    ORDER ||--|{ LINE-ITEM : contains
+    ORDER {
+        int orderNumber
+        string deliveryAddress
+    }
+    LINE-ITEM {
+        string productCode
+        int quantity
+        float pricePerUnit
+    }
+
+
 ---
 title: Order example
 ---
