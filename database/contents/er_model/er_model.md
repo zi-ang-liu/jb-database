@@ -127,3 +127,11 @@ D --> H[React]
 D --> I[HTML]
 D <--> J[JATS]
 ```
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
