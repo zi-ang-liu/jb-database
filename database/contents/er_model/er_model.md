@@ -120,12 +120,12 @@ erDiagram
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER {
+        string custNumber PK
         string name
-        string custNumber
         string sector
     }
     ORDER {
-        int orderNumber
+        int orderNumber PK
         string deliveryAddress
     }
 ```
