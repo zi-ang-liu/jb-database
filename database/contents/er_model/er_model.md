@@ -59,15 +59,6 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 **実体**（entity）は、現実世界に存在する物体や事象を表す。**実体型**（entity type）は、実体集合（entity set）を表す。
 
 例えば、「プログラミング」、「データベース」などの科目を実体とし、抽象化して「科目」という実体型を定義することができる。
-
-```{mermaid}
-erDiagram
-    SUBJECT {
-        string subject_id
-        string subject_name
-        int credit
-    }
-```
     
 
 ### 関連と関連型
@@ -104,8 +95,8 @@ title: CUSTOMER entity
 ---
 erDiagram
     CUSTOMER {
-            string name
             string custNumber PK
+            string name
             string sector
         }
 ```
@@ -123,7 +114,7 @@ erDiagram
         }
 ```
 
-`CUSTOMER`と`ORDER`の間に発注という関連型がある。
+`CUSTOMER`と`ORDER`の間に`places`という関連型がある。
 
 ```{mermaid}
 erDiagram
@@ -138,3 +129,4 @@ erDiagram
         string deliveryAddress
     }
 ```
+
