@@ -56,16 +56,48 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 ### 実体と実体型
 
-**実体**（entity）は、現実世界に存在する物体や事象を表す。**実体型**（entity type）は、実体集合（entity set）を表す。
+**実体**（entity）は、現実世界に存在する物体や事象を表す。**実体型**（entity type）は、実体集合（entity set）を表す。実体は実体型のインスタンス（instance）である。例えば、個々の顧客は実体であり、抽象化された顧客集合は`CUSTOMER`という実体型で表される。
 
-例えば、「プログラミング」、「データベース」などの科目を実体とし、抽象化して「科目」という実体型を定義することができる。
+実体型は一般的に名詞で、英語の大文字で表現される。`STUDENT`、`CLASS`、`PROFESSOR`などが実体型の例である。
+
+:::{note}
+学術的には、「実体型」と「実体」は厳密に区別されるが、実務上は「実体」という用語が「実体型」を指すことが多い。
+:::
     
-
 ### 関連と関連型
 
-**関連**（relationship）は、実体間の関係を表す。**関連型**（relationship type）は、実体型間の抽象化された関係を表す。
+**関連**（relationship）は、実体間の関係を表す。**関連型**（relationship type）は、実体型間の抽象化された関係を表す。関連型は一般的に動詞で、英語の小文字で表現される。
 
-例えば、「科目」と「教員」という二つの実体型があるとき、両者の関連を「担当」という関連型で表すことができる。
+例えば、
+- a STUDENT *takes* a CLASS
+- a PROFESSOR *teaches* a CLASS
+
+実体間の関連型は次の三種類がある。
+
+- One-to-One（1対1、1:1）
+- One-to-Many（1対多、1:N）
+- Many-to-Many（多対多、N:M）
+
+#### One-to-Many
+
+例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。この関連型はone-to-manyである。
+
+- a customer can place zero or more orders.
+- an order can be placed by a customer.
+
+#### One-to-One
+
+`UNIVERSITY`と`PRESIDENT`という二つの実体型があるとき、両者の関連を`has`という関連型がある。この関連型はone-to-oneである。
+
+- An university has one president.
+- A president is in charge of one university.
+
+#### Many-to-Many
+
+`STUDENT`と`COURSE`という二つの実体型があるとき、両者の関連を`takes`という関連型がある。この関連型はmany-to-manyである。
+
+- A student can take many courses.
+- A course can be taken by many students.
 
 ### 属性
 
@@ -73,19 +105,16 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 例えば、「科目」という実体型には「科目ID」、「科目名」、「単位数」などの属性がある。
 
-:::{note}
-学術的には、「実体型」と「実体」は厳密に区別されるが、実務上は「実体」という用語が「実体型」を指すことが多い。
-:::
 
 ## 実体関連図
 
-実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」の二つの記法が代表的な記法である。
+実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」が代表的な記法である。
 
 ここでは、Crow's Foot Notationを紹介する。
 
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
 
-実体型`CUSTOMER`は、顧客を表す実体型である。属性`name`、`custNumber`、`sector`を持つ。`custNumber`は主キーである。Crow's Foot Notationでは以下のように表現される。
+実体型`CUSTOMER`は、顧客を表す実体型である。属性`name`、`custNumber`、`sector`を持つ。`custNumber`は主キーである。
 
 ```{mermaid}
 ---
@@ -99,7 +128,7 @@ erDiagram
         }
 ```
 
-また、`ORDER`は、顧客の注文を表す実体型である。属性`orderNumber`、`deliveryAddress`を持つ。`orderNumber`は主キーである。Crow's Foot Notationでは以下のように表現される。
+また、`ORDER`は、顧客の注文を表す実体型である。属性`orderNumber`、`deliveryAddress`を持つ。`orderNumber`は主キーである。
 
 ```{mermaid}
 ---
@@ -126,24 +155,4 @@ erDiagram
         int orderNumber PK
         string deliveryAddress
     }
-```
-
-```{mermaid}
-erDiagram
-    ENTITY-A ||--|| ENTITY-B : 1-to-1
-```
-
-```{mermaid}
-erDiagram
-    ENTITY-A ||--o{ ENTITY-B : 1-to-0+
-```
-
-```{mermaid}
-erDiagram
-    ENTITY-A ||--|{ ENTITY-B : 1-to-1+
-```
-
-```{mermaid}
-erDiagram
-    ENTITY-A ||--o| ENTITY-B : 1-to-01
 ```
