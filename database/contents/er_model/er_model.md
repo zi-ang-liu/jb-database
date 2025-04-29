@@ -257,16 +257,16 @@ erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER {
         string name
-        string custNumber
+        string custNumber PK
         string sector
     }
     ORDER ||--|{ LINE-ITEM : contains
     ORDER {
-        int orderNumber
+        int orderNumber PK
         string deliveryAddress
     }
     LINE-ITEM {
-        string productCode
+        string productCode PK
         int quantity
         float pricePerUnit
     }
