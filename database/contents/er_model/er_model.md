@@ -95,6 +95,9 @@ erDiagram
 
 さらに、関連型は**optional**（任意）と**mandatory**（必須）に分けられる。
 
+|Notation| Meaning|
+
+
 #### One-to-Many
 
 例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。この関連型はone-to-manyである。顧客の注文はOptionalである。
