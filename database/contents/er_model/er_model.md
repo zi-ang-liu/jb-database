@@ -114,7 +114,26 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
 
-実体型`CUSTOMER`は、顧客を表す実体型である。属性`name`、`custNumber`、`sector`を持つ。`custNumber`は主キーである。
+### 実体型
+
+実体型は長方形で表現される。
+
+例えば、顧客を表す実体型`CUSTOMER`は次のように表現される。
+
+```{mermaid}
+---
+title: CUSTOMER entity
+---
+erDiagram
+    CUSTOMER {
+        }
+```
+
+### 属性
+
+属性は実体型の下に記述される。属性が主キーである場合、PKと記述される。外部キーである場合、FKと記述される。
+
+実体型`CUSTOMER`は、属性`custNumber`、`name`、`sector`を持つ。`custNumber`は主キーである。
 
 ```{mermaid}
 ---
@@ -140,6 +159,8 @@ erDiagram
             string deliveryAddress
         }
 ```
+
+### 関連型
 
 `CUSTOMER`と`ORDER`の間に`places`という関連型がある。1人の顧客は0またはそれ以上の注文を持つことができる。
 
