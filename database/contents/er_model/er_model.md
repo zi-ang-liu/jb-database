@@ -87,9 +87,26 @@ erDiagram
 
 **関連**（relationship）は、実体間の関係を表す。**関連型**（relationship type）は、実体型間の抽象化された関係を表す。関連型は一般的に動詞で、英語の小文字で表現される。
 
-例えば、
-- a STUDENT *takes* a CLASS
-- a PROFESSOR *teaches* a CLASS
+例えば、`CUSTOMER`と`ORDER`と`LINE-ITEM`という三つの実体型があるとき、`CUSTOMER`は`ORDER`を`places`、`ORDER`は`LINE-ITEM`を`contains`という関連型で結ぶことができる。さらに、これらの関連型には、対応関係を表すための**濃度**（cardinality）がある。
+
+- A CUSTOMER places *zero or more* ORDERS.
+- An ORDER is placed by *exactly one* CUSTOMER.
+- AN ORDER contains *one or more* LINE-ITEMS.
+- A LINE-ITEM is contained in *exactly one* ORDER.
+
+Crow's Foot記法では、以下のように表現される。
+
+```{mermaid}
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+    }
+    ORDER ||--|{ LINE-ITEM : contains
+    ORDER {
+    }
+    LINE-ITEM {
+    }
+```
 
 Crow's Foot記法は、`o`、`|`、`{`の三つの記号を用いて、実体間の関連型を表現する。ここでは、`{`を鳥の足記号を表現している。
 
