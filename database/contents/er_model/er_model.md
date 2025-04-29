@@ -54,7 +54,11 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 **実体関連モデル**は、実体、関連、属性の三つの要素から構成される。
 
-実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」が代表的な記法である。ここでは、Crow's Foot Notationを紹介する。
+実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。**Chen記法**と**Crow's Foot記法**が代表的な記法である。
+
+:::{note}
+Crow's Footは「鳥の足」という意味で、関連型が「鳥の足」のように見えることから名付けられた。IE記法（Information Engineering記法）とも呼ばれる。
+:::
 
 ### 実体と実体型
 
@@ -87,15 +91,63 @@ erDiagram
 - a STUDENT *takes* a CLASS
 - a PROFESSOR *teaches* a CLASS
 
-実体間の関連型は次の三種類がある。
+Crow's Foot記法は、`o`、`|`、`{`の三つの記号を用いて、実体間の関連型を表現する。ここでは、`{`を鳥の足記号を表現している。
+
+| Notation      | Meaning |
+| :------------ | :------ |
+| `o`           | Zero    |
+| `\|`          | One     |
+| `{`（鳥の足） | Many    |
+
+これらの記号の組み合わせで、Crow's Foot記法では以下のような表現もできる。
+
+| Notation | Meaning      |
+| :------- | :----------- |
+| `o\|`    | Zero or one  |
+| `\|\|`   | Exactly one  |
+| `o{`     | Zero or more |
+| `\|{`    | One or more  |
+
+
+:::{note}
+実体間の関連型は基本的に次の三種類がある。
 
 - One-to-One（1対1、1:1）
 - One-to-Many（1対多、1:N）
 - Many-to-Many（多対多、N:M）
 
-さらに、関連型は**optional**（任意）と**mandatory**（必須）に分けられる。
+Crow's Foot記法は、1対多（0以上）、1対1（0または1）などの関連型が表現できる。
+:::
 
-|Notation| Meaning|
+#### One-to-One
+
+`UNIVERSITY`と`PRESIDENT`という二つの実体型があるとき、両者の関連を`has`という関連型がある。`||`を用いて、「Exactly one」を表現している。
+
+- An university has one president.
+- A president is in charge of one university.
+
+```{mermaid}
+erDiagram
+    UNIVERSITY ||--|| PRESIDENT : has
+    UNIVERSITY{
+    }
+    PRESIDENT{
+    }
+```
+
+`PERSON`と`CUSTOMER ACCOUNT`という二つの実体型があるとき、両者の関連を`has`という関連型がある。`o|`を用いて、「Zero or one」を表現している。
+
+- A person has zero or one customer account.
+- A customer account is owned by one person.
+
+```{mermaid}
+erDiagram
+    p[Person] {
+    }
+    a["Customer Account"] {
+    }
+    p ||--o| a : has
+```
 
 
 #### One-to-Many
@@ -114,21 +166,7 @@ erDiagram
     }
 ```
 
-#### One-to-One
 
-`UNIVERSITY`と`PRESIDENT`という二つの実体型があるとき、両者の関連を`has`という関連型がある。この関連型はone-to-oneである。
-
-- An university has one president.
-- A president is in charge of one university.
-
-```{mermaid}
-erDiagram
-    UNIVERSITY ||--|| PRESIDENT : has
-    UNIVERSITY{
-    }
-    PRESIDENT{
-    }
-```
 
 #### Many-to-Many
 
@@ -197,6 +235,9 @@ erDiagram
 関連型は**one-to-one**、**one-to-many**、**many-to-many**の三種類で表現される。
 
 #### One-to-one
+
+
+
 
 
 
