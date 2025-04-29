@@ -26,6 +26,8 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 | 副詞     | 関連の属性 |
 ::: -->
 
+<!-- https://dbnote.hontolab.org/content/er-model/01.html -->
+
 ## データモデリング
 
 データベースを構築するには、一般的に以下の三つのデータモデルを順番に設計する。
@@ -118,12 +120,12 @@ Crow's Foot記法は、`o`、`|`、`{`の三つの記号を用いて、実体間
 
 これらの記号の組み合わせで、Crow's Foot記法では以下のような表現もできる。
 
-| Notation | Meaning      |
-| :------- | :----------- |
-| `o\|`    | Zero or one  |
-| `\|\|`   | Exactly one  |
-| `o{`     | Zero or more |
-| `\|{`    | One or more  |
+| Notation | Meaning      | Type      |
+| :------- | :----------- | :-------- |
+| `o\|`    | Zero or one  | Optional  |
+| `\|\|`   | Exactly one  | Mandatory |
+| `o{`     | Zero or more | Optional  |
+| `\|{`    | One or more  | Mandatory |
 
 
 :::{note}
@@ -136,7 +138,7 @@ Crow's Foot記法は、`o`、`|`、`{`の三つの記号を用いて、実体間
 Crow's Foot記法は、1対多（0以上）、1対1（0または1）などの関連型が表現できる。
 :::
 
-#### One-to-One
+#### Exactly one
 
 `UNIVERSITY`と`PRESIDENT`という二つの実体型があるとき、両者の関連を`has`という関連型がある。`||`を用いて、「Exactly one」を表現している。
 
@@ -151,6 +153,8 @@ erDiagram
     PRESIDENT{
     }
 ```
+
+#### Zero or one
 
 `PERSON`と`CUSTOMER ACCOUNT`という二つの実体型があるとき、両者の関連を`has`という関連型がある。`o|`を用いて、「Zero or one」を表現している。
 
@@ -167,9 +171,9 @@ erDiagram
 ```
 
 
-#### One-to-Many
+#### Zero or more
 
-例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。この関連型はone-to-manyである。顧客の注文はOptionalである。
+例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。
 
 - A customer can place zero or more orders.
 - Each order is placed by one customer.
@@ -183,42 +187,27 @@ erDiagram
     }
 ```
 
+#### One or more
 
+`ORDER`と`LINE-ITEM`という二つの実体型があるとき、両者の関連を`contains`という関連型がある。
 
-#### Many-to-Many
+- An order contains one or more line items.
+- A line item is contained in exactly one order.
 
-`STUDENT`と`COURSE`という二つの実体型があるとき、両者の関連を`takes`という関連型がある。この関連型はmany-to-manyである。
-
-- A student can take many courses.
-- A course can be taken by many students.
-
-#### Optional vs Mandatory
-
-さらに、関連型は**optional**（任意）と**mandatory**（必須）に分けられる。
-
-##### Optional
-
-- A customer can place **zero or more** orders.
-
-##### Mandatory
-
-- An order contains **one or more** items.
-
+```{mermaid}
+erDiagram
+    ORDER ||--|{ LINE-ITEM : contains
+    ORDER {
+    }
+    LINE-ITEM {
+    }
+```
 
 ### 属性
 
 実体型や関連型は、属性を持つことができる。**属性**（attribute）は、実体や関連の性質を表す。
 
-例えば、「科目」という実体型には「科目ID」、「科目名」、「単位数」などの属性がある。
-
-
-<!-- https://dbnote.hontolab.org/content/er-model/01.html -->
-
-
-
-### 属性
-
-属性は実体型の下に記述される。属性が主キーである場合、PKと記述される。外部キーである場合、FKと記述される。
+Crow's Foot記法では、属性は実体型や関連型の下に記述される。属性は実体型や関連型の性質を表す。属性が主キーである場合、PKと記述される。外部キーである場合、FKと記述される。
 
 実体型`CUSTOMER`は、属性`custNumber`、`name`、`sector`を持つ。`custNumber`は主キーである。
 
@@ -234,7 +223,7 @@ erDiagram
         }
 ```
 
-また、`ORDER`は、顧客の注文を表す実体型である。属性`orderNumber`、`deliveryAddress`を持つ。`orderNumber`は主キーである。
+`ORDER`は、顧客の注文を表す実体型である。属性`orderNumber`、`deliveryAddress`を持つ。`orderNumber`は主キーである。
 
 ```{mermaid}
 ---
@@ -247,14 +236,38 @@ erDiagram
         }
 ```
 
-### 関連型
+`LINE-ITEM`は、注文の明細を表す実体型である。属性`productCode`、`quantity`、`pricePerUnit`を持つ。`productCode`は主キーである。
 
-関連型は**one-to-one**、**one-to-many**、**many-to-many**の三種類で表現される。
+```{mermaid}
+---
+title: LINE-ITEM entity
+---
+erDiagram
+    LINE-ITEM {
+        string productCode
+        int quantity
+        float pricePerUnit
+    }
+```
 
-#### One-to-one
+`CUSTOMER`、`ORDER`、`LINE-ITEM`の三つの実体型を持つER図は次のように表現される。
 
-
-
-
-
-
+```{mermaid}
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+        string name
+        string custNumber
+        string sector
+    }
+    ORDER ||--|{ LINE-ITEM : contains
+    ORDER {
+        int orderNumber
+        string deliveryAddress
+    }
+    LINE-ITEM {
+        string productCode
+        int quantity
+        float pricePerUnit
+    }
+```
