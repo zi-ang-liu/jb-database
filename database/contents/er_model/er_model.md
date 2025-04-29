@@ -82,7 +82,7 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。この関連型はone-to-manyである。
 
-- a customer can place zero or more orders.
+- a customer can place many orders.
 - an order can be placed by a customer.
 
 #### One-to-One
@@ -98,6 +98,19 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 - A student can take many courses.
 - A course can be taken by many students.
+
+#### Optional vs Mandatory
+
+さらに、関連型は**optional**（任意）と**mandatory**（必須）に分けられる。
+
+##### Optional
+
+- A customer can place **zero or more** orders.
+
+##### Mandatory
+
+- An order contains **one or more** items.
+
 
 ### 属性
 
