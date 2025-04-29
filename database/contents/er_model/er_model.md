@@ -162,7 +162,12 @@ erDiagram
 
 ### 関連型
 
-`CUSTOMER`と`ORDER`の間に`places`という関連型がある。1人の顧客は0またはそれ以上の注文を持つことができる。
+関連型は**one-to-one**、**one-to-many**、**many-to-many**の三種類で表現される。
+
+`CUSTOMER`と`ORDER`の間に`places`という関連型がある。
+
+- A customer can place nany orders.
+- Each order is placed by one customer.
 
 ```{mermaid}
 erDiagram
