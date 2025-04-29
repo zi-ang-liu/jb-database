@@ -50,9 +50,11 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 | 論理モデル | リレーショナルデータモデル |
 
 
-## 実体関連モデル
+## 実体関連モデルと実体関連図
 
-実体関連モデルは、実体、関連、属性の三つの要素から構成される。
+**実体関連モデル**は、実体、関連、属性の三つの要素から構成される。
+
+実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」が代表的な記法である。ここでは、Crow's Foot Notationを紹介する。
 
 ### 実体と実体型
 
@@ -63,6 +65,19 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 :::{note}
 学術的には、「実体型」と「実体」は厳密に区別されるが、実務上は「実体」という用語が「実体型」を指すことが多い。
 :::
+
+Crow's Foot記法では、実体型は長方形で表現される。
+
+例えば、顧客を表す実体型`CUSTOMER`は次のように表現される。
+
+```{mermaid}
+---
+title: CUSTOMER entity
+---
+erDiagram
+    CUSTOMER {
+        }
+```
     
 ### 関連と関連型
 
@@ -78,12 +93,23 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 - One-to-Many（1対多、1:N）
 - Many-to-Many（多対多、N:M）
 
+さらに、関連型は**optional**（任意）と**mandatory**（必須）に分けられる。
+
 #### One-to-Many
 
-例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。この関連型はone-to-manyである。
+例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。この関連型はone-to-manyである。顧客の注文はOptionalである。
 
-- a customer can place many orders.
-- an order can be placed by a customer.
+- A customer can place zero or more orders.
+- Each order is placed by one customer.
+
+```{mermaid}
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER {
+    }
+    ORDER {
+    }
+```
 
 #### One-to-One
 
@@ -91,6 +117,15 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 - An university has one president.
 - A president is in charge of one university.
+
+```{mermaid}
+erDiagram
+    UNIVERSITY ||--|| PRESIDENT : has
+    UNIVERSITY{
+    }
+    PRESIDENT{
+    }
+```
 
 #### Many-to-Many
 
@@ -119,28 +154,9 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 例えば、「科目」という実体型には「科目ID」、「科目名」、「単位数」などの属性がある。
 
 
-## 実体関連図
-
-実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。「Chen Notation」と「Crow's Foot Notation」が代表的な記法である。
-
-ここでは、Crow's Foot Notationを紹介する。
-
 <!-- https://dbnote.hontolab.org/content/er-model/01.html -->
 
-### 実体型
 
-実体型は長方形で表現される。
-
-例えば、顧客を表す実体型`CUSTOMER`は次のように表現される。
-
-```{mermaid}
----
-title: CUSTOMER entity
----
-erDiagram
-    CUSTOMER {
-        }
-```
 
 ### 属性
 
@@ -177,21 +193,7 @@ erDiagram
 
 関連型は**one-to-one**、**one-to-many**、**many-to-many**の三種類で表現される。
 
-`CUSTOMER`と`ORDER`の間に`places`という関連型がある。
+#### One-to-one
 
-- A customer can place nany orders.
-- Each order is placed by one customer.
 
-```{mermaid}
-erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    CUSTOMER {
-        string custNumber PK
-        string name
-        string sector
-    }
-    ORDER {
-        int orderNumber PK
-        string deliveryAddress
-    }
-```
+
