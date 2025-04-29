@@ -254,7 +254,6 @@ erDiagram
 
 ```{mermaid}
 erDiagram
-    direction LR
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER {
         string name
