@@ -323,5 +323,34 @@ erDiagram
     }
 ```
 
-## データベーススキーマへの変換
+## リレーショナルデータベーススキーマへの変換
+
+### 実体型の変換
+
+````{prf:definition}
+:label: definition-entity-to-relation
+:nonumber:
+$E(\underline{K}, A_1, A_2, \ldots, A_n)$という実体型$E$があるとき，リレーションスキーマ$R(\underline{K}, A_1, A_2, \ldots, A_n)$に変換される
+````
+
+実体型`CUSTOMER`は、リレーションスキーマ$\text{CUSTOMER}(\underline{\text{custNumber}}, \text{name}, \text{sector})$に変換される。
+
+```{mermaid}
+erDiagram
+    CUSTOMER {
+        string custNumber PK
+        string name
+        string sector
+    }
+```
+
+#### 1対1関連型の変換
+
+````{prf:definition}
+:label: definition-one-to-one
+:nonumber:
+$R(C_1, C_2, ..., C_p)$を$E_1(\underline{K}, A_1, A_2, \ldots, A_n)$と$E_2(\underline{H}, B_1, B_2, \ldots, B_m)$という二つの実体型の1対1関連型$R$とする。$R$は次のいずれかのリレーションスキーマに変換される。
+- $\boldsymbol{R}(\underline{K}, H, C_1, C_2, \ldots, C_p)$
+- $\boldsymbol{R}(\underline{H}, K, B_1, B_2, \ldots, B_m)$
+````
 
