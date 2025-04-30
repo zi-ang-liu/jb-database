@@ -61,7 +61,9 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 :::{note}
 Crow's Footは「鳥の足」という意味で、関連型が「鳥の足」のように見えることから名付けられた。IE記法（Information Engineering記法）とも呼ばれる。
 
-[Create a diagram with crow's foot database notation](https://support.microsoft.com/en-us/office/create-a-diagram-with-crow-s-foot-database-notation-1ec22af9-3bd3-4354-b2b5-ed5752af6769) - Microsoft
+- [Draw.io](https://drawio-app.com/erd/)
+- [Microsoft Create a diagram with crow's foot database notation](https://support.microsoft.com/en-us/office/create-a-diagram-with-crow-s-foot-database-notation-1ec22af9-3bd3-4354-b2b5-ed5752af6769)
+- [Mermaid](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
 :::
 
 ### 実体と実体型
@@ -304,3 +306,6 @@ erDiagram
         date birthDate
     }
 ```
+
+## データベーススキーマへの変換
+
