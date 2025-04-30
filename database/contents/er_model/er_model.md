@@ -333,8 +333,6 @@ erDiagram
 $E(\underline{K}, A_1, A_2, \ldots, A_n)$という実体型$E$があるとき，リレーションスキーマ$R(\underline{K}, A_1, A_2, \ldots, A_n)$に変換される
 ````
 
-実体型`CUSTOMER`は、リレーションスキーマ$\text{CUSTOMER}(\underline{\text{custNumber}}, \text{name}, \text{sector})$に変換される。
-
 ```{mermaid}
 erDiagram
     CUSTOMER {
@@ -344,7 +342,9 @@ erDiagram
     }
 ```
 
-#### 1対1関連型の変換
+実体型`CUSTOMER`は、リレーションスキーマ$\text{CUSTOMER}(\underline{\text{custNumber}}, \text{name}, \text{sector})$に変換される。
+
+### 1対1関連型の変換
 
 ````{prf:definition}
 :label: definition-one-to-one
@@ -354,3 +354,26 @@ $R(C_1, C_2, ..., C_p)$を$E_1(\underline{K}, A_1, A_2, \ldots, A_n)$と$E_2(\un
 - $\boldsymbol{R}(\underline{H}, K, B_1, B_2, \ldots, B_m)$
 ````
 
+```{mermaid}
+erDiagram
+    EMPLOYEE {
+        string employeeNumber PK
+        string firstName
+        string lastName
+        string department
+    }
+    COMPANY-CAR {
+        string CarID PK
+        string Model
+        date Purchase Date
+    }
+    EMPLOYEE ||--|| COMPANY-CAR : has
+```
+
+実体型`EMPLOYEE`と`COMPANY-CAR`は、1対1の関連型`has`を持つ。リレーションスキーマは次のいずれかの形式に変換される。
+- $\text{has}(\underline{\text{employeeNumber}}, \text{CarID})$
+- $\text{has}(\underline{\text{CarID}}, \text{employeeNumber})$
+
+```{mermaid}
+
+### 1対多関連型の変換
