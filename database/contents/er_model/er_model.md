@@ -60,6 +60,8 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 
 :::{note}
 Crow's Footは「鳥の足」という意味で、関連型が「鳥の足」のように見えることから名付けられた。IE記法（Information Engineering記法）とも呼ばれる。
+
+[Create a diagram with crow's foot database notation](https://support.microsoft.com/en-us/office/create-a-diagram-with-crow-s-foot-database-notation-1ec22af9-3bd3-4354-b2b5-ed5752af6769) - Microsoft
 :::
 
 ### 実体と実体型
@@ -127,6 +129,9 @@ Crow's Foot記法は、`o`、`|`、`{`の三つの記号を用いて、実体間
 | `o{`     | Zero or more | Optional  |
 | `\|{`    | One or more  | Mandatory |
 
+少なくとも一つの実体が必要な場合は、`|`を用いて「Mandatory」（必須）を表現する。例えば、大学では少なくとも一人の学長が必要である。
+一方、実体が存在しなくてもよい場合は、`o`を用いて「Optional」（任意）を表現する。例えば、注文システムでは顧客が注文を持たない場合もある。
+
 
 :::{note}
 実体間の関連型は基本的に次の三種類がある。
@@ -173,7 +178,7 @@ erDiagram
 
 #### Zero or more
 
-例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。
+例えば、`CUSTOMER`と`ORDER`という二つの実体型があるとき、両者の関連を`places`という関連型がある。`o{`を用いて、「Zero or more」を表現している。
 
 - A customer can place zero or more orders.
 - Each order is placed by one customer.
@@ -189,7 +194,7 @@ erDiagram
 
 #### One or more
 
-`ORDER`と`LINE-ITEM`という二つの実体型があるとき、両者の関連を`contains`という関連型がある。
+`ORDER`と`LINE-ITEM`という二つの実体型があるとき、両者の関連を`contains`という関連型がある。`|{`を用いて、「One or more」を表現している。
 
 - An order contains one or more line items.
 - A line item is contained in exactly one order.
@@ -272,4 +277,30 @@ erDiagram
     }
 ```
 
-##
+## 弱実体型
+
+**弱実体型**（weak entity type）は、自身の属性だけでは主キーを持たない実体型である。弱実体型を一意識別するためには、**所有実体型**（owner entity type）と呼ばれる実体型が必要である。
+
+例えば、`EMPLOYEE`と`DEPENDENT`という二つの実体型があるとする。`DEPENDENT`は弱実体型であり、その所有実体型は`EMPLOYEE`である。
+`EMPLOYEE`は`DEPENDENT`の間に`has`という関連型を持つ。このような関連型を**識別関連型**（identifying relationship type）と呼ぶ。
+
+`DEPENDENT`は`name`（first name）と`birthDate`（date of birth）という属性を持つが、これらの属性だけでは`DEPENDENT`を一意に識別できない。
+`DEPENDENT`の`name`と`EMPLOYEE`の`employeeNumber`を組み合わせて、初めて`DEPENDENT`を一意に識別できる。`name`のような属性（集合）を**部分キー**（partial key）と呼ぶ。部分キーと所有実体型の主キーを組み合わせて、弱実体型を一意に識別する。
+
+Crow's Foot記法では、所有実体型の主キーを弱実体型の外部キーとして表現する。
+
+```{mermaid}
+erDiagram
+    EMPLOYEE ||--o{ DEPENDENT : has
+    EMPLOYEE {
+        string employeeNumber PK
+        string firstName
+        string lastName
+        string department
+    }
+    DEPENDENT {
+        string name PK
+        string employeeNumber PK, FK
+        date birthDate
+    }
+```
