@@ -40,6 +40,22 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 複数の段階に分けてデータモデルを設計する考え方は、**抽象化**（abstraction）という。抽象化はコンピュータ科学の基本的な考え方である。
 :::
 
+```{mermaid}
+flowchart TD
+    Miniword --> 概念モデル
+    概念モデル --> 論理モデル
+    論理モデル --> 物理モデル
+```
+
+### RDBMSの構築
+
+```{mermaid}
+flowchart TD
+    Miniword --> 実体関連モデル
+    実体関連モデル -->|実体関連図| リレーショナルモデル
+    リレーショナルモデル -->|リレーショナルデータベーススキーマ| 物理モデル
+```
+
 ## 概念モデル
 
 リレーショナルデータベースにおいて、概念モデリングのための記号系は**実体関連モデル**（Entity-Relationship Model, ERモデル）である。実体関連モデルは1976年にピーター・チェン（陳品山）によって提案された。実体関連モデルを図で表現したものを**実体関連図**（entity-relationship diagram, ER図）と呼ぶ。
