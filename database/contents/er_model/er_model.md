@@ -374,6 +374,60 @@ erDiagram
 - $\text{has}(\underline{\text{employeeNumber}}, \text{CarID})$
 - $\text{has}(\underline{\text{CarID}}, \text{employeeNumber})$
 
-```{mermaid}
-
 ### 1対多関連型の変換
+
+````{prf:definition}
+:label: definition-one-to-many
+:nonumber:
+$R(C_1, C_2, ..., C_p)$を$E_1(\underline{K}, A_1, A_2, \ldots, A_n)$と$E_2(\underline{H}, B_1, B_2, \ldots, B_m)$という二つの実体型の1対多関連型$R$とする。$R$は次のリレーションスキーマに変換される。
+- $\boldsymbol{R}(K, \underline{H}, C_1, C_2, \ldots, C_p)$
+````
+
+```{mermaid}
+erDiagram
+    MANUFACTURER {
+        string companyNumber PK
+        string address
+    }
+    PRODUCT {
+        string productCode PK
+        string name
+    }
+    MANUFACTURER ||--o{ PRODUCT : produces
+````
+
+実体型`MANUFACTURER`と`PRODUCT`は、1対多の関連型`produces`を持つ。リレーションスキーマは$\text{produces}(\underline{\text{productCode}}, \text{companyNumber})$に変換される。
+
+### 多対多関連型の変換
+
+````{prf:definition}
+:label: definition-many-to-many
+:nonumber:
+$R(C_1, C_2, ..., C_p)$を$E_1(\underline{K}, A_1, A_2, \ldots, A_n)$と$E_2(\underline{H}, B_1, B_2, \ldots, B_m)$という二つの実体型の多対多関連型$R$とする。$R$は次のリレーションスキーマに変換される。
+- $\boldsymbol{R}(\underline{K}, \underline{H}, C_1, C_2, \ldots, C_p)$
+````
+
+```{mermaid}
+erDiagram
+    STUDENT {
+        string studentID PK
+        string firstName
+        string lastName
+    }
+    CLASS {
+        string classID PK
+        string className
+    }
+    STUDENT }|--|{ CLASS : enrolls
+````
+
+実体型`STUDENT`と`CLASS`は、多対多の関連型`enrolls`を持つ。リレーションスキーマは$\text{enrolls}(\underline{\text{studentID}}, \underline{\text{classID}})$に変換される。
+
+### 弱実体型の変換
+
+````{prf:definition}
+:label: definition-weak-entity
+:nonumber:
+$E(\underline{K}, A_1, A_2, \ldots, A_n)$を弱実体型$E$とし，$E_1(\underline{H}, B_1, B_2, \ldots, B_m)$を所有実体型$E_1$とする。$E$は次のリレーションスキーマに変換される。
+- $\boldsymbol{E}(\underline{H}, \underline{K}, B_1, B_2, \ldots, B_m, A_1, A_2, \ldots, A_n)$
+````
