@@ -26,7 +26,8 @@ The purpose of abstracting is not to be vague, but to create a new semantic leve
 | 副詞     | 関連の属性 |
 ::: -->
 
-<!-- https://dbnote.hontolab.org/content/er-model/01.html -->
+<!-- 1. https://dbnote.hontolab.org/content/er-model/01.html
+2. https://www.ibe.kagoshima-u.ac.jp/static/www1/edu/database/ERD.html -->
 
 ## データモデリング
 
