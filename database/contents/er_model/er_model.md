@@ -77,11 +77,12 @@ flowchart TD
 
 :::{note}
 Crow's Footは「鳥の足」という意味で、関連型が「鳥の足」のように見えることから名付けられた。IE記法（Information Engineering記法）とも呼ばれる。
+:::
+
 
 - [Draw.io](https://drawio-app.com/erd/)
 - [Microsoft Create a diagram with crow's foot database notation](https://support.microsoft.com/en-us/office/create-a-diagram-with-crow-s-foot-database-notation-1ec22af9-3bd3-4354-b2b5-ed5752af6769)
 - [Mermaid](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
-:::
 
 ### 実体と実体型
 
@@ -324,7 +325,7 @@ erDiagram
     }
 ```
 
-## リレーショナルデータベーススキーマへの変換
+<!-- ## リレーショナルデータベーススキーマへの変換
 
 ### 実体型の変換
 
@@ -429,6 +430,48 @@ erDiagram
 ````{prf:definition}
 :label: definition-weak-entity
 :nonumber:
-$E(\underline{K}, A_1, A_2, \ldots, A_n)$を弱実体型$E$とし，$E_1(\underline{H}, B_1, B_2, \ldots, B_m)$を所有実体型$E_1$とする。$E$は次のリレーションスキーマに変換される。
-- $\boldsymbol{E}(\underline{H}, \underline{K}, B_1, B_2, \ldots, B_m, A_1, A_2, \ldots, A_n)$
+$E_\text{weak}(\underline{K}, A_1, A_2, \ldots, A_n)$を弱実体型$E$とし，$E_\text{owner}(\underline{H}, B_1, B_2, \ldots, B_m)$を所有実体型$E_\text{owner}$とする。$E_\text{weak}$は次のリレーションスキーマに変換される。
+
+- $\boldsymbol{R_\text{weak}}(\underline{H}, \underline{K}, A_1, A_2, \ldots, A_n)$
 ````
+
+```{mermaid}
+erDiagram
+    EMPLOYEE {
+        string employeeNumber PK
+        string firstName
+        string lastName
+        string department
+    }
+    DEPENDENT {
+        string name PK
+        date birthDate
+    }
+    EMPLOYEE ||--o{ DEPENDENT : has
+````
+
+実体型`EMPLOYEE`は、実体型`DEPENDENT`の所有実体型である。リレーションスキーマは$\text{DEPENDENT}(\underline{\text{employeeNumber}}, \underline{\text{name}}, \text{birthDate})$に変換される。 -->
+
+## 具体例
+
+```{mermaid}
+erDiagram
+    STUDENT {
+        string studentID PK
+        string firstName
+        string lastName
+        string address
+    }
+    ENROLL {
+        string studentID PK, FK
+        string classID PK, FK
+        date enrollmentDate
+    }
+    CLASS {
+        string classID PK
+        string className
+        string professorID
+    }
+    STUDENT ||--o{ ENROLL : is wrtten in
+    ENROLL |o--|| CLASS : is found in
+```
