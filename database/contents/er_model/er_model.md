@@ -79,11 +79,6 @@ flowchart TD
 Crow's Footは「鳥の足」という意味で、関連型が「鳥の足」のように見えることから名付けられた。IE記法（Information Engineering記法）とも呼ばれる。
 :::
 
-
-- [Draw.io](https://drawio-app.com/erd/)
-- [Microsoft Create a diagram with crow's foot database notation](https://support.microsoft.com/en-us/office/create-a-diagram-with-crow-s-foot-database-notation-1ec22af9-3bd3-4354-b2b5-ed5752af6769)
-- [Mermaid](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
-
 ### 実体と実体型
 
 **実体**（entity）は、現実世界に存在する物体や事象を表す。**実体型**（entity type）は、実体集合（entity set）を表す。実体は実体型のインスタンス（instance）である。例えば、個々の顧客は実体であり、抽象化された顧客集合は`CUSTOMER`という実体型で表される。
@@ -454,8 +449,9 @@ erDiagram
 
 ## 具体例
 
-
 ### ER図
+
+学生、履修、科目の三つの実体型を持つER図は次のように表現される。
 
 ```{mermaid}
 erDiagram
@@ -484,5 +480,52 @@ erDiagram
 - STUDENT(<u>studentID</u>, firstName, lastName, address)
 - ENROLLMENT(<u>studentID</u>, <u>classID</u>, enrollmentDate)
 - CLASS(<u>classID</u>, className, professorID)
-- ENROLLMENTのstudentIDはSTUDENTのstudentIの外部キーである。
+- ENROLLMENTのstudentIDはSTUDENTのstudentIDの外部キーである。
 - ENROLLMENTのclassIDはCLASSのclassIDの外部キーである。
+
+## draw.ioを用いたER図の作成
+
+[draw.io](https://www.drawio.com)は無料で利用できる作図ツールである。
+
+draw.ioを用いたERDの作成について[こちら](https://drawio-app.com/erd/)に詳しい説明がある。
+
+1. [draw.io](https://www.drawio.com)にアクセスし、「Start」をクリックする。
+2. 「Create New Diagram」をクリックする。
+3. 「Basic」から「Entity Relationship Diagram」を選択する。
+4. 「Create」をクリックする。
+
+:::{note}
+この資料に載せているER図は、[Mermaid.js](https://mermaid.js.org/)を用いて作成したものである。[Mermaid.js](https://mermaid.js.org/)は、MarkdownでER図を作成できるツールである。Mermaid.jsを用いたERDの作成について[こちら](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)に詳しい説明がある。
+
+1. [こちら](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)にアクセスし、使い方を学ぶ。
+2. [こちら](https://mermaid.js.org)にアクセスし、「Try Playground」をクリックする。
+3. 下側にある「Code」をクリックし、ER図を作成する。
+
+他にも、[Microsoft Visio](https://www.microsoft.com/ja-jp/microsoft-365/visio/flowchart-software)や[Lucidchart](https://www.lucidchart.com/)などのツールもある。
+:::
+
+## 練習
+
+1. 学生、履修、科目の三つの実体型を持つER図をdraw.ioを用いて作成せよ。
+2. A大学では、教員（PROFESSOR）は学生（STUDENT）を指導(advises)する。一名の教員は0人以上の学生を指導する。一名の学生は一名の教員に指導される。教員は、教員番号（professorID）、名前（name）、学部（department）を持つ。学生は、学生番号（studentID）、名前（name）、住所（address）、教員番号（professorID）を持つ。学生の教員番号は教員の教員番号の外部キーである。ER図をdraw.ioを用いて作成せよ。
+3. A大学の教室管理システムを作成するために、BUILDING、ROOM、CLASSの三つの実体型を持つER図をdraw.ioを用いて作成せよ。BUILDINGは、建物ID（buildingID）、建物名（buildingName）を持つ。ROOMは、部屋番号（roomNumber）、建物ID（buildingID）、部屋種類（roomType）を持つ。CLASSは、科目ID（classID）、部屋番号（roomNumber）、科目時間（classTime）を持つ。
+    - A building contains zero or more rooms.
+    - A room is contained in exactly one building.
+    - A room is used for zero or more classes.
+    - A class is held in exactly one room.
+
+
+## 発展的実習
+
+大学管理システムを作成するために、下記の実体型を持つER図をdraw.ioを用いて作成せよ。属性などは適切に設定せよ。
+
+- PROFESSOR
+- SCHOOL
+- DEPARTMENT
+- SEMESTER
+- CLASS
+- ROOM
+- BUILDING
+- COURSE
+- STUDENT
+- ENROLLMENT
