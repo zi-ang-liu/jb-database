@@ -188,9 +188,9 @@ erDiagram
 
 ```{mermaid}
 erDiagram
-    p[Person] {
+    p[PERSON] {
     }
-    a["Customer Account"] {
+    a["ACCOUNT"] {
     }
     p ||--o| a : has
 ```
