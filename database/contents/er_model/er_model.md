@@ -454,6 +454,9 @@ erDiagram
 
 ## 具体例
 
+
+### ER図
+
 ```{mermaid}
 erDiagram
     STUDENT {
@@ -475,3 +478,11 @@ erDiagram
     STUDENT ||--o{ ENROLLMENT : enrolls
     CLASS ||--o{ ENROLLMENT : contains
 ```
+
+### リレーションナルデータベーススキーマ
+
+- STUDENT(<u>studentID</u>, firstName, lastName, address)
+- ENROLLMENT(<u>studentID</u>, <u>classID</u>, enrollmentDate)
+- CLASS(<u>classID</u>, className, professorID)
+- ENROLLMENTのstudentIDはSTUDENTのstudentIの外部キーである。
+- ENROLLMENTのclassIDはCLASSのclassIDの外部キーである。
