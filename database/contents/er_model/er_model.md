@@ -462,7 +462,7 @@ erDiagram
         string lastName
         string address
     }
-    ENROLL {
+    ENROLLMENT {
         string studentID PK, FK
         string classID PK, FK
         date enrollmentDate
@@ -472,6 +472,6 @@ erDiagram
         string className
         string professorID
     }
-    STUDENT ||--o{ ENROLL : is wrtten in
-    ENROLL |o--|| CLASS : is found in
+    STUDENT ||--o{ ENROLLMENT : enrolls
+    CLASS ||--o{ ENROLLMENT : contains
 ```
