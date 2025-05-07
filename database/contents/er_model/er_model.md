@@ -509,7 +509,7 @@ erDiagram
 
 1. 学生、履修、科目の三つの実体型を持つER図をdraw.ioを用いて作成せよ。
 2. A大学では、教員（PROFESSOR）は学生（STUDENT）を指導(advises)する。一名の教員は0人以上の学生を指導する。一名の学生は一名の教員に指導される。教員は、教員番号（professorID）、名前（name）、学部（department）を持つ。学生は、学生番号（studentID）、名前（name）、住所（address）、教員番号（professorID）を持つ。学生の教員番号は教員の教員番号の外部キーである。ER図をdraw.ioを用いて作成せよ。
-3. A大学の教室管理システムを作成するために、BUILDING、ROOM、CLASSの三つの実体型を持つER図をdraw.ioを用いて作成せよ。BUILDINGは、建物ID（buildingID）、建物名（buildingName）を持つ。ROOMは、部屋番号（roomNumber）、建物ID（buildingID）、部屋種類（roomType）を持つ。CLASSは、科目ID（classID）、部屋番号（roomNumber）、科目時間（classTime）を持つ。
+3. A大学の教室管理システムを作成するために、BUILDING、ROOM、CLASSの三つの実体型を持つER図をdraw.ioを用いて作成せよ。BUILDINGは、建物ID（buildingID）、建物名（buildingName）を持つ。ROOMは、部屋番号（roomNumber）、建物ID（buildingID）、部屋種類（roomType）を持つ。CLASSは、科目ID（classID）、部屋番号（roomNumber）、科目時間（classTime）を持つ。主キー、外部キーは適切に設定せよ。
     - A building contains zero or more rooms.
     - A room is contained in exactly one building.
     - A room is used for zero or more classes.
