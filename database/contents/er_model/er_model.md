@@ -485,9 +485,9 @@ erDiagram
 
 ## draw.ioを用いたER図の作成
 
-[draw.io](https://www.drawio.com)は無料で利用できる作図ツールである。
+[draw.io](https://www.drawio.com)は無料で利用できる作図ツールである。draw.ioを用いたERDの作成について[こちら](https://drawio-app.com/erd/)に詳しい説明がある。
 
-draw.ioを用いたERDの作成について[こちら](https://drawio-app.com/erd/)に詳しい説明がある。
+以下の手順でdraw.ioを用いてER図を作成することができる。
 
 1. [draw.io](https://www.drawio.com)にアクセスし、「Start」をクリックする。
 2. 「Create New Diagram」をクリックする。
