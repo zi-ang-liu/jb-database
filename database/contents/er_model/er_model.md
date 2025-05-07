@@ -493,6 +493,7 @@ erDiagram
 2. 「Create New Diagram」をクリックする。
 3. 「Basic」から「Entity Relationship Diagram」を選択する。
 4. 「Create」をクリックする。
+5. [こちら](https://www.youtube.com/watch?v=JYZPdU5F2iM)を参考にして、ER図を作成する。
 
 :::{note}
 この資料に載せているER図は、[Mermaid.js](https://mermaid.js.org/)を用いて作成したものである。[Mermaid.js](https://mermaid.js.org/)は、MarkdownでER図を作成できるツールである。Mermaid.jsを用いたERDの作成について[こちら](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)に詳しい説明がある。
