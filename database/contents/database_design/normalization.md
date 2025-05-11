@@ -37,6 +37,9 @@
 
 ## 第二正規形 (2NF)
 
+
+### 関数従属性
+
 ````{prf:definition}
 :label: functonal-dependency
 :nonumber:
@@ -70,5 +73,7 @@ $$
 
 ````
 
+### 完全関数従属性
 
+<!-- ````{prf:definition}     -->
 
