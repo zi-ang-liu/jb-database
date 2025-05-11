@@ -26,14 +26,10 @@ parts:
       - file: contents/database_model/semantic
       - file: contents/database_model/manipulation
 
-    - caption: Entity-Relationship Model
+    - caption: Database Design
       chapters:
-      - file: contents/er_model/er_model
-
-    - caption: Database Normalization
-      chapters:
-      - file: contents/normalization/2nf
-      - file: contents/normalization/3nf
+      - file: contents/database_design/er_model
+      - file: contents/database_design/normalization
 
     - caption: SQL
       chapters:
