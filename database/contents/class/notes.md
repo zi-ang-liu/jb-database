@@ -28,3 +28,9 @@
 
 講義資料の最後に練習課題が掲載されています．講義後に取り組んでください．提出は不要ですが，次回の講義の冒頭で理解度を確認するために，学生をランダムに呼び出して質問します．
 
+
+## 参考資料
+
+- 
+<!-- 1. https://dbnote.hontolab.org/content/er-model/01.html
+2. https://www.ibe.kagoshima-u.ac.jp/static/www1/edu/database/ERD.html -->
