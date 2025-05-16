@@ -40,20 +40,14 @@ DROP DATABASE db_name;
 
 ## データ型
 
-データ型には、数値型、文字列型、日付型などがあります。
+SQLiteでは，全ての値は，次の5つのstorage classのいずれかに分類されます。
 
-以下に一部のデータ型を示します。
+- NULL
+- INTEGER
+- REAL
+- TEXT
+- BLOB
 
-- 数値型: 
-    - `INT`: 整数型
-    - `FLOAT`: 浮動小数点型
-- 文字列型:
-    - `CHAR(n)`: 固定長文字列、`n`は文字数
-    - `VARCHAR(n)`: 可変長文字列、`n`は最大文字数
-- 日付型:
-    - `DATE`: 日付型、`YYYY-MM-DD`形式
-    - `TIME`: 時刻型、`HH:MM:SS`形式
-    - `DATETIME`: 日時型、`YYYY-MM-DD HH:MM:SS`形式
 
 ## CREATE TABLE
 
