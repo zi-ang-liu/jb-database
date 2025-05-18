@@ -43,3 +43,35 @@ CREATE TABLE users (
     Name TEXT,
     Email TEXT UNIQUE
 );
+
+DROP TABLE users;
+
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Age INTEGER CHECK (Age >= 18 AND Age <= 65)
+);
+
+CREATE TABLE products (
+    ProductID INTEGER PRIMARY KEY,
+    ProductName TEXT,
+    Price REAL,
+    DiscountPrice REAL,
+    CONSTRAINT PriceCheck CHECK (Price >= DiscountPrice)
+);
+
+INSERT INTO products (ProductID, ProductName, Price, DiscountPrice)
+VALUES (1, 'Laptop', 1000.00, 800.00),
+       (2, 'Smartphone', 500.00, 450.00),
+       (3, 'Tablet', 300.00, 250.00);
+
+DROP TABLE users;
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Age INTEGER DEFAULT 18
+);
+INSERT INTO users (ID, Name)
+VALUES ('1', 'Alice'),
+       ('2', 'Bob'),
+       ('3', 'Charlie');

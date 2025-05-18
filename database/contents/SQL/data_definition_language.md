@@ -1,6 +1,6 @@
 # データ定義言語
 
-データ定義言語（Data Definition Language, DDL）は、データを定義するためのSQL文を指します。DDLは、テーブルの作成、変更、削除など、データベースの構造を定義するために使用されます。DDLの主なコマンドには、`CREATE`、`ALTER`、`DROP`などがあります。
+データ定義言語（Data Definition Language, DDL）は、データを定義するためのSQL文を指します。DDLは、テーブルの作成、変更、削除など、データベースの構造を定義するために使用されます。DDLの主なコマンドには、`CREATE`、`ALTER`、`DROP`などがあります。さらに、制約（constraints）を使用して、データの整合性を保つためのルールを定義することもできます。
 
 ## テーブルの作成
 
@@ -40,6 +40,26 @@ CREATE TABLE users (
     Name TEXT,
     Age INTEGER
 );
+```
+
+### データの追加
+
+テーブルを作成した後、データを追加するには、`INSERT INTO`文を使用します。書式は次のとおりです。
+
+```sql
+INSERT INTO table_name (column1_name, column2_name, ...)
+VALUES (value1, value2, ...);
+```
+
+次の例では、`users`テーブルにデータを追加します。
+
+```sql
+INSERT INTO users (ID, Name, Age)
+VALUES ('001', 'Alice', 25);
+```
+
+```{note}
+`INSERT`文は、DDLではなく、データ操作言語（DML）に分類されます。説明の都合上、ここに記載しています。
 ```
 
 ## テーブルの変更
@@ -93,12 +113,13 @@ DROP TABLE users;
 ```
 
 
-## 練習
+## 練習１
 
 1. students(StudentID, Name, Age, Email)というテーブルを作成せよ。
 2. studentsテーブルに、`Address`列を追加せよ。
 3. studentsテーブルから、`Email`列を削除せよ。
-4. studentsテーブルを削除せよ。
+4. studentsテーブルに、`INSERT INTO`文を使用して、任意のデータを追加せよ。
+5. studentsテーブルを削除せよ。
 
 ## 制約
 
@@ -266,3 +287,85 @@ CREATE TABLE table_name (
     ...
 );
 ```
+
+以下の例では、`Age`列にCHECK制約を指定しています。ユーザーの年齢は18歳以上でなければなりません。
+
+```sql
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Age INTEGER CHECK (Age >= 18)
+);
+```
+
+`AND`や`OR`を使用して複数の条件を組み合わせることもできます。
+
+```sql
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Age INTEGER CHECK (Age >= 18 AND Age <= 65)
+);
+```
+
+テーブルレベルの制約を指定することもできます。
+
+```sql
+CREATE TABLE table_name (
+    column1_name data_type,
+    column2_name data_type,
+    ...,
+    CONSTRAINT constraint_name CHECK (expression)
+);
+```
+
+以下の例では、products(<u>ProductID</u>, ProductName, Price, DiscountPrice)というテーブルに、`Price >= DiscountPrice`という制約を指定しています。
+
+```sql
+CREATE TABLE products (
+    ProductID INTEGER PRIMARY KEY,
+    ProductName TEXT,
+    Price REAL,
+    DiscountPrice REAL,
+    CONSTRAINT PriceCheck CHECK (Price >= DiscountPrice)
+);
+```
+
+### DEFAULT制約
+
+DEFAULT制約は、列にデフォルト値を指定します。DEFAULT制約は以下のように指定します。
+
+```sql
+CREATE TABLE table_name (
+    column_name data_type DEFAULT default_value,
+    ...
+);
+```
+
+以下の例では、`Age`列にデフォルト値として`18`を指定しています。
+
+```sql
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Age INTEGER DEFAULT 18
+);
+```
+
+## 練習２
+
+1. departments(<u>DepartmentID</u>, DepartmentName)というテーブルを作成せよ。
+   - `DepartmentID`は主キーとする
+   - `DepartmentName`はNULLを許可しない制約を付けよ。
+2. students(<u>StudentID</u>, Name, Age, Email, DepartmentID)というテーブルを作成せよ。
+   - `StudentID`は主キーとする。
+   - `Email`はUNIQUE制約を付けよ。
+   - `DepartmentID`はdepartmentsテーブルの外部キーとする。
+   - `Age`は18歳以上でなければならない制約を付けよ。
+3. courses(<u>CourseID</u>, CourseName, Credits)というテーブルを作成せよ。
+   - `CourseID`は主キーとする。
+   - `Credits`は1以上の整数でなければならない制約を付けよ。
+4. scores(<u>StudentID</u>, <u>CourseID</u>, Score)というテーブルを作成せよ。
+   - `StudentID`はstudentsテーブルの外部キーとする。
+   - `CourseID`はcoursesテーブルの外部キーとする。
+   - `Score`は0以上100以下の整数でなければならない制約を付けよ。

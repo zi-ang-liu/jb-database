@@ -34,6 +34,7 @@ parts:
     - caption: SQL
       chapters:
       - file: contents/SQL/data_definition_language
+      - file: contents/SQL/data_manipulation_language
 
     - caption: Appendix
       chapters:
