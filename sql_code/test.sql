@@ -25,3 +25,21 @@ CREATE TABLE scores (
     PRIMARY KEY (StudentID, CourseID)
 );
 
+CREATE TABLE departments (
+    DepartmentID INTEGER PRIMARY KEY,
+    DepartmentName TEXT
+);
+
+CREATE TABLE employees (
+    EmployeeID INTEGER PRIMARY KEY,
+    Name TEXT,
+    DepartmentID INTEGER REFERENCES departments(DepartmentID)
+);
+
+DROP TABLE users;
+
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Email TEXT UNIQUE
+);

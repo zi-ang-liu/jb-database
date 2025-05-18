@@ -106,6 +106,8 @@ DROP TABLE users;
 
 主キー（primary key）はタプルを一意識別するために使用される。
 
+#### 主キーの指定（1）
+
 SQLiteでは、主キーはテーブル作成時に指定することができます。
 
 ```sql
@@ -126,7 +128,9 @@ CREATE TABLE users (
 );
 ```
 
-主キーが複数の列から構成される場合は、次のように指定します。
+#### 主キーの指定（2）
+
+複数の列を組み合わせて主キーを指定することもできます。
 
 ```sql
 CREATE TABLE table_name (
@@ -145,5 +149,120 @@ CREATE TABLE scores (
     CourseID INTEGER,
     Score INTEGER,
     PRIMARY KEY (StudentID, CourseID)
+);
+```
+
+### 外部キー
+
+
+外部キー（foreign key）は、他のテーブルの主キーを参照するために使用されます。外部キーは、リレーション間の関係を表現するための制約です。
+
+#### 外部キーの指定（1）
+
+SQLiteでは、外部キーはテーブル作成時に指定することができます。
+
+```sql
+CREATE TABLE table_name (
+    column_name data_type REFERENCES other_table(column_name),
+    ...
+);
+```
+
+例えば、employees(<u>EmployeeID</u>, Name, DepartmentID)とdepartments(<u>DepartmentID</u>, DepartmentName)という2つのテーブルがあるとします。`employees`テーブルの`DepartmentID`列は、`departments`テーブルの`DepartmentID`列を参照する外部キーとして指定できます。
+
+```sql
+CREATE TABLE departments (
+    DepartmentID INTEGER PRIMARY KEY,
+    DepartmentName TEXT
+);
+
+CREATE TABLE employees (
+    EmployeeID INTEGER PRIMARY KEY,
+    Name TEXT,
+    DepartmentID INTEGER REFERENCES departments(DepartmentID)
+);
+```
+
+#### 外部キーの指定（2）
+
+外部キーは、下記のように指定することもできます。
+
+```sql
+CREATE TABLE table_name (
+    column1_name data_type,
+    column2_name data_type,
+    ...,
+    FOREIGN KEY (column1_name) REFERENCES other_table(column_name)
+);
+```
+
+以下の例では、`employees`テーブルの`DepartmentID`列が、`departments`テーブルの`DepartmentID`列を参照する外部キーとして指定されています。
+
+```sql
+CREATE TABLE departments (
+    DepartmentID INTEGER PRIMARY KEY,
+    DepartmentName TEXT
+);
+
+CREATE TABLE employees (
+    EmployeeID INTEGER PRIMARY KEY,
+    Name TEXT,
+    DepartmentID INTEGER,
+    FOREIGN KEY (DepartmentID) REFERENCES departments(DepartmentID)
+);
+```
+
+### NOT NULL制約
+
+NOT NULL制約は、列にNULL値を許可しないことを指定します。NOT NULL制約は以下のように指定します。
+
+```sql
+CREATE TABLE table_name (
+    column_name data_type NOT NULL,
+    ...
+);
+```
+
+以下の例では、`Name`列にNOT NULL制約を指定しています。
+
+```sql
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT NOT NULL,
+    Age INTEGER
+);
+```
+
+`NOT NULL`制約を指定されていない列はNULL値を許可します。この例では、`Age`列はNULL値を許可します。
+
+### UNIQUE制約
+
+UNIQUE制約は、列の値が一意であることを指定します。UNIQUE制約は以下のように指定します。
+
+```sql
+CREATE TABLE table_name (
+    column_name data_type UNIQUE,
+    ...
+);
+```
+
+以下の例では、`Email`列にUNIQUE制約を指定しています。
+
+```sql
+CREATE TABLE users (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Email TEXT UNIQUE
+);
+```
+
+### CHECK制約
+
+CHECK制約は、列の値が特定の条件を満たすことを指定します。CHECK制約は以下のように指定します。
+
+```sql
+CREATE TABLE table_name (
+    column_name data_type CHECK (expression),
+    ...
 );
 ```
