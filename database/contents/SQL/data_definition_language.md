@@ -32,7 +32,7 @@ CREATE TABLE table_name (
 CREATE TABLE users (
     ID TEXT,
     Name TEXT,
-    Age INTEGER,
+    Age INTEGER
 );
 ```
 
@@ -42,7 +42,7 @@ CREATE TABLE users (
 
 ### 列の追加
 
-`ALTER TABLE`文を使用して、既存のテーブルに新しい列を追加することができます。書式は次のとおりです。
+`ADD COLUMN`を使用して、テーブルに新しい列を追加することができます。書式は次のとおりです。
 
 ```sql
 ALTER TABLE table_name
@@ -58,7 +58,7 @@ ADD COLUMN Email TEXT;
 
 ### 列の削除
 
-`ALTER TABLE`文を使用して列を削除するには、`DROP COLUMN`を使用します。書式は次のとおりです。
+`DROP COLUMN`を使用して、テーブルから列を削除することができます。書式は次のとおりです。
 
 ```sql
 ALTER TABLE table_name
@@ -71,6 +71,22 @@ DROP COLUMN column_name;
 ALTER TABLE users
 DROP COLUMN Email;
 ```
+
+## テーブルの削除
+
+`DROP TABLE`文は、テーブルを削除するために使用されます。書式は次のとおりです。
+
+```sql
+DROP TABLE table_name;
+```
+
+次の例では、`users`テーブルを削除します。
+
+```sql
+DROP TABLE users;
+```
+
+
 
 
 

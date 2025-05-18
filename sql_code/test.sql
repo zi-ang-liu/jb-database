@@ -1,0 +1,13 @@
+CREATE TABLE users (
+    ID TEXT,
+    Name TEXT,
+    Age INTEGER
+);
+
+ALTER TABLE users
+ADD COLUMN Email TEXT;
+
+ALTER TABLE users
+DROP COLUMN Email;
+
+DROP TABLE users;
