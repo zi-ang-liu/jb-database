@@ -75,3 +75,25 @@ INSERT INTO users (ID, Name)
 VALUES ('1', 'Alice'),
        ('2', 'Bob'),
        ('3', 'Charlie');
+
+UPDATE users
+SET Age = Age + 1;
+
+DROP TABLE employees;
+
+CREATE TABLE employees (
+    ID TEXT,
+    Name TEXT,
+    Age INTEGER,
+    Department TEXT
+);
+
+INSERT INTO employees (ID, Name, Age, Department)
+VALUES ('001', 'Alice', 25, 'HR'),
+       ('002', 'Bob', 30, 'IT'),
+       ('003', 'Charlie', 35, 'Finance'),
+       ('004', 'Alice', 28, 'IT');
+
+SELECT Name
+FROM employees
+WHERE Age < 30;
