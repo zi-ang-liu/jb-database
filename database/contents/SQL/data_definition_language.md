@@ -1,6 +1,82 @@
 # データ定義言語
 
-## CREATE DATABASE
+データ定義言語（Data Definition Language, DDL）は、データを定義するためのSQL文を指します。DDLは、テーブルの作成、変更、削除など、データベースの構造を定義するために使用されます。DDLの主なコマンドには、`CREATE`、`ALTER`、`DROP`などがあります。
+
+## テーブルの作成
+
+`CREATE TABLE`文は、新しいテーブルを作成するために使用されます。書式は次のとおりです。
+
+```sql
+CREATE TABLE table_name (
+    column1_name data_type,
+    column2_name data_type,
+    ...
+);
+```
+
+`table_name`には、作成するテーブルの名前を指定します。
+
+`column1_name`、`column2_name`には、テーブルの列名を指定します。
+
+`data_type`には、列のデータ型を指定します。SQLiteでは、全ての値は、次の5つのstorage classのいずれかに分類されます。
+
+- NULL
+- INTEGER
+- REAL
+- TEXT
+- BLOB
+
+例として、`users`というテーブルを作成する場合は、次のようにします。
+
+```sql
+CREATE TABLE users (
+    ID TEXT,
+    Name TEXT,
+    Age INTEGER,
+);
+```
+
+## テーブルの変更
+
+`ALTER TABLE`文は、既存のテーブルを変更するために使用されます。
+
+### 列の追加
+
+`ALTER TABLE`文を使用して、既存のテーブルに新しい列を追加することができます。書式は次のとおりです。
+
+```sql
+ALTER TABLE table_name
+ADD COLUMN column_name data_type;
+```
+
+次の例では、`users`テーブルに`Email`列を追加します。
+
+```sql
+ALTER TABLE users
+ADD COLUMN Email TEXT;
+```
+
+### 列の削除
+
+`ALTER TABLE`文を使用して列を削除するには、`DROP COLUMN`を使用します。書式は次のとおりです。
+
+```sql
+ALTER TABLE table_name
+DROP COLUMN column_name;
+```
+
+次の例では、`users`テーブルから`Email`列を削除します。
+
+```sql
+ALTER TABLE users
+DROP COLUMN Email;
+```
+
+
+
+### 
+
+<!-- ## CREATE DATABASE
 
 **CREATE DATABASE文**は、データベースを作成するために使用されます。
 
@@ -72,4 +148,4 @@ CREATE TABLE students (
     age INT
 );
 ```
-
+ -->
