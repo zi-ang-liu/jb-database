@@ -35,6 +35,9 @@ parts:
       chapters:
       - file: contents/SQL/data_definition_language
       - file: contents/SQL/data_manipulation_language
+      - file: contents/SQL/data_control_language
+      - file: contents/SQL/aggregate_functions
+      - file: contents/SQL/join
 
     - caption: Appendix
       chapters:
