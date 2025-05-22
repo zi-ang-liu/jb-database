@@ -33,6 +33,7 @@ parts:
 
     - caption: SQL
       chapters:
+      - file: contents/SQL/intro
       - file: contents/SQL/data_definition_language
       - file: contents/SQL/data_manipulation_language
       - file: contents/SQL/data_control_language
