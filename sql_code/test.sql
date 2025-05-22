@@ -113,7 +113,7 @@ INSERT INTO products (id, name, price) VALUES
 (1, 'Product A', 10.0),
 (2, 'Product B', 20.0),
 (3, 'Product C', 30.0);
-SELECT MIN(price)
+SELECT MIN(price) AS min_price
 FROM products;
-SELECT MAX(price)
+SELECT MAX(price) AS max_price
 FROM products;

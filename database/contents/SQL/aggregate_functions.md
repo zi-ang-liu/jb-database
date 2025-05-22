@@ -61,3 +61,21 @@ FROM products;
 | ---------- |
 | 30.0       |
 
+`as`を使用して、列名を変更することもできます。
+
+```sql
+SELECT MIN(price) AS min_price
+FROM products;
+SELECT MAX(price) AS max_price
+FROM products;
+```
+
+## COUNT()関数
+
+### 構文
+
+```sql
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+```
