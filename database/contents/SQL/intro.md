@@ -30,9 +30,9 @@ C, C++, Java, Pythonなどのプログラミング言語は，チューリング
 
 [SQLite](https://www.sqlite.org)は，C言語で実装された軽量なRDBMSである．
 
+- [オープンソース](https://sqlite.org/src/doc/trunk/README.md)
+- [最も広く使われているRDBMS](https://sqlite.org/mostdeployed.html)
+
 SQLiteの発音は以下の二つがある．
 - /ˌɛsˌkjuːˌɛlˈaɪt/ "S-Q-L-ite"
 - /ˈsiːkwəˌlaɪt/ "sequel-ite"
-
-- [オープンソース](https://sqlite.org/src/doc/trunk/README.md)
-- [最も広く使われているRDBMS](https://sqlite.org/mostdeployed.html)
