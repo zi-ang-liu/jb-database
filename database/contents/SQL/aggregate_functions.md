@@ -16,19 +16,19 @@
 ### 構文
 
 ```sql
-SELECT MIN(column_name)
+SELECT MIN(column_name) AS alias
 FROM table_name
 WHERE condition;
 ```
 
 
 ```sql
-SELECT MAX(column_name)
+SELECT MAX(column_name) AS alias
 FROM table_name
 WHERE condition;
 ```
 
-### 例
+### 使用例
 
 次の例では、`products`テーブルから、`price`列の最小値と最大値を取得します。
 
@@ -61,7 +61,7 @@ FROM products;
 | ---------- |
 | 30.0       |
 
-`as`を使用して、列名を変更することもできます。
+`AS`を使用して、列名を変更することもできます。
 
 ```sql
 SELECT MIN(price) AS min_price
@@ -70,7 +70,41 @@ SELECT MAX(price) AS max_price
 FROM products;
 ```
 
+## SUM()関数とAVG()関数
+
+`SUM()`関数は、指定した列の合計値を返します。`AVG()`関数は、指定した列の平均値を返します。
+
+### 構文
+
+```sql
+SELECT SUM(column_name) AS alias
+FROM table_name
+WHERE condition;
+```
+
+```sql
+SELECT AVG(column_name) AS alias
+FROM table_name
+WHERE condition;
+```
+
+### 使用例
+
+次の例では、`products`テーブルから、`price`列の合計値と平均値を取得します。
+
+```sql
+SELECT SUM(price) AS total_price
+FROM products;
+```
+
+```sql
+SELECT AVG(price) AS average_price
+FROM products;
+```
+
 ## COUNT()関数
+
+`COUNT()`関数は、指定した列の行数をカウントします。
 
 ### 構文
 
@@ -80,5 +114,58 @@ FROM table_name
 WHERE condition;
 ```
 
-### 例
+### 使用例
 
+`products`テーブルが次のように定義されているとします。
+
+```sql
+CREATE TABLE products (
+    id INT,
+    name TEXT,
+    price REAL
+);
+
+INSERT INTO products (id, name, price) VALUES
+(1, 'Product A', 10.0),
+(2, 'Product B', 20.0),
+(3, 'Product C', 30.0);
+(4, 'Product D', NULL);
+```
+
+下の例では、`products`テーブルの行数をカウントします。
+
+```sql
+SELECT COUNT(*)
+FROM products;
+```
+
+すると、次のような結果が得られます。
+| COUNT(*) |
+| -------- |
+| 4        |
+
+`COUNT()`関数は、特定の列に対しても使用できます。NULL値はカウントされません。
+
+```sql
+SELECT COUNT(price)
+FROM products;
+```
+
+すると、次のような結果が得られます。
+| COUNT(price) |
+| ------------ |
+| 3            |
+
+```{note}
+`COUNT(*)`は、テーブル内のすべての行をカウントしますが、`COUNT(column_name)`は、指定した列にNULLでない値がある行のみをカウントします。
+```
+
+また，`WHERE`句を使用して、特定の条件に一致する行のみをカウントすることもできます。
+
+```sql
+SELECT COUNT(*)
+FROM products
+WHERE price > 15.0;
+```
+
+## 
