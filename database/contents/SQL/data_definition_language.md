@@ -166,8 +166,8 @@ CREATE TABLE table_name (
 
 ```sql
 CREATE TABLE scores (
-    StudentID INTEGER,
-    CourseID INTEGER,
+    StudentID TEXT,
+    CourseID TEXT,
     Score INTEGER,
     PRIMARY KEY (StudentID, CourseID)
 );
@@ -193,14 +193,14 @@ CREATE TABLE table_name (
 
 ```sql
 CREATE TABLE departments (
-    DepartmentID INTEGER PRIMARY KEY,
+    DepartmentID TEXT PRIMARY KEY,
     DepartmentName TEXT
 );
 
 CREATE TABLE employees (
-    EmployeeID INTEGER PRIMARY KEY,
+    EmployeeID TEXT PRIMARY KEY,
     Name TEXT,
-    DepartmentID INTEGER REFERENCES departments(DepartmentID)
+    DepartmentID TEXT REFERENCES departments(DepartmentID)
 );
 ```
 
@@ -221,14 +221,14 @@ CREATE TABLE table_name (
 
 ```sql
 CREATE TABLE departments (
-    DepartmentID INTEGER PRIMARY KEY,
+    DepartmentID TEXT PRIMARY KEY,
     DepartmentName TEXT
 );
 
 CREATE TABLE employees (
-    EmployeeID INTEGER PRIMARY KEY,
+    EmployeeID TEXT PRIMARY KEY,
     Name TEXT,
-    DepartmentID INTEGER,
+    DepartmentID TEXT,
     FOREIGN KEY (DepartmentID) REFERENCES departments(DepartmentID)
 );
 ```
@@ -323,7 +323,7 @@ CREATE TABLE table_name (
 
 ```sql
 CREATE TABLE products (
-    ProductID INTEGER PRIMARY KEY,
+    ProductID TEXT PRIMARY KEY,
     ProductName TEXT,
     Price REAL,
     DiscountPrice REAL,
