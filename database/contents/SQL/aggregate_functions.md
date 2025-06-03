@@ -168,4 +168,59 @@ FROM products
 WHERE price > 15.0;
 ```
 
-## 
+## 練習
+
+下記の`scores`テーブルを使用して、集約関数の練習を行います。
+
+```sql
+CREATE TABLE scores (
+    StudentID TEXT,
+    CourseID TEXT,
+    Score INTEGER,
+    PRIMARY KEY (StudentID, CourseID)
+);
+INSERT INTO scores (StudentID, CourseID, Score) VALUES
+('S001', 'C001', 85),
+('S002', 'C001', 78),
+('S003', 'C001', 92),
+('S001', 'C002', 88),
+('S002', 'C002', 90),
+('S003', 'C002', 95);
+```
+
+1. 科目`C001`の最高得点を求めよ。
+2. 科目`C002`の平均得点を求めよ。
+3. 科目`C002`の学生数を求めよ。
+4. 科目`C002`において、得点が90点以上の学生の数を求めよ。
+5. 科目`C002`において、90点以上の学生のIDと得点を取得せよ。
+
+
+```sql
+SELECT MAX(Score) AS max_score
+FROM scores
+WHERE CourseID = 'C001';
+```
+
+```sql
+SELECT AVG(Score) AS average_score
+FROM scores
+WHERE CourseID = 'C002';
+```
+
+```sql
+SELECT COUNT(DISTINCT StudentID) AS student_count
+FROM scores
+WHERE CourseID = 'C002';
+```
+
+```sql
+SELECT COUNT(DISTINCT StudentID) AS high_scorers
+FROM scores
+WHERE CourseID = 'C002' AND Score >= 90;
+```
+
+```sql
+SELECT StudentID, Score
+FROM scores
+WHERE CourseID = 'C002' AND Score >= 90;
+```
