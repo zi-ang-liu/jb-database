@@ -34,15 +34,14 @@ parts:
     - caption: SQL
       chapters:
       - file: contents/SQL/intro
+      - file: contents/SQL/sqlite-install
       - file: contents/SQL/data_definition_language
       - file: contents/SQL/data_manipulation_language
       - file: contents/SQL/data_control_language
       - file: contents/SQL/aggregate_functions
-      - file: contents/SQL/join
+      - file: contents/SQL/sqlite3
 
     - caption: Appendix
       chapters:
-      - file: contents/appendix/sqlite-install
-      - file: contents/appendix/sqlite-colab
       - file: contents/appendix/mysql-install
       - file: contents/appendix/vscode-shell-install
