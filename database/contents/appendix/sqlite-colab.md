@@ -1,5 +1,7 @@
 # Python SQLite3モジュール
 
+## 参考資料
+
 - [sqlite3 — DB-API 2.0 interface for SQLite databases](https://docs.python.org/3/library/sqlite3.html)
 
 ## Cursor
