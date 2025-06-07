@@ -36,7 +36,21 @@ CREATE TABLE students (
 )''')
 ```
 
-## データの挿入
+作成したテーブルを確認するために、`sqlite_master`テーブルをクエリします。
+
+```python
+res = cur.execute("SELECT name FROM sqlite_master")
+res.fetchall()
+```
+
+`('students',)`のような結果が返されれば、テーブルが正しく作成されています。
+
+
+## データの追加
+
+`execute()`メソッドを使用して、データをテーブルに追加します。
+
+以下の例では、`students`テーブルに3人の学生のデータを挿入します。
 
 ```python
 cur.execute('''
@@ -52,5 +66,14 @@ INSERT INTO students (id, name, age) VALUES
 ```python
 con.commit()
 ```
+
+```python
+res = cur.execute("SELECT * FROM students")
+res.fetchall()
+```
+
+`[('s001', 'Alice', 20), ('s002', 'Bob', 22), ('s003', 'Charlie', 21)]`のような結果が返されれば、データが正しく追加されています。
+
+
 
 
