@@ -136,3 +136,70 @@ new_con.close()
 
 ## pandas
 
+```python
+import pandas as pd
+import sqlite3
+
+# sample data
+df = pd.DataFrame({
+    'id': ['s001', 's002', 's003'],
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [20, 22, 21]
+})
+
+# write to SQLite database
+con = sqlite3.connect('pd_example.db')
+df.to_sql('students', con, if_exists='replace', index=False)
+
+# read from SQLite database
+df_read = pd.read_sql_query('SELECT * FROM students', con)
+print(df_read)
+
+# another query
+df_read = pd.read_sql_query('SELECT name, age FROM students WHERE age > 20', con)
+print(df_read)
+
+# close connection
+con.close()
+```
+
+## `pandas.DataFrame.to_sql()`
+
+- https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html
+
+`DataFrame`をSQLiteデータベースに書き込む．
+
+```python
+pandas.DataFrame.to_sql(name, con, schema=None, if_exists='fail', index=True, index_label=None, chunksize=None, dtype=None, method=None)
+
+"""
+parameters
+---
+name : str
+    書き込むテーブルの名前．
+con : sqlite3.Connection
+    SQLiteデータベースへの接続オブジェクト．
+"""
+```
+
+## `pandas.read_sql_query()`
+
+- https://pandas.pydata.org/docs/reference/api/pandas.read_sql_query.html
+
+SQLクエリの結果を`DataFrame`に読み込む．
+
+```python
+pandas.read_sql_query(sql, con, index_col=None, coerce_float=True, params=None, parse_dates=None, chunksize=None)
+
+"""
+parameters
+---
+sql : str
+    SQLクエリ文．
+con : str or sqlite3 connection
+    SQLiteデータベースへの接続オブジェクト．
+"""
+```
+
+
+
