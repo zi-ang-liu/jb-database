@@ -260,8 +260,7 @@ ON classes.class_id = enrollments.class_id;
 ```sql
 SELECT students.student_id, enrollments.class_id
 FROM students
-FULL OUTER JOIN enrollments
-ON students.student_id = enrollments.student_id;
+CROSS JOIN enrollments;
 ```
 
 ```sql
