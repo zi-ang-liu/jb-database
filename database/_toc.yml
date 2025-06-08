@@ -40,6 +40,7 @@ parts:
       - file: contents/SQL/data_control_language
       - file: contents/SQL/aggregate_functions
       - file: contents/SQL/where_clause
+      - file: contents/SQL/join
       - file: contents/SQL/subquery
       - file: contents/SQL/sqlite3
 
