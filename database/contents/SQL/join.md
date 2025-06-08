@@ -210,7 +210,7 @@ CREATE TABLE enrollments (
     PRIMARY KEY (student_id, class_id)
 );
 
-INSERT INTO students (student_id, name, email) VALUES
+INSERT INTO students (student_id, name, birth_place) VALUES
 ('S001', 'Alice', 'New York'),
 ('S002', 'Bob', 'London'),
 ('S003', 'Charlie', 'Tokyo'),
