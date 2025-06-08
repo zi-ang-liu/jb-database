@@ -192,7 +192,7 @@ Charlie  | Bob       | D002
 CREATE TABLE students (
     student_id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
-    birth_place TEXT;
+    birth_place TEXT NOT NULL
 );
 
 CREATE TABLE classes (

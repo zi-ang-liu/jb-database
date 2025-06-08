@@ -46,3 +46,18 @@ SELECT students.name, enrollments.class_id
 FROM students
 INNER JOIN enrollments
 ON students.student_id = enrollments.student_id;
+
+SELECT classes.name, enrollments.student_id
+FROM classes
+LEFT JOIN enrollments
+ON classes.class_id = enrollments.class_id;
+
+SELECT students.student_id, enrollments.class_id
+FROM students
+CROSS JOIN enrollments;
+
+SELECT a.name AS Student1, b.name AS Student2, a.birth_place
+FROM students a
+JOIN students b
+ON a.birth_place = b.birth_place
+WHERE a.student_id <> b.student_id;
