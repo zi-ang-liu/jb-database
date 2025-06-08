@@ -24,6 +24,8 @@ The boolean identifiers TRUE and FALSE are usually just aliases for the integer 
 
 ## 演算子
 
+以下の`students`テーブルを例に、`WHERE`句で使用される演算子を説明します。
+
 ```sql
 CREATE TABLE students (
     StudentID TEXT PRIMARY KEY,
@@ -32,6 +34,11 @@ CREATE TABLE students (
     Department TEXT,
     Gender TEXT
 );
+INSERT INTO students (StudentID, Name, Age, Department, Gender) VALUES
+('S001', 'Alice', 20, 'Computer Science', 'Female'),
+('S002', 'Bob', 22, 'Mathematics', 'Male'),
+('S003', 'Charlie', 19, 'Computer Science', 'Male'),
+('S004', 'David', 21, 'Physics', 'Male');
 ```
 
 ### 比較演算子
