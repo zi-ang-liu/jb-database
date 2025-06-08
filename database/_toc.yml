@@ -39,9 +39,11 @@ parts:
       - file: contents/SQL/data_manipulation_language
       - file: contents/SQL/data_control_language
       - file: contents/SQL/aggregate_functions
+      - file: contents/SQL/where_clause
       - file: contents/SQL/sqlite3
 
     - caption: Appendix
       chapters:
+      - file: contents/appendix/data_set
       - file: contents/appendix/mysql-install
       - file: contents/appendix/vscode-shell-install

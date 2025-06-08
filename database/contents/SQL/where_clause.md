@@ -1,4 +1,8 @@
-# WHERE
+# WHERE句
+
+WHERE句（WHERE clause）は、SQL文において、特定の条件を満たす行を選択するために使用されます。`WHERE`句は、`SELECT`、`UPDATE`、`DELETE`などのSQL文で使用されます。
+
+## Boolean式
 
 https://www.sqlite.org/lang_expr.html
 
@@ -141,3 +145,75 @@ WHERE Department NOT IN ('Computer Science', 'Mathematics');
 ```
 
 ### `ANY`演算子，`ALL`演算子
+
+`ANY`演算子は，値リストの各要素と比較し，いずれかが真であれば真を返します。
+
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE column_name operator ANY (value1, value2, ...);
+```
+
+`ALL`演算子は，値リストのすべての要素と比較し，すべてが真であれば真を返します。
+
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE column_name operator ALL (value1, value2, ...);
+```
+
+以下は，`ANY`演算子を使用して、年齢が19歳、20歳、21歳のいずれかより大きい学生を選択するSQL文の例です。
+
+```sql
+SELECT * FROM students
+WHERE Age > ANY (19, 20, 21);
+```
+
+以下は，`ALL`演算子を使用して、年齢が19歳、20歳、21歳のすべてより大きい学生を選択するSQL文の例です。
+
+```sql
+SELECT * FROM students
+WHERE Age > ALL (19, 20, 21);
+```
+
+`ANY`と`ALL`は、主に副問合せと組み合わせて使用されます。
+
+### `LIKE`演算子
+
+`LIKE`演算子は，文字列の**パターンマッチング**（pattern matching）を行う演算子です。
+
+| symbol | 説明                    |
+| ------ | ----------------------- |
+| `%`    | 任意の0文字以上の文字列 |
+| `_`    | 任意の1文字             |
+
+以下は，名前が「John」で始まる学生を選択するSQL文の例です。
+
+```sql
+SELECT * FROM students
+WHERE Name LIKE 'John%';
+```
+
+以下は，学籍番号が「75」で終わる学生を選択するSQL文の例です。
+
+```sql
+SELECT * FROM students
+WHERE StudentID LIKE '%75';
+```
+
+以下は，名前の3文字目が「a」である学生を選択するSQL文の例です。
+
+```sql
+SELECT * FROM students
+WHERE Name LIKE '__a%';
+```
+
+以下は，名前に「z」が含まれる学生を選択するSQL文の例です。
+
+```sql
+SELECT * FROM students
+WHERE Name LIKE '%z%';
+```
+
+## 練習
+
