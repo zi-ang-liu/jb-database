@@ -36,7 +36,7 @@ INSERT INTO departments (DepartmentID, DepartmentName) VALUES
 INSERT INTO employees (EmployeeID, Name, DepartmentID) VALUES
 ('E001', 'Alice', 'D001'),
 ('E002', 'Bob', 'D002'),
-('E003', 'Charlie', 'D002');
+('E003', 'Charlie', 'D002'),
 ('E004', 'David', NULL);
 ```
 
@@ -148,7 +148,10 @@ CROSS JOIN employees;
 ```
 DepartmentName      | Name
 Human Resources     | Alice
-Engineering         | Alice
+Human Resources     | Bob
+Human Resources     | Charlie
+... (他の組み合わせも続く)
+Sales              | David
 ```
 
 ## SELF JOIN
@@ -179,7 +182,6 @@ WHERE a.EmployeeID <> b.EmployeeID;
 
 ```
 Employee1 | Employee2 | DepartmentID
-Alice     | Bob       | D001
-Charlie   | Bob       | D002
-Charlie   | Alice     | D002
+Bob      | Charlie   | D002
+Charlie  | Bob       | D002
 ```
