@@ -151,40 +151,6 @@ SELECT * FROM students
 WHERE Department NOT IN ('Computer Science', 'Mathematics');
 ```
 
-### `ANY`演算子，`ALL`演算子
-
-`ANY`演算子は，値リストの各要素と比較し，いずれかが真であれば真を返します。
-
-```sql
-SELECT column1, column2, ...
-FROM table_name
-WHERE column_name operator ANY (value1, value2, ...);
-```
-
-`ALL`演算子は，値リストのすべての要素と比較し，すべてが真であれば真を返します。
-
-```sql
-SELECT column1, column2, ...
-FROM table_name
-WHERE column_name operator ALL (value1, value2, ...);
-```
-
-以下は，`ANY`演算子を使用して、年齢が19歳、20歳、21歳のいずれかより大きい学生を選択するSQL文の例です。
-
-```sql
-SELECT * FROM students
-WHERE Age > ANY (19, 20, 21);
-```
-
-以下は，`ALL`演算子を使用して、年齢が19歳、20歳、21歳のすべてより大きい学生を選択するSQL文の例です。
-
-```sql
-SELECT * FROM students
-WHERE Age > ALL (19, 20, 21);
-```
-
-`ANY`と`ALL`は、主に副問合せと組み合わせて使用されます。
-
 ### `LIKE`演算子
 
 `LIKE`演算子は，文字列の**パターンマッチング**（pattern matching）を行う演算子です。
