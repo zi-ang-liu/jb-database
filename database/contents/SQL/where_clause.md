@@ -239,24 +239,18 @@ INSERT INTO enrollments (student_id, class_id, enrollment_date, grade) VALUES
 ### 練習問題
 
 1. `students`テーブルから、名前が「Alice」の学生のメールアドレスを選択してください。
-2. `enrollments`テーブルから、成績が80点以上の学生のIDとクラスIDを選択してください。
-3. `students`テーブルから、名前に「e」が含まれる学生のIDと名前を選択してください。
-4. `students`テーブルから、名前が「A」で始まる学生のIDと名前を選択してください。
-5. 科目`C001`の成績が60点以上の学生のIDを選択してください。
-6. `C001`や`C002`のいずれかの科目で成績が80点以上の学生のIDを選択してください。ただし，`DISTINCT`を使用して重複を除外してください。
-7. `IN`演算子を使用して、`C001`または`C002`のいずれかの科目に登録している学生のIDを選択してください。
-8. `BETWEEN`演算子を使用して、`C001`の成績が90点以上かつ100点以下の学生数を選択してください。
+2. `students`テーブルから、名前に「e」が含まれる学生のIDと名前を選択してください。
+3. `students`テーブルから、名前が「A」で始まる学生のIDと名前を選択してください。
+4. 科目`C001`の成績が60点以上の学生のIDを選択してください。
+5. `C001`や`C002`のいずれかの科目で成績が80点以上の学生のIDを選択してください。ただし，`DISTINCT`を使用して重複を除外してください。
+6. `IN`演算子を使用して、`C001`または`C002`のいずれかの科目に登録している学生のIDを選択してください。
+7. `BETWEEN`演算子を使用して、`C001`の成績が80点以上かつ100点以下の学生数を選択してください。
 
 
 ### 解答例
 ```sql
 SELECT email FROM students
 WHERE name = 'Alice';
-```
-
-```sql
-SELECT student_id, class_id FROM enrollments
-WHERE grade >= 80;
 ```
 
 ```sql
@@ -287,5 +281,5 @@ WHERE class_id IN ('C001', 'C002');
 
 ```sql
 SELECT COUNT(*) FROM enrollments
-WHERE class_id = 'C001' AND grade BETWEEN 90 AND 100;
+WHERE class_id = 'C001' AND grade BETWEEN 80 AND 100;
 ```

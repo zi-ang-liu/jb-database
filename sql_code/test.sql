@@ -39,3 +39,30 @@ INSERT INTO enrollments (student_id, class_id, enrollment_date, grade) VALUES
 ('S003', 'C001', '2023-04-25', 88),
 ('S003', 'C002', '2023-05-04', 92),
 ('S003', 'C003', '2023-04-01', 88);
+
+SELECT email FROM students
+WHERE name = 'Alice';
+
+SELECT student_id, class_id FROM enrollments
+WHERE grade >= 80;
+
+SELECT student_id, name FROM students
+WHERE name LIKE '%e%';
+
+SELECT student_id, name FROM students
+WHERE name LIKE '%e%';
+
+SELECT student_id, name FROM students
+WHERE name LIKE 'A%';
+
+SELECT student_id FROM enrollments
+WHERE class_id = 'C001' AND grade >= 60;
+
+SELECT DISTINCT student_id FROM enrollments
+WHERE (class_id = 'C001' OR class_id = 'C002') AND grade >= 80;
+
+SELECT DISTINCT student_id FROM enrollments
+WHERE class_id IN ('C001', 'C002');
+
+SELECT COUNT(*) FROM enrollments
+WHERE class_id = 'C001' AND grade BETWEEN 80 AND 100;
