@@ -160,32 +160,32 @@ WHERE Department NOT IN ('Computer Science', 'Mathematics');
 | `%`    | 任意の0文字以上の文字列 |
 | `_`    | 任意の1文字             |
 
-以下は，名前が「John」で始まる学生を選択するSQL文の例です。
+以下は，名前が「ali」で始まる学生を選択するSQL文の例です。
 
 ```sql
 SELECT * FROM students
-WHERE Name LIKE 'John%';
+WHERE Name LIKE 'ali%';
 ```
 
-以下は，学籍番号が「75」で終わる学生を選択するSQL文の例です。
+以下は，学籍番号が「02」で終わる学生を選択するSQL文の例です。
 
 ```sql
 SELECT * FROM students
-WHERE StudentID LIKE '%75';
+WHERE StudentID LIKE '%02';
 ```
 
-以下は，名前の3文字目が「a」である学生を選択するSQL文の例です。
+以下は，名前の3文字目が「b」である学生を選択するSQL文の例です。
 
 ```sql
 SELECT * FROM students
-WHERE Name LIKE '__a%';
+WHERE Name LIKE '__b%';
 ```
 
-以下は，名前に「z」が含まれる学生を選択するSQL文の例です。
+以下は，名前に「i」が含まれる学生を選択するSQL文の例です。
 
 ```sql
 SELECT * FROM students
-WHERE Name LIKE '%z%';
+WHERE Name LIKE '%i%';
 ```
 
 ## 練習
