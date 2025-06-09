@@ -152,3 +152,23 @@ WHERE class_id = 'C003' AND grade >= (
     FROM enrollments
     WHERE class_id = 'C003'
 );
+
+SELECT student_id
+FROM enrollments
+WHERE class_id IN (
+    SELECT class_id
+    FROM classes
+    WHERE name IN ('Physics', 'Mathematics')
+)
+GROUP BY student_id
+HAVING COUNT(DISTINCT class_id) = 2;
+
+SELECT students.name, enrollments.class_id
+FROM students
+INNER JOIN enrollments
+ON students.student_id = enrollments.student_id;
+
+SELECT classes.name, enrollments.student_id
+FROM classes
+LEFT JOIN enrollments
+ON classes.class_id = enrollments.class_id;

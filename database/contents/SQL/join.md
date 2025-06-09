@@ -236,10 +236,10 @@ INSERT INTO enrollments (student_id, class_id, enrollment_date, grade) VALUES
 
 ### 練習問題
 
-1. `students`テーブルと`enrollments`テーブルを結合して、各学生の名前とその学生が登録している科目の番号を取得せよ。
-2. `classes`テーブルと`enrollments`テーブルを左結合して、各科目の名前とその科目に登録している学生の番号を取得せよ。
-3. `students`テーブルと`enrollments`テーブルを`CROSS JOIN`して、学籍番号と科目番号の直積を取得せよ。
-4. `students`テーブルを自己結合して、同じ出生地の学生のペアを取得せよ。
+1. `students`テーブルと`enrollments`テーブルを内部結合して、各学生の名前とその学生が登録している科目の番号を取得せよ。
+2. 各科目の名前とその科目に登録している学生の番号を取得せよ。ただし、登録者がいない科目の場合は、`student_id`をNULLにすること。
+3. 学籍番号と科目番号の直積を取得せよ。
+4. 同じ出生地の学生の名前、出生地を取得せよ。
 
 ### 解答例
 
