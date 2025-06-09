@@ -1,7 +1,7 @@
 CREATE TABLE students (
     student_id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
-    birth_place TEXT
+    birth_place TEXT NOT NULL
 );
 
 CREATE TABLE classes (
@@ -42,22 +42,113 @@ INSERT INTO enrollments (student_id, class_id, enrollment_date, grade) VALUES
 ('S003', 'C002', '2023-05-04', 92),
 ('S003', 'C003', '2023-04-01', 88);
 
-SELECT students.name, enrollments.class_id
-FROM students
-INNER JOIN enrollments
-ON students.student_id = enrollments.student_id;
+-- Query to find student ids who have the highest grade in class C001 using a subquery
 
-SELECT classes.name, enrollments.student_id
+SELECT student_id
+FROM enrollments
+WHERE class_id = 'C001' AND grade = (
+    SELECT MAX(grade)
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+-- Query to find student ids who have the higher grade in class c001 than average grade in class C001
+SELECT student_id
+FROM enrollments
+WHERE class_id = 'C001' AND grade > (
+    SELECT AVG(grade)
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+-- Multiple-row subquery
+-- Query to find student names who have enrolled in class c001
+
+SELECT name
+FROM students
+WHERE student_id IN (
+    SELECT student_id
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+-- Multiple-column subquery
+-- Query to find student ids, grades, and class ids for students who got the highest grade in class C001
+SELECT student_id, class_id, grade
+FROM enrollments
+WHERE (class_id, grade) IN (
+    SELECT class_id, MAX(grade)
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+-- Query to find student names, grades, and class ids for students who got the highest grade in class C001
+
+SELECT s.name, e.grade, e.class_id
+FROM students s
+JOIN enrollments e ON s.student_id = e.student_id
+WHERE (e.class_id, e.grade) IN (
+    SELECT class_id, MAX(grade)
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+-- problem 1
+-- single-row subquery
+-- Query to find student ids who have the highest grade in class C002 using a subquery
+SELECT student_id
+FROM enrollments
+WHERE class_id = 'C002' AND grade = (
+    SELECT MAX(grade)
+    FROM enrollments
+    WHERE class_id = 'C002'
+);
+
+-- Query to find student names who have the highest grade in class C002 using a subquery
+SELECT name
+FROM students
+WHERE student_id = (
+    SELECT student_id
+    FROM enrollments
+    WHERE class_id = 'C002' AND grade = (
+        SELECT MAX(grade)
+        FROM enrollments
+        WHERE class_id = 'C002'
+    )
+);
+
+-- multiple-row subquery
+-- Query to find class names that have the highest grade
+SELECT name
 FROM classes
-LEFT JOIN enrollments
-ON classes.class_id = enrollments.class_id;
+WHERE class_id IN (
+    SELECT class_id
+    FROM enrollments
+    WHERE grade = (
+        SELECT MAX(grade)
+        FROM enrollments
+    )
+);
 
-SELECT students.student_id, enrollments.class_id
+SELECT class_id
+FROM enrollments
+WHERE grade = (
+    SELECT MAX(grade)
+    FROM enrollments
+);
+
+SELECT student_id, name, birth_place
 FROM students
-CROSS JOIN enrollments;
+WHERE student_id IN (
+    SELECT student_id
+    FROM enrollments
+    WHERE class_id = 'C003'
+);
 
-SELECT a.name AS Student1, b.name AS Student2, a.birth_place
-FROM students a
-JOIN students b
-ON a.birth_place = b.birth_place
-WHERE a.student_id <> b.student_id;
+SELECT student_id
+FROM enrollments
+WHERE class_id = 'C003' AND grade >= (
+    SELECT AVG(grade)
+    FROM enrollments
+    WHERE class_id = 'C003'
+);
