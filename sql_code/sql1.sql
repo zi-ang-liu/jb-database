@@ -172,3 +172,20 @@ SELECT classes.name, enrollments.student_id
 FROM classes
 LEFT JOIN enrollments
 ON classes.class_id = enrollments.class_id;
+
+
+CREATE TABLE employees (
+    id TEXT PRIMARY KEY,
+    name TEXT,
+    department TEXT,
+    age INTEGER,
+    salary INTEGER
+);
+INSERT INTO employees (id, name, department, age, salary) VALUES
+('1', 'Alice', 'HR', 30, 600),
+('2', 'Bob', 'Engineering', 25, 700),
+('3', 'Charlie', 'HR', 35, 800),
+('4', 'David', 'Engineering', 28, 900);
+
+SELECT * FROM employees
+ORDER BY age ASC;
