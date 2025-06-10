@@ -41,6 +41,7 @@ parts:
     
     - caption: Advanced SQL
       chapters:
+      - file: contents/adv_SQL/chinook
       - file: contents/adv_SQL/aggregate_functions
       - file: contents/adv_SQL/group_by_having
       - file: contents/adv_SQL/order_by
