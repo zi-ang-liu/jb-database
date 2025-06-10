@@ -41,14 +41,14 @@ parts:
     
     - caption: Advanced SQL
       chapters:
-      - file: contents/adv_SQL/chinook
-      - file: contents/adv_SQL/aggregate_functions
-      - file: contents/adv_SQL/group_by_having
-      - file: contents/adv_SQL/order_by
-      - file: contents/adv_SQL/where_clause
-      - file: contents/adv_SQL/join
-      - file: contents/adv_SQL/subquery
-      - file: contents/adv_SQL/sqlite3
+      - file: contents/adv_sql/chinook
+      - file: contents/adv_sql/aggregate_functions
+      - file: contents/adv_sql/group_by_having
+      - file: contents/adv_sql/order_by
+      - file: contents/adv_sql/where_clause
+      - file: contents/adv_sql/join
+      - file: contents/adv_sql/subquery
+      - file: contents/adv_sql/sqlite3
 
     - caption: Appendix
       chapters:
