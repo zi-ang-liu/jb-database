@@ -8,5 +8,8 @@ SSDSE（教育用標準データセット：Standardized Statistical Data Set fo
 
 ## Chinook Database
 
+Chinookは有名なサンプルデータベースで、データベースの学習やテストに使用されます。SQLite形式のデータベースは以下のリンクからダウンロードできます。
+
 - [chinook.db](./db/chinook.db)
 
+作業フォルダーに`chinook.db`を配置して、SQLiteのクライアントツールで開くことができます。
