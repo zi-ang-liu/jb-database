@@ -41,14 +41,13 @@ parts:
     
     - caption: Advanced SQL
       chapters:
-      - file: contents/SQL/aggregate_functions
-      - file: contents/SQL/group_by
-      - file: contents/SQL/having
-      - file: contents/SQL/order_by
-      - file: contents/SQL/where_clause
-      - file: contents/SQL/join
-      - file: contents/SQL/subquery
-      - file: contents/SQL/sqlite3
+      - file: contents/adv_SQL/aggregate_functions
+      - file: contents/adv_SQL/group_by_having
+      - file: contents/adv_SQL/order_by
+      - file: contents/adv_SQL/where_clause
+      - file: contents/adv_SQL/join
+      - file: contents/adv_SQL/subquery
+      - file: contents/adv_SQL/sqlite3
 
     - caption: Appendix
       chapters:
