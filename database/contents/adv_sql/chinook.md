@@ -11,7 +11,7 @@ Chinookデータベースは、以下のような特徴を持っています。
 ## データベースのダウンロードと使用方法
 Chinookデータベースは、SQLite形式で提供されています。以下の手順でデータベースをダウンロードし、VSCodeで開くことができます。
 
-1. [chinook.db](./db/chinook.db)をダウンロードします。
+1. [chinook.db](../db/chinook.db)ファイルをダウンロードします。
 2. Visual Studio Codeを開き、SQLite拡張機能をインストールします。
 3. VSCodeの作業フォルダーに`chinook.db`ファイルを配置します。
 4. VSCodeで`chinook.db`ファイルを右クリックし、「Open Database」を選択します。
