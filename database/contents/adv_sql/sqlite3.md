@@ -1,8 +1,15 @@
 # Python SQLite3モジュール
 
-## 参考資料
+SQLiteは、軽量なデータベースエンジンであり、Pythonの標準ライブラリに含まれています。Pythonでは、`sqlite3`モジュールを使用してSQLiteデータベースを操作できます。
 
-- [sqlite3 — DB-API 2.0 interface for SQLite databases](https://docs.python.org/3/library/sqlite3.html)
+Pythonを使用する経験がない場合は，以下の手順でColabを使用してSQLiteデータベースを操作できます。
+
+1. Googleアカウントにログインします。
+2. [Google Colab](https://colab.research.google.com/)にアクセスします。
+3. 「+ New notebook」をクリックして新しいノートブックを作成します。
+4. ソースコードをセルにコピー＆ペーストします。
+5. 実行ボタンまたはShift + Enterキーを押してセルを実行します。
+6. 必要に応じて、「+ Code」をクリックして新しいセルを追加できます。
 
 ## Cursor
 
@@ -163,7 +170,7 @@ print(df_read)
 con.close()
 ```
 
-## `pandas.DataFrame.to_sql()`
+### `pandas.DataFrame.to_sql()`
 
 - https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html
 
@@ -182,7 +189,7 @@ con : sqlite3.Connection
 """
 ```
 
-## `pandas.read_sql_query()`
+### `pandas.read_sql_query()`
 
 - https://pandas.pydata.org/docs/reference/api/pandas.read_sql_query.html
 
@@ -201,5 +208,6 @@ con : str or sqlite3 connection
 """
 ```
 
+## 参考資料
 
-
+- [sqlite3 — DB-API 2.0 interface for SQLite databases](https://docs.python.org/3/library/sqlite3.html)
