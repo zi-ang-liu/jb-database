@@ -42,7 +42,8 @@ INSERT INTO students (student_id, name, birth_place) VALUES
 ('S001', 'Alice', 'New York'),
 ('S002', 'Bob', 'London'),
 ('S003', 'Charlie', 'Tokyo'),
-('S004', 'Tanaka', 'Tokyo');
+('S004', 'Tanaka', 'Tokyo'),
+('S005', 'Yamada', 'Osaka');
 
 INSERT INTO classes (class_id, name) VALUES
 ('C001', 'Mathematics'),
@@ -128,7 +129,7 @@ ChatGPTなどの生成AIを賢くする技術の一つに，**Chain of Thought**
 ```sql
 SELECT student_id, class_id, grade
 FROM enrollments
-WHERE (class_id, grade) IN (
+WHERE (class_id, grade) = (
     SELECT class_id, MAX(grade)
     FROM enrollments
     WHERE class_id = 'C001'
@@ -171,7 +172,7 @@ WHERE class_id = 'C001' AND grade > (
 
 複数行副問合せ（Multiple-row subquery）は，副問合せが複数行の値を返すSQLの構文です．
 
-入れ子になったSQL文の結果は下記のように複数行の値を返します．`IN`，`ANY`，`ALL`などの演算子を使用します．
+入れ子になったSQL文の結果は下記のように複数行の値を返します．`IN`などの演算子を使用します．
 
 ```plaintext
 | column_name |
@@ -224,6 +225,10 @@ FROM table_name
 WHERE column_name operator ALL (SELECT column_name FROM table_name WHERE condition);
 ```
 
+:::{note}
+SQLiteでは`ANY`がサポートされていません．
+:::
+
 以下は，少なくとも1つの科目で成績が90点以上の学生の名前を取得する例です．
 
 ```sql
@@ -233,6 +238,17 @@ WHERE student_id = ANY (
     SELECT student_id
     FROM enrollments
     WHERE grade > 90
+);
+```
+
+以下は，履修登録をしていない学生の名前を取得する例です．
+
+```sql
+SELECT name
+FROM students
+WHERE student_id != ALL (
+    SELECT student_id
+    FROM enrollments
 );
 ```
 
