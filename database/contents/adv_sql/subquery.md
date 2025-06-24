@@ -207,6 +207,17 @@ WHERE student_id IN (
 );
 ```
 
+以下は，履修登録をしていない学生の名前を取得する例です．
+
+```sql
+SELECT name
+FROM students
+WHERE student_id NOT IN (
+    SELECT student_id
+    FROM enrollments
+);
+```
+
 ### `ANY`/`ALL`演算子
 
 `ANY`演算子は、入れ子になった問合せから返された値に基づいて比較を行い，少なくとも1つの値が条件を満たす場合は`TRUE`となります．例えば，`5 > ANY (1, 7, 3)`は`TRUE`となります．
@@ -226,7 +237,7 @@ WHERE column_name operator ALL (SELECT column_name FROM table_name WHERE conditi
 ```
 
 :::{note}
-SQLiteでは`ANY`がサポートされていません．
+SQLiteでは`ANY`や`ALL`がサポートされていません．
 :::
 
 以下は，少なくとも1つの科目で成績が90点以上の学生の名前を取得する例です．
