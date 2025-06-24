@@ -115,7 +115,33 @@ ChatGPTなどの生成AIを賢くする技術の一つに，**Chain of Thought**
 
 ## 単一行副問合せ
 
-単一行副問合せ（Single-row subquery）は，入れ子になったSQL文が1行n列の値を返す副問合せのSQL文です．`WHERE`句の条件には`=`，`<`，`>`などの演算子を使用します．
+単一行副問合せ（Single-row subquery）は，入れ子になったSQL文が1行n列の値を返す副問合せのSQL文です．
+
+```plaintext
+| column_name1 | column_name2 | ... | column_nameN |
+| ------------ | ------------ | --- | ------------ |
+| value1       | value2       | ... | valueN       |
+```
+
+以下は，科目C001において，最も成績が高い学生のID，成績，科目IDを取得する例です．
+
+```sql
+SELECT student_id, class_id, grade
+FROM enrollments
+WHERE (class_id, grade) IN (
+    SELECT class_id, MAX(grade)
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+```
+
+入れ子になったSQL文が下記のように1行1列の値を返す場合はよくあります．`WHERE`句の条件には`=`，`<`，`>`などの演算子を使用します．
+
+```plaintext
+| column_name |
+| ----------- |
+| value       |
+```
 
 以下は，科目C001の成績が最も高い学生のIDを取得する例です．入れ子になったSQL文は1行1列の値を返します．
 
@@ -143,21 +169,9 @@ WHERE class_id = 'C001' AND grade > (
 
 ## 複数行副問合せ
 
-複数行副問合せ（Multiple-row subquery）は，副問合せが複数行の値を返すSQLの構文です．`IN`，`ANY`，`ALL`などの演算子を使用します．
+複数行副問合せ（Multiple-row subquery）は，副問合せが複数行の値を返すSQLの構文です．
 
-### `IN`演算子
-
-`IN`演算子は、指定した値が入れ子になった問合せから返した値のリストのいずれかに一致する場合は`TRUE`となります．
-
-副問合せで使用する場合の構文は以下の通りです．
-
-```sql
-SELECT column_name
-FROM table_name
-WHERE column_name IN (SELECT column_name FROM table_name WHERE condition);
-```
-
-副問合せ文の結果は下記のように複数行の値を返します．
+入れ子になったSQL文の結果は下記のように複数行の値を返します．`IN`，`ANY`，`ALL`などの演算子を使用します．
 
 ```plaintext
 | column_name |
@@ -166,6 +180,18 @@ WHERE column_name IN (SELECT column_name FROM table_name WHERE condition);
 | value2      |
 | ...         |
 | valueN      |
+```
+
+### `IN`演算子
+
+`IN`演算子は、指定した値が入れ子になった問合せから返した値のリストのいずれかに一致する場合は`TRUE`となります．例えば，`'apple' IN ('apple', 'banana', 'orange')`は`TRUE`となります．
+
+副問合せで使用する場合の構文は以下の通りです．
+
+```sql
+SELECT column_name
+FROM table_name
+WHERE column_name IN (SELECT column_name FROM table_name WHERE condition);
 ```
 
 以下は，科目C001登録している学生の名前を取得する例です．
@@ -180,15 +206,53 @@ WHERE student_id IN (
 );
 ```
 
-### `ANY`演算子
+### `ANY`/`ALL`演算子
 
+`ANY`演算子は、入れ子になった問合せから返された値に基づいて比較を行い，少なくとも1つの値が条件を満たす場合は`TRUE`となります．例えば，`5 > ANY (1, 7, 3)`は`TRUE`となります．
 
+`ALL`演算子は、入れ子になった問合せから返された値に基づいて比較を行い，すべての値が条件を満たす場合は`TRUE`となります．例えば，`5 > ALL (1, 2, 3)`は`TRUE`となります．
+
+副問合せで使用する場合の構文は以下の通りです．
+
+```sql
+SELECT column_name
+FROM table_name
+WHERE column_name operator ANY (SELECT column_name FROM table_name WHERE condition);
+
+SELECT column_name
+FROM table_name
+WHERE column_name operator ALL (SELECT column_name FROM table_name WHERE condition);
+```
+
+以下は，少なくとも1つの科目で成績が90点以上の学生の名前を取得する例です．
+
+```sql
+SELECT name
+FROM students
+WHERE student_id = ANY (
+    SELECT student_id
+    FROM enrollments
+    WHERE grade > 90
+);
+```
 
 ## 複数列副問合せ
 
-複数列副問合せ（Multiple-column subquery）は，副問合せが複数の列を返すSQLの構文です．
+複数列副問合せ（Multiple-column subquery）は，副問合せがn行m列の値を返すSQLの構文です．
 
-以下は，科目C001において，最も成績が高い学生のID，成績，科目IDを取得する例です．
+入れ子になったSQL文の結果は下記のように複数行複数列の値を返します．
+
+```plaintext
+| column_name1 | column_name2 | ... | column_nameM |
+| ------------ | ------------ | --- | ------------ |
+| value1       | value2       | ... | valueM       |
+| value1       | value2       | ... | valueM       |
+| ...          | ...          | ... | ...          |
+| valueN       | valueN       | ... | valueM       |
+```
+
+
+以下は，それぞれの科目において，最も成績が高い学生のID，成績，科目IDを取得する例です．
 
 ```sql
 SELECT student_id, class_id, grade
@@ -196,8 +260,8 @@ FROM enrollments
 WHERE (class_id, grade) IN (
     SELECT class_id, MAX(grade)
     FROM enrollments
-    WHERE class_id = 'C001'
-);
+    GROUP BY class_id
+); 
 ```
 
 ## 練習問題
