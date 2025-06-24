@@ -109,15 +109,15 @@ ChatGPTなどの生成AIを賢くする技術の一つに，**Chain of Thought**
 
 | 副問合せの種類 | 入れ子SQL文の結果 |
 | :------------- | ----------------- |
-| 単一行副問合せ | 1行1列の値        |
+| 単一行副問合せ | 1行n列の値        |
 | 複数行副問合せ | n行1列の値        |
 | 複数列副問合せ | n行m列の値        |
 
 ## 単一行副問合せ
 
-単一行副問合せ（Single-row subquery）は，副問合せが1行1列の値を返すSQLの構文です．
+単一行副問合せ（Single-row subquery）は，入れ子になったSQL文が1行n列の値を返す副問合せのSQL文です．`WHERE`句の条件には`=`，`<`，`>`などの演算子を使用します．
 
-以下は，科目C001の成績が最も高い学生のIDを取得する例です．
+以下は，科目C001の成績が最も高い学生のIDを取得する例です．入れ子になったSQL文は1行1列の値を返します．
 
 ```sql
 SELECT student_id
@@ -145,10 +145,27 @@ WHERE class_id = 'C001' AND grade > (
 
 複数行副問合せ（Multiple-row subquery）は，副問合せが複数行の値を返すSQLの構文です．`IN`，`ANY`，`ALL`などの演算子を使用します．
 
+### `IN`演算子
+
+`IN`演算子は、指定した値が入れ子になった問合せから返した値のリストのいずれかに一致する場合は`TRUE`となります．
+
+副問合せで使用する場合の構文は以下の通りです．
+
 ```sql
 SELECT column_name
 FROM table_name
-WHERE column_name operator (SELECT column_name FROM table_name WHERE condition);
+WHERE column_name IN (SELECT column_name FROM table_name WHERE condition);
+```
+
+副問合せ文の結果は下記のように複数行の値を返します．
+
+```plaintext
+| column_name |
+| ----------- |
+| value1      |
+| value2      |
+| ...         |
+| valueN      |
 ```
 
 以下は，科目C001登録している学生の名前を取得する例です．
@@ -162,6 +179,10 @@ WHERE student_id IN (
     WHERE class_id = 'C001'
 );
 ```
+
+### `ANY`演算子
+
+
 
 ## 複数列副問合せ
 
