@@ -1,12 +1,20 @@
 # 副問合せ
 
-基本的な構文は以下の通りです。`>`、`<`、`=`などの比較演算子を使用します。
+複雑な問い合わせを行うために，他のSQL文の結果を利用し，さらにその結果を基に問い合わせを行うことがあります．このような問い合わせを**副問合せ**（Subquery）と呼びます．
+
+## 構文
+
+以下は副問合せの基本的な構文です．`WHERE`句の探索条件に，他のSQL文の結果を利用します．
 
 ```sql
 SELECT column_name
 FROM table_name
 WHERE column_name operator (SELECT column_name FROM table_name WHERE condition);
 ```
+
+## 副問合せの使用例
+
+例えば，以下の学生データベースを考えます．
 
 ```sql
 CREATE TABLE students (
@@ -54,11 +62,53 @@ INSERT INTO enrollments (student_id, class_id, enrollment_date, grade) VALUES
 ('S003', 'C003', '2023-04-01', 88);
 ```
 
+科目`C001`の成績が最も高い学生のIDを取得するには，
+
+1. `enrollments`テーブルから科目`C001`の成績を取得し，その中で最大の成績を求める．
+2. `enrollments`テーブルから科目`C001`の成績が最大の成績を持つ学生のIDを取得する．
+
+副問合せは以下のように記述します．
+
+```sql
+SELECT student_id
+FROM enrollments
+WHERE class_id = 'C001' AND grade = (
+    SELECT MAX(grade) AS max_grade
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+```
+
+入れ子になったSQL文は`C001`の成績の最大値を取得し，下記の結果を返します．
+
+```plaintext
+| max_grade |
+| --------- |
+| 88        |
+```
+
+この結果を基に，外側のSQL文は`C001`の成績が88の学生のIDを取得します．
+
+```plaintext
+| student_id |
+| ---------- |
+| S003       |
+```
+
+このように，副問合せは，「まずSQL文を実行して結果を取得し，その結果を基に別のSQL文を実行する」という場面において使用されます．人間の段階的な思考に対応できるため，複雑な問い合わせによく使用されます．
+
+:::{note}
+ChatGPTなどの生成AIを賢くする技術の一つに，**Chain of Thought**（思考の連鎖, CoT）があります．これは，複雑な問題を解決するために，複数の段階に分けて考える方法です．
+
+例えば，1 + 2 + 3 の計算を行う場合、まず 1 + 2 を計算し、その結果に 3 を加えるというように、段階的に思考を進めます．
+:::
+
+
 ## 単一行副問合せ
 
-単一行副問合せ（Single-row subquery）は、副問合せが1行1列の値を返すSQLの構文です。
+単一行副問合せ（Single-row subquery）は，副問合せが1行1列の値を返すSQLの構文です．
 
-以下は、科目C001の成績が最も高い学生のIDを取得する例です。
+以下は，科目C001の成績が最も高い学生のIDを取得する例です．
 
 ```sql
 SELECT student_id
@@ -70,7 +120,7 @@ WHERE class_id = 'C001' AND grade = (
 );
 ```
 
-以下は、科目C001において平均成績以上の学生のIDを取得する例です。
+以下は，科目C001において平均成績以上の学生のIDを取得する例です．
 
 ```sql
 SELECT student_id
@@ -84,7 +134,7 @@ WHERE class_id = 'C001' AND grade > (
 
 ## 複数行副問合せ
 
-複数行副問合せ（Multiple-row subquery）は、副問合せが複数行の値を返すSQLの構文です。`IN`、`ANY`、`ALL`などの演算子を使用します。
+複数行副問合せ（Multiple-row subquery）は，副問合せが複数行の値を返すSQLの構文です．`IN`，`ANY`，`ALL`などの演算子を使用します．
 
 ```sql
 SELECT column_name
@@ -92,7 +142,7 @@ FROM table_name
 WHERE column_name operator (SELECT column_name FROM table_name WHERE condition);
 ```
 
-以下は、科目C001登録している学生の名前を取得する例です。
+以下は，科目C001登録している学生の名前を取得する例です．
 
 ```sql
 SELECT name
@@ -106,9 +156,9 @@ WHERE student_id IN (
 
 ## 複数列副問合せ
 
-複数列副問合せ（Multiple-column subquery）は、副問合せが複数の列を返すSQLの構文です。
+複数列副問合せ（Multiple-column subquery）は，副問合せが複数の列を返すSQLの構文です．
 
-以下は、科目C001において、最も成績が高い学生のID、成績、科目IDを取得する例です。
+以下は，科目C001において，最も成績が高い学生のID，成績，科目IDを取得する例です．
 
 ```sql
 SELECT student_id, class_id, grade
@@ -122,13 +172,13 @@ WHERE (class_id, grade) IN (
 
 ## 練習問題
 
-1. 科目C002の成績が最も高い学生のIDを取得せよ。
-1. 科目C002の成績が最も高い学生の名前を取得せよ。
-1. 点数が最も高いクラスのIDを取得せよ。
-1. 点数が最も高いクラスの名前を取得せよ。
-1. 科目C003を登録している学生のID、名前、出身地を取得せよ。
-1. 科目C003において、平均成績以上の学生のIDを取得せよ。
-1. 'Physics' and 'Mathematics'の両方を登録している学生のIDを取得せよ。
+1. 科目C002の成績が最も高い学生のIDを取得せよ．
+1. 科目C002の成績が最も高い学生の名前を取得せよ．
+1. 点数が最も高いクラスのIDを取得せよ．
+1. 点数が最も高いクラスの名前を取得せよ．
+1. 科目C003を登録している学生のID，名前，出身地を取得せよ．
+1. 科目C003において，平均成績以上の学生のIDを取得せよ．
+1. 'Physics' and 'Mathematics'の両方を登録している学生のIDを取得せよ．
 
 
 ```sql
