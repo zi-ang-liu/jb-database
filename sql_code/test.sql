@@ -57,3 +57,35 @@ WHERE (class_id, grade) = (
     FROM enrollments
     WHERE class_id = 'C001'
 )
+
+SELECT student_id
+FROM enrollments
+WHERE class_id = 'C001' AND grade = (
+    SELECT MAX(grade)
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+SELECT student_id
+FROM enrollments
+WHERE class_id = 'C001' AND grade > (
+    SELECT AVG(grade)
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+SELECT name
+FROM students
+WHERE student_id IN (
+    SELECT student_id
+    FROM enrollments
+    WHERE class_id = 'C001'
+);
+
+SELECT name
+FROM students
+WHERE student_id = ANY (
+    SELECT student_id
+    FROM enrollments
+    WHERE grade > 90
+);

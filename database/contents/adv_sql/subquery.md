@@ -172,7 +172,7 @@ WHERE class_id = 'C001' AND grade > (
 
 複数行副問合せ（Multiple-row subquery）は，副問合せが複数行の値を返すSQLの構文です．
 
-入れ子になったSQL文の結果は下記のように複数行の値を返します．`IN`などの演算子を使用します．
+入れ子になったSQL文の結果は下記のように複数行の値を返します．`IN`，`NOT IN`，`ANY`，`ALL`などの演算子を使用します．
 
 ```plaintext
 | column_name |
