@@ -52,16 +52,18 @@ erDiagram
    }
 ```
 
-6. `invoices`テーブルから、`BillingAddress`、`BillingCity`を取得するSQL文を書け。ただし、`BillingCity`が`"Chicago"`または`"New York"`のものだけを対象とする。
-7. `invoices`テーブルから、`BillingAddress`、`BillingCity`を取得するSQL文を書け。ただし、以下の条件を満たすものとする。
+
+1. `invoices`テーブルから、`BillingAddress`、`BillingCity`を取得するSQL文を書け。ただし、`BillingCity`が`"Chicago"`または`"New York"`のものだけを対象とする。
+2. `invoices`テーブルから、`BillingAddress`、`BillingCity`を取得するSQL文を書け。ただし、以下の条件を満たすものとする。
    - `BillingCity`が`"Chicago"`または`"New York"`のもの
    - `Total`が`10.00`以上のもの
-8. `invoices`テーブルから、`InvoiceId`、`BillingAddress`、`Total`を取得するSQL文を書け。ただし、`Total`が`14.00`以上かつ`18.00`以下のものだけを対象とする。(`Between`句を使用すること)
+3. `invoices`テーブルから、`InvoiceId`、`BillingAddress`、`Total`を取得するSQL文を書け。ただし、`Total`が`14.00`以上かつ`18.00`以下のものだけを対象とする。(`Between`句を使用すること)
 
-### 結合
+### tracks, albums, artistsテーブル
 
 ```{mermaid}
 erDiagram
+   direction TB
    tracks }o--o{ albums : contains
    tracks {
       integer TrackId PK
@@ -85,27 +87,6 @@ erDiagram
    }
 ```
 
-<!-- ```{mermaid}
-erDiagram
-    CUSTOMER ||--o{ ORDER : places
-    CUSTOMER {
-        string name
-        string custNumber PK
-        string sector
-    }
-    ORDER ||--|{ LINE-ITEM : contains
-    ORDER {
-        int orderNumber PK
-        string deliveryAddress
-    }
-    LINE-ITEM {
-        string productCode PK
-        int quantity
-        float pricePerUnit
-    }
-``` -->
-9.  `albums`テーブルから、すべての列を取得するSQL文を書け。
-10. `albums`テーブルから、すべての列を取得するSQL文を書け。ただし、`ArtistId`が`1`のものだけを対象とする。
-11. `ArtistId`が`1`のアーティストがリリースしたアルバムの`TrackId`、`Name`、`AlbumId`を取得するSQL文を書け。Hint: 副問合せ、`IN`句を使用すること。
-12. `tracks`テーブルから、`TrackId`、`Name`、`GenreId`を取得するSQL文を書け。ただし、`GenreId`が`1`、`2`、`3`以外のものだけを対象とする。（`NOT IN`句を使用すること）
-13. `tracks`と`albums`テーブルを結合し、`tracks.TrackId`、`tracks.Name`、`albums.Title`を取得するSQL文を書け。
+1.  `ArtistId`が`1`のアーティストがリリースしたアルバムの`TrackId`、`Name`、`AlbumId`を取得するSQL文を書け。Hint: 副問合せ、`IN`句を使用すること。
+2.  `tracks`テーブルから、`TrackId`、`Name`、`GenreId`を取得するSQL文を書け。ただし、`GenreId`が`1`、`2`、`3`以外のものだけを対象とする。（`NOT IN`句を使用すること）
+3.  `tracks`と`albums`テーブルを結合し、`tracks.TrackId`、`tracks.Name`、`albums.Title`を取得するSQL文を書け。
