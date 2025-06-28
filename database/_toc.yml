@@ -49,6 +49,7 @@ parts:
       - file: contents/adv_sql/join
       - file: contents/adv_sql/subquery
       - file: contents/adv_sql/sqlite3
+      - file: contents/adv_sql/practice
 
     - caption: Appendix
       chapters:
