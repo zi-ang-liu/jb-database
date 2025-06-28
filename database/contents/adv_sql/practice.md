@@ -11,3 +11,7 @@ SQLの書き方を身につけるため、[Chinookデータベース](chinook.md
    - `albumid`が`1`のもの
    - `milliseconds`が`200000`以上のもの
 5. `tracks`テーブルから、`name`、`albumid`、`composer`を取得するSQL文を書け。ただし、`composer`の名前に`"Steve"`が含まれるものだけを対象とする。
+6. `invoices`テーブルから、`billing_address`、`billing_city`を取得するSQL文を書け。ただし、`billing_city`が`"Chicago"`または`"New York"`のものだけを対象とする。
+7. `invoices`テーブルから、`billing_address`、`billing_city`を取得するSQL文を書け。ただし、以下の条件を満たすものとする。
+   - `billing_city`が`"Chicago"`または`"New York"`のもの
+   - `Total`が`10.00`以上のもの
