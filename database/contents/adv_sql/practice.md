@@ -167,7 +167,7 @@ erDiagram
       nvarchar Name
    }
    tracks }o--o{ albums : belongs
-   albums }o--|| artists : created
+   albums }o--|| artists : creats
 ```
 
 1. `ArtistId`が`1`のアーティストが作ったアルバムの`TrackId`、`Name`、`AlbumId`を取得するSQL文を書け。Hint: 副問合せ、`IN`句を使用すること。
