@@ -62,22 +62,22 @@ erDiagram
 
 ```{mermaid}
 erDiagram
-   tracks }|--o{ albums : belongs_to
+   tracks }|--o{ albums : contains
    tracks {
       integer TrackId PK
       nvarchar Name
-      integer AlbumId
+      integer AlbumId FK
       integer MediaTypeId
       integer GenreId
       nvarchar Composer
       integer Milliseconds
       numeric UnitPrice
    }
-   albums }|--|| artists : belongs_to
+   albums }|--|| artists : creats
    albums {
       integer AlbumId PK
       nvarchar Title
-      integer ArtistId
+      integer ArtistId FK
    }
    artists {
       integer ArtistId PK
