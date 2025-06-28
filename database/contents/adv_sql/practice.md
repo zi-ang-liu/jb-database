@@ -15,3 +15,6 @@ SQLの書き方を身につけるため、[Chinookデータベース](chinook.md
 7. `invoices`テーブルから、`billing_address`、`billing_city`を取得するSQL文を書け。ただし、以下の条件を満たすものとする。
    - `billing_city`が`"Chicago"`または`"New York"`のもの
    - `Total`が`10.00`以上のもの
+8. `invoices`テーブルから、`invoice_id`、`billing_address`、`total`を取得するSQL文を書け。ただし、`total`が`14.00`以上かつ`18.00`以下のものだけを対象とする。(`Between`句を使用すること)
+9. `tracks`テーブルから、`track_id`、`name`、`mediatype_id`を取得するSQL文を書け。ただし、`mediatype_id`が`1`または`2`のものだけを対象とする。（`IN`句を使用すること）
+10. 
