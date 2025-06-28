@@ -147,7 +147,6 @@ FROM invoices;
 
 ```{mermaid}
 erDiagram
-   tracks }o--o{ albums : contains
    tracks {
       integer TrackId PK
       nvarchar Name
@@ -158,7 +157,6 @@ erDiagram
       integer Milliseconds
       numeric UnitPrice
    }
-   albums }o--|| artists : creats
    albums {
       integer AlbumId PK
       nvarchar Title
@@ -168,6 +166,8 @@ erDiagram
       integer ArtistId PK
       nvarchar Name
    }
+   tracks }o--o{ albums : belongs_to
+   albums }o--|| artists : belongs_to
 ```
 
 1. `ArtistId`が`1`のアーティストが作ったアルバムの`TrackId`、`Name`、`AlbumId`を取得するSQL文を書け。Hint: 副問合せ、`IN`句を使用すること。
