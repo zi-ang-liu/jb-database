@@ -62,7 +62,7 @@ erDiagram
 
 ```{mermaid}
 erDiagram
-   tracks }|--o{ albums : contains
+   tracks }o--o{ albums : contains
    tracks {
       integer TrackId PK
       nvarchar Name
@@ -73,7 +73,7 @@ erDiagram
       integer Milliseconds
       numeric UnitPrice
    }
-   albums }|--|| artists : creats
+   albums }o--|| artists : creats
    albums {
       integer AlbumId PK
       nvarchar Title
