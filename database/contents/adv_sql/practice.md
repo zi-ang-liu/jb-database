@@ -60,9 +60,30 @@ erDiagram
 
 ### 結合
 
-<!-- ```{mermaid}
+```{mermaid}
 erDiagram
-tracks -->
+   tracks }|--o{ albums : belongs_to
+   tracks {
+      integer TrackId PK
+      nvarchar Name
+      integer AlbumId
+      integer MediaTypeId
+      integer GenreId
+      nvarchar Composer
+      integer Milliseconds
+      numeric UnitPrice
+   }
+   albums }|--|| artists : belongs_to
+   albums {
+      integer AlbumId PK
+      nvarchar Title
+      integer ArtistId
+   }
+   artists {
+      integer ArtistId PK
+      nvarchar Name
+   }
+```
 
 <!-- ```{mermaid}
 erDiagram
