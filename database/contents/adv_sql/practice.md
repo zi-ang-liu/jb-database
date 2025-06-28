@@ -4,6 +4,25 @@ SQLの書き方を身につけるため、[Chinookデータベース](chinook.md
 
 ## 問題
 
+### tracksテーブル
+
+```{mermaid}
+---
+title: tracks entity
+---
+erDiagram 
+   tracks {
+      int TrackId PK
+      nvarchar Name
+      int AlbumId
+      int MediaTypeId
+      int GenreId
+      nvarchar Composer
+      int Milliseconds
+      numeric UnitPrice
+   }
+```
+
 1. `tracks`テーブルから、`TrackId`、`Name`を取得するSQL文を書け。
 2. `tracks`テーブルから、`TrackId`、`Name`、`AlbumId`を取得し、`AlbumId`で昇順に並べ替えるSQL文を書け。
 3. `tracks`テーブルから、`TrackId`、`Name`、`AlbumId`を取得するSQL文を書け。ただし、`AlbumId`が`1`のものだけを対象とする。
