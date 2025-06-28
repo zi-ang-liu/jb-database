@@ -147,7 +147,6 @@ FROM invoices;
 
 ```{mermaid}
 erDiagram
-   direction TB
    tracks }o--o{ albums : contains
    tracks {
       integer TrackId PK
