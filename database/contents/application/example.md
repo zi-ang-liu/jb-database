@@ -1,8 +1,6 @@
-# アプリケーション開発
+# SQLiteを使用した学生管理システム
 
-## SQLiteを使用した学生管理システム
-
-### 概要
+## 概要
 
 学生管理システムのER図は次のように表現される。
 
@@ -24,7 +22,7 @@ erDiagram
     CLASS ||--o{ ENROLLMENT : contains
 ```
 
-### Python実装
+## Python実装
 
 まずは、`sqlite3`モジュールを`import`し、SQLiteデータベース`school.db`に接続する。データベースが存在しない場合は新たに作成される。
 
@@ -184,7 +182,7 @@ if __name__ == "__main__":
     conn.close()
 ```
 
-### ソースコード
+## ソースコード
 
 ```python
 import sqlite3
@@ -326,7 +324,7 @@ if __name__ == "__main__":
     conn.close()
 ```
 
-### 練習問題
+## 練習問題
 
 1. 学生情報を追加する機能を実装せよ。
 2. 学生数をカウントする機能を追加せよ。
