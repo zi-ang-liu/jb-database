@@ -48,11 +48,12 @@ parts:
       - file: contents/adv_sql/where_clause
       - file: contents/adv_sql/join
       - file: contents/adv_sql/subquery
-      - file: contents/adv_sql/sqlite3
+      
 
     - caption: Application Development
       chapters:
-      - file: contents/application/intro
+      - file: contents/adv_sql/sqlite3
+      - file: contents/application/example
 
     - caption: Review
       chapters:
