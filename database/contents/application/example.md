@@ -22,6 +22,37 @@ erDiagram
     CLASS ||--o{ ENROLLMENT : contains
 ```
 
+Pythonを使用してSQLiteデータベースを操作し、学生、コース、および登録情報を管理するシステムを実装する。
+
+```plaintext
+1. List Students
+2. List Courses
+3. Enroll Student
+4. Show Enrollments
+5. Exit
+6. Show Options
+
+Enter choice: __1__
+
+('S001', 'Alice')
+('S002', 'Bob')
+('S003', 'Charlie')
+
+Enter choice: __2__
+
+('CS101', 'Computer Science')
+('CS102', 'Data Structures')
+('CS103', 'Algorithms')
+
+Enter choice: __3__
+Student ID: __S001__
+Course ID: __CS101__
+Enrollment successful.
+
+Enter choice: __4__
+Alice is enrolled in Computer Science
+```
+
 ## Python実装
 
 まずは、`sqlite3`モジュールを`import`し、SQLiteデータベース`school.db`に接続する。データベースが存在しない場合は新たに作成される。
