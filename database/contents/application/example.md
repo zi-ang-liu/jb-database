@@ -51,6 +51,14 @@ Enrollment successful.
 
 Enter choice: __4__
 Alice is enrolled in Computer Science
+
+Enter choice: __6__
+1. List Students
+2. List Courses
+3. Enroll Student
+4. Show Enrollments
+5. Exit
+6. Show Options
 ```
 
 ## Python実装
@@ -173,7 +181,7 @@ if cursor.fetchone()[0] == 0:
         insert_sample_data()
 ```
 
-最後に、簡単なコマンドラインインターフェース（CLI）を作成する。ユーザーはメニューから選択し、学生のリスト表示、コースのリスト表示、学生の登録、登録状況の表示などを行うことができる。
+簡単なコマンドラインインターフェース（CLI）を作成する。ユーザーはメニューから選択し、学生のリスト表示、コースのリスト表示、学生の登録、登録状況の表示などを行うことができる。
 
 ```python
 # Simple CLI
@@ -203,7 +211,7 @@ def menu():
             print("Invalid choice")
 ```
 
-以上で、SQLiteを使用した学生管理システムの基本的な構造が完成した。
+以上で、SQLiteを使用した学生管理システムを構築できた。
 
 作成したデータベースを実行してみよう。
 
