@@ -52,7 +52,7 @@ parts:
 
     - caption: Application Development
       chapters:
-      - file: contents/adv_sql/sqlite3
+      - file: contents/application/sqlite3
       - file: contents/application/example
 
     - caption: Review
