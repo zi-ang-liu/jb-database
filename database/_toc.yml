@@ -49,11 +49,15 @@ parts:
       - file: contents/adv_sql/join
       - file: contents/adv_sql/subquery
       - file: contents/adv_sql/sqlite3
-      - file: contents/adv_sql/practice
+
+    - caption: Application Development
+      chapters:
+      - file: contents/application/intro
 
     - caption: Review
       chapters:
-      - file: contents/review/review
+      - file: contents/review/theory
+      - file: contents/review/sql
 
     - caption: Appendix
       chapters:
