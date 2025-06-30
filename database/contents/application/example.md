@@ -25,40 +25,41 @@ erDiagram
 Pythonを使用してSQLiteデータベースを操作し、学生、コース、および登録情報を管理するシステムを実装する。
 
 ```plaintext
-1. List Students
-2. List Courses
-3. Enroll Student
-4. Show Enrollments
-5. Exit
-6. Show Options
+=============================================
+ Welcome to the School Database System 
+=============================================
+1. 📚 List Students
+2. 🏫 List Courses
+3. ✍️  Enroll Student
+4. 📋 Show Enrollments
+5. ❌ Exit
+6. 🔁 Show Options
+=============================================
 
-Enter choice: __1__
+Enter your choice (1-6): 1
 
 ('S001', 'Alice')
 ('S002', 'Bob')
 ('S003', 'Charlie')
 
-Enter choice: __2__
+Enter your choice (1-6): 2
 
 ('CS101', 'Computer Science')
 ('CS102', 'Data Structures')
 ('CS103', 'Algorithms')
 
-Enter choice: __3__
-Student ID: __S001__
-Course ID: __CS101__
+Enter your choice (1-6): 3
+
+Enter Student ID: S001
+Enter Course ID: CS101
 Enrollment successful.
 
-Enter choice: __4__
+Enter your choice (1-6): 4
 Alice is enrolled in Computer Science
 
-Enter choice: __6__
-1. List Students
-2. List Courses
-3. Enroll Student
-4. Show Enrollments
-5. Exit
-6. Show Options
+Enter your choice (1-6): 5
+
+Exiting the program. Goodbye!
 ```
 
 ## Python実装
@@ -73,49 +74,64 @@ conn = sqlite3.connect("school.db")
 cursor = conn.cursor()
 ```
 
-次に、学生、コース、および登録のためのテーブルを作成する。
+次に、テーブルを作成するための関数を定義する。`Students`、`Courses`、および`Enrollments`の3つのテーブルを作成する。各テーブルには、主キーや外部キー制約が設定されている。
 
 ```python
-# Create tables if they do not exist
-cursor.execute(
-    """CREATE TABLE IF NOT EXISTS Students (
-    student_id TEXT PRIMARY KEY,
-    name TEXT NOT NULL
-)"""
-)
-cursor.execute(
-    """CREATE TABLE IF NOT EXISTS Courses (
-    course_id TEXT PRIMARY KEY,
-    course_name TEXT NOT NULL
-)"""
-)
-cursor.execute(
-    """CREATE TABLE IF NOT EXISTS Enrollments (
-    student_id TEXT,
-    course_id TEXT,
-    PRIMARY KEY (student_id, course_id),
-    FOREIGN KEY (student_id) REFERENCES Students(student_id),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
-)"""
-)
+def create_tables():
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS Students (
+        student_id TEXT PRIMARY KEY,
+        name TEXT NOT NULL
+    )
+    """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS Courses (
+        course_id TEXT PRIMARY KEY,
+        course_name TEXT NOT NULL
+    )
+    """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS Enrollments (
+        student_id TEXT,
+        course_id TEXT,
+        PRIMARY KEY (student_id, course_id),
+        FOREIGN KEY (student_id) REFERENCES Students(student_id),
+        FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+    )
+    """
+    )
 ```
 
-これで、`Students`、`Courses`、および`Enrollments`の3つのテーブルが作成された。以下はテーブルにデータを挿入するための関数を定義する。
+これで、テーブルを作成する準備ができた。次に、サンプルデータを挿入するための関数を定義する。この関数は、`Students`と`Courses`テーブルにいくつかの初期データを挿入する。
 
 ```python
-# Sample data
 def insert_sample_data():
-    cursor.execute(
-        """INSERT INTO Students (student_id, name) VALUES
-        ('S001', 'Alice'),
-        ('S002', 'Bob'),
-        ('S003', 'Charlie')"""
+    cursor.executemany(
+        """
+        INSERT INTO Students (student_id, name) VALUES (?, ?)
+        """,
+        [
+            ("S001", "Alice"),
+            ("S002", "Bob"),
+            ("S003", "Charlie"),
+        ],
     )
-    cursor.execute(
-        """INSERT INTO Courses (course_id, course_name) VALUES
-        ('CS101', 'Computer Science'),
-        ('CS102', 'Data Structures'),
-        ('CS103', 'Algorithms')"""
+    cursor.executemany(
+        """
+        INSERT INTO Courses (course_id, course_name) VALUES (?, ?)
+        """,
+        [
+            ("CS101", "Computer Science"),
+            ("CS102", "Data Structures"),
+            ("CS103", "Algorithms"),
+        ],
     )
     conn.commit()
 ```
@@ -123,7 +139,6 @@ def insert_sample_data():
 次に、学生のリストを表示する関数を定義する。`cursor.fetchall()`を使用して、テーブルからすべての学生を取得し、`for`文で各行を表示する。
 
 ```python
-# View functions
 def list_students():
     cursor.execute("SELECT * FROM Students")
     for row in cursor.fetchall():
@@ -139,10 +154,18 @@ def list_courses():
         print(row)
 ```
 
-次に、学生をコースに登録するための関数を定義する。この関数は、学生IDとコースIDを受け取り、`Enrollments`テーブルに新しい行を挿入する。`try`と`except`を使用して、例外処理を行う。例えば、学生IDやコースIDが存在しない場合や、重複した登録が発生した場合に`sqlite3.IntegrityError`をキャッチし、エラーメッセージを表示する。
+次に、学生をコースに登録するための関数を定義する。この関数は、学生IDとコースIDを受け取り、`Enrollments`テーブルに新しい行を挿入する。`student_id`と`course_id`が存在しない場合はエラーメッセージを表示し、登録が成功した場合は成功メッセージを表示する。もし学生がすでにそのコースに登録されている場合は、登録失敗のメッセージを表示する。
 
 ```python
 def enroll_student(student_id, course_id):
+    cursor.execute("SELECT * FROM Students WHERE student_id = ?", (student_id,))
+    if not cursor.fetchone():
+        print("Student ID not found.")
+        return
+    cursor.execute("SELECT * FROM Courses WHERE course_id = ?", (course_id,))
+    if not cursor.fetchone():
+        print("Course ID not found.")
+        return
     try:
         cursor.execute(
             "INSERT INTO Enrollments ('student_id', 'course_id') VALUES (?, ?)",
@@ -151,7 +174,7 @@ def enroll_student(student_id, course_id):
         conn.commit()
         print("Enrollment successful.")
     except sqlite3.IntegrityError:
-        print("Enrollment failed. Check IDs or duplicate entry.")
+        print("Enrollment failed. Student is already enrolled in this course.")
 ```
 
 次に、登録状況を表示する関数を定義する。この関数は、`Enrollments`テーブルと`Students`および`Courses`テーブルを結合して、どの学生がどのコースに登録されているかを表示する。
@@ -159,10 +182,12 @@ def enroll_student(student_id, course_id):
 ```python
 def show_enrollments():
     cursor.execute(
-        """SELECT Students.name, Courses.course_name
-        FROM Enrollments
-        JOIN Students ON Enrollments.student_id = Students.student_id
-        JOIN Courses ON Enrollments.course_id = Courses.course_id"""
+        """
+    SELECT Students.name, Courses.course_name
+    FROM Enrollments
+    JOIN Students ON Enrollments.student_id = Students.student_id
+    JOIN Courses ON Enrollments.course_id = Courses.course_id
+    """
     )
     for row in cursor.fetchall():
         print(f"{row[0]} is enrolled in {row[1]}")
@@ -171,12 +196,10 @@ def show_enrollments():
 テーブルが空である場合にサンプルデータを挿入するためのコードを追加する。`Students`テーブルと`Courses`テーブルの行数を確認し、両方が空であればサンプルデータを挿入する。
 
 ```python
-# If the tables are empty, insert sample data
-cursor.execute("SELECT COUNT(*) FROM Students")
-if cursor.fetchone()[0] == 0:
-    cursor.execute("SELECT COUNT(*) FROM Courses")
-    if cursor.fetchone()[0] == 0:
-        # Insert sample data if both tables are empty
+def initialize_database():
+    student_count = cursor.execute("SELECT COUNT(*) FROM Students").fetchone()[0]
+    course_count = cursor.execute("SELECT COUNT(*) FROM Courses").fetchone()[0]
+    if student_count == 0 and course_count == 0:
         print("Inserting sample data...")
         insert_sample_data()
 ```
@@ -184,42 +207,63 @@ if cursor.fetchone()[0] == 0:
 簡単なコマンドラインインターフェース（CLI）を作成する。ユーザーはメニューから選択し、学生のリスト表示、コースのリスト表示、学生の登録、登録状況の表示などを行うことができる。
 
 ```python
-# Simple CLI
-def menu():
+def print_menu():
+    print("\n" + "=" * 45)
+    print(" Welcome to the School Database System ")
+    print("=" * 45)
     print(
-        "\n1. List Students\n2. List Courses\n3. Enroll Student\n4. Show Enrollments\n5. Exit\n6. Show Options"
+        "1. 📚 List Students\n"
+        "2. 🏫 List Courses\n"
+        "3. ✍️  Enroll Student\n"
+        "4. 📋 Show Enrollments\n"
+        "5. ❌ Exit\n"
+        "6. 🔁 Show Options"
     )
+    print("=" * 45)
+
+
+def menu():
+    print_menu()
     while True:
-        choice = input("\nEnter choice: ")
+        choice = input("\nEnter your choice (1-6): ").strip()
+        print()
+
         if choice == "1":
             list_students()
         elif choice == "2":
             list_courses()
         elif choice == "3":
-            s_id = input("Student ID: ")
-            c_id = input("Course ID: ")
+            s_id = input("Enter Student ID: ").strip()
+            c_id = input("Enter Course ID: ").strip()
             enroll_student(s_id, c_id)
         elif choice == "4":
             show_enrollments()
         elif choice == "5":
+            print("Exiting the program. Goodbye!")
             break
         elif choice == "6":
-            print(
-                "\n1. List Students\n2. List Courses\n3. Enroll Student\n4. Show Enrollments\n5. Exit\n6. Show Options\n"
-            )
+            print_menu()
         else:
             print("Invalid choice")
 ```
 
-以上で、SQLiteを使用した学生管理システムを構築できた。
+`main()`関数を定義して、データベースの初期化、メニューの表示、および接続のクローズを行う。
+
+```python
+def main():
+    create_tables()
+    initialize_database()
+    menu()
+    conn.close()
+```
 
 作成したデータベースを実行してみよう。
 
 ```python
 if __name__ == "__main__":
-    menu()
-    conn.close()
+    main()
 ```
+
 
 ## ソースコード
 
@@ -230,60 +274,63 @@ import sqlite3
 conn = sqlite3.connect("school.db")
 cursor = conn.cursor()
 
-# Create tables if they do not exist
-cursor.execute(
-    """
-    CREATE TABLE IF NOT EXISTS Students (
-    student_id TEXT PRIMARY KEY,
-    name TEXT NOT NULL
-)
-"""
-)
 
-cursor.execute(
-    """
-    CREATE TABLE IF NOT EXISTS Courses (
-    course_id TEXT PRIMARY KEY,
-    course_name TEXT NOT NULL
-)
-"""
-)
-
-cursor.execute(
-    """
-    CREATE TABLE IF NOT EXISTS Enrollments (
-    student_id TEXT,
-    course_id TEXT,
-    PRIMARY KEY (student_id, course_id),
-    FOREIGN KEY (student_id) REFERENCES Students(student_id),
-    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
-)
-"""
-)
-
-
-# Sample data
-def insert_sample_data():
+def create_tables():
     cursor.execute(
         """
-    INSERT INTO Students (student_id, name) VALUES
-    ('S001', 'Alice'),
-    ('S002', 'Bob'),
-    ('S003', 'Charlie')
+        CREATE TABLE IF NOT EXISTS Students (
+        student_id TEXT PRIMARY KEY,
+        name TEXT NOT NULL
+    )
     """
     )
+
     cursor.execute(
         """
-    INSERT INTO Courses (course_id, course_name) VALUES
-    ('CS101', 'Computer Science'),
-    ('CS102', 'Data Structures'),
-    ('CS103', 'Algorithms')
+        CREATE TABLE IF NOT EXISTS Courses (
+        course_id TEXT PRIMARY KEY,
+        course_name TEXT NOT NULL
+    )
     """
+    )
+
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS Enrollments (
+        student_id TEXT,
+        course_id TEXT,
+        PRIMARY KEY (student_id, course_id),
+        FOREIGN KEY (student_id) REFERENCES Students(student_id),
+        FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+    )
+    """
+    )
+
+
+def insert_sample_data():
+    cursor.executemany(
+        """
+        INSERT INTO Students (student_id, name) VALUES (?, ?)
+        """,
+        [
+            ("S001", "Alice"),
+            ("S002", "Bob"),
+            ("S003", "Charlie"),
+        ],
+    )
+    cursor.executemany(
+        """
+        INSERT INTO Courses (course_id, course_name) VALUES (?, ?)
+        """,
+        [
+            ("CS101", "Computer Science"),
+            ("CS102", "Data Structures"),
+            ("CS103", "Algorithms"),
+        ],
     )
     conn.commit()
 
 
-# View functions
 def list_students():
     cursor.execute("SELECT * FROM Students")
     for row in cursor.fetchall():
@@ -297,6 +344,14 @@ def list_courses():
 
 
 def enroll_student(student_id, course_id):
+    cursor.execute("SELECT * FROM Students WHERE student_id = ?", (student_id,))
+    if not cursor.fetchone():
+        print("Student ID not found.")
+        return
+    cursor.execute("SELECT * FROM Courses WHERE course_id = ?", (course_id,))
+    if not cursor.fetchone():
+        print("Course ID not found.")
+        return
     try:
         cursor.execute(
             "INSERT INTO Enrollments ('student_id', 'course_id') VALUES (?, ?)",
@@ -305,7 +360,7 @@ def enroll_student(student_id, course_id):
         conn.commit()
         print("Enrollment successful.")
     except sqlite3.IntegrityError:
-        print("Enrollment failed. Check IDs or duplicate entry.")
+        print("Enrollment failed. Student is already enrolled in this course.")
 
 
 def show_enrollments():
@@ -321,46 +376,63 @@ def show_enrollments():
         print(f"{row[0]} is enrolled in {row[1]}")
 
 
-# If the tables are empty, insert sample data
-cursor.execute("SELECT COUNT(*) FROM Students")
-if cursor.fetchone()[0] == 0:
-    cursor.execute("SELECT COUNT(*) FROM Courses")
-    if cursor.fetchone()[0] == 0:
-        # Insert sample data if both tables are empty
+def initialize_database():
+    student_count = cursor.execute("SELECT COUNT(*) FROM Students").fetchone()[0]
+    course_count = cursor.execute("SELECT COUNT(*) FROM Courses").fetchone()[0]
+    if student_count == 0 and course_count == 0:
         print("Inserting sample data...")
         insert_sample_data()
 
 
-# Simple CLI
-def menu():
+def print_menu():
+    print("\n" + "=" * 45)
+    print(" Welcome to the School Database System ")
+    print("=" * 45)
     print(
-        "\n1. List Students\n2. List Courses\n3. Enroll Student\n4. Show Enrollments\n5. Exit\n6. Show Options"
+        "1. 📚 List Students\n"
+        "2. 🏫 List Courses\n"
+        "3. ✍️  Enroll Student\n"
+        "4. 📋 Show Enrollments\n"
+        "5. ❌ Exit\n"
+        "6. 🔁 Show Options"
     )
+    print("=" * 45)
+
+
+def menu():
+    print_menu()
     while True:
-        choice = input("\nEnter choice: ")
+        choice = input("\nEnter your choice (1-6): ").strip()
+        print()
+
         if choice == "1":
             list_students()
         elif choice == "2":
             list_courses()
         elif choice == "3":
-            s_id = input("Student ID: ")
-            c_id = input("Course ID: ")
+            s_id = input("Enter Student ID: ").strip()
+            c_id = input("Enter Course ID: ").strip()
             enroll_student(s_id, c_id)
         elif choice == "4":
             show_enrollments()
         elif choice == "5":
+            print("Exiting the program. Goodbye!")
             break
         elif choice == "6":
-            print(
-                "\n1. List Students\n2. List Courses\n3. Enroll Student\n4. Show Enrollments\n5. Exit\n6. Show Options\n"
-            )
+            print_menu()
         else:
             print("Invalid choice")
 
 
-if __name__ == "__main__":
+def main():
+    create_tables()
+    initialize_database()
     menu()
     conn.close()
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 ## 練習問題
