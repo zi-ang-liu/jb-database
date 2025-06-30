@@ -30,7 +30,7 @@ Pythonを使用してSQLiteデータベースを操作し、学生、コース�
 =============================================
 1. 📚 List Students
 2. 🏫 List Courses
-3. ✍️  Enroll Student
+3. ✍️ Enroll Student
 4. 📋 Show Enrollments
 5. ❌ Exit
 6. 🔁 Show Options
@@ -391,7 +391,7 @@ def print_menu():
     print(
         "1. 📚 List Students\n"
         "2. 🏫 List Courses\n"
-        "3. ✍️  Enroll Student\n"
+        "3. ✍️ Enroll Student\n"
         "4. 📋 Show Enrollments\n"
         "5. ❌ Exit\n"
         "6. 🔁 Show Options"
