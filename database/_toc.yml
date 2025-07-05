@@ -59,6 +59,7 @@ parts:
       chapters:
       - file: contents/review/theory
       - file: contents/review/sql
+      - file: contents/review/test
 
     - caption: Appendix
       chapters:
