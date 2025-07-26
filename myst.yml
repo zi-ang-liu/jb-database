@@ -1,0 +1,152 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 2a9aebb6-b49f-479b-961e-d5a0647f42ba
+  title: Relational Database
+  description: Lecture notes for a course on relational database.
+  keywords: []
+  authors: 
+    - name: 劉 子昂
+      affiliations:
+        - id: hu
+          name: 法政大学 
+          department: 理工学部 経営システム工学科
+          # isni: 0000 0004 1762 1436
+          # ror: 00bx6dj65
+          # postal_code: 184-8584
+      email: liu@hosei.ac.jp
+      github: zi-ang-liu
+      url: "https://zi-ang-liu.github.io"
+      orcid: 0000-0002-1364-3502
+  github: https://github.com/zi-ang-liu/jb-database
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+  toc:
+    - file: contents/intro.md
+
+    - title: Front matter
+      children:
+        - file: contents/frontmatter/preface.md
+
+    - title: About
+      children:
+        - file: contents/class/notes.md
+        - file: contents/class/guide.md
+
+    - title: Introduction
+      children:
+        - file: contents/introduction/set.md
+        - file: contents/introduction/introduction.md
+
+    - title: Relational Model
+      children:
+        - file: contents/database_model/structure.md
+        - file: contents/database_model/semantic.md
+        - file: contents/database_model/manipulation.md
+
+    - title: Database Design
+      children:
+        - file: contents/database_design/er_model.md
+        - file: contents/database_design/normalization.md
+
+    - title: SQL
+      children:
+        - file: contents/SQL/intro.md
+        - file: contents/SQL/sqlite-install.md
+        - file: contents/SQL/data_definition_language.md
+        - file: contents/SQL/data_manipulation_language.md
+        - file: contents/SQL/data_control_language.md
+
+    - title: Advanced SQL
+      children:
+        - file: contents/adv_sql/chinook.md
+        - file: contents/adv_sql/aggregate_functions.md
+        - file: contents/adv_sql/group_by_having.md
+        - file: contents/adv_sql/order_by.md
+        - file: contents/adv_sql/where_clause.md
+        - file: contents/adv_sql/join.md
+        - file: contents/adv_sql/subquery.md
+
+    - title: Application Development
+      children:
+        - file: contents/application/sqlite3.md
+        - file: contents/application/example.md
+
+    - title: Review
+      children:
+        - file: contents/review/theory.md
+        - file: contents/review/sql.md
+        - file: contents/review/test.md
+
+    - title: Appendix
+      children:
+        - file: contents/appendix/data-set.md
+        - file: contents/appendix/mysql-install.md
+        - file: contents/appendix/vscode-shell-install.md
+
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
+
+
+    # - caption: Front matter
+    #   chapters:
+    #   - file: contents/frontmatter/preface
+
+    # - caption: 授業
+    #   chapters:
+    #   - file: contents/class/notes
+    #   - file: contents/class/guide
+
+    # - caption: Introduction
+    #   chapters:
+    #   - file: contents/introduction/set
+    #   - file: contents/introduction/introduction
+
+    # - caption: Relational Model
+    #   chapters:
+    #   - file: contents/database_model/structure
+    #   - file: contents/database_model/semantic
+    #   - file: contents/database_model/manipulation
+
+    # - caption: Database Design
+    #   chapters:
+    #   - file: contents/database_design/er_model
+    #   - file: contents/database_design/normalization
+
+    # - caption: SQL
+    #   chapters:
+    #   - file: contents/SQL/intro
+    #   - file: contents/SQL/sqlite-install
+    #   - file: contents/SQL/data_definition_language
+    #   - file: contents/SQL/data_manipulation_language
+    #   - file: contents/SQL/data_control_language
+    
+    # - caption: Advanced SQL
+    #   chapters:
+    #   - file: contents/adv_sql/chinook
+    #   - file: contents/adv_sql/aggregate_functions
+    #   - file: contents/adv_sql/group_by_having
+    #   - file: contents/adv_sql/order_by
+    #   - file: contents/adv_sql/where_clause
+    #   - file: contents/adv_sql/join
+    #   - file: contents/adv_sql/subquery
+      
+
+    # - caption: Application Development
+    #   chapters:
+    #   - file: contents/application/sqlite3
+    #   - file: contents/application/example
+
+    # - caption: Review
+    #   chapters:
+    #   - file: contents/review/theory
+    #   - file: contents/review/sql
+    #   - file: contents/review/test
+
+    # - caption: Appendix
+    #   chapters:
+    #   - file: contents/appendix/data-set
+    #   - file: contents/appendix/mysql-install
+    #   - file: contents/appendix/vscode-shell-install

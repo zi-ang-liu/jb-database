@@ -7,9 +7,6 @@ SQLの書き方を身につけるため、[Chinookデータベース](chinook.md
 ### tracksテーブル
 
 ```{mermaid}
----
-title: tracks entity
----
 erDiagram 
    tracks {
       integer TrackId PK
@@ -95,9 +92,6 @@ WHERE Name LIKE '%Honey%';
 ### invoicesテーブル
 
 ```{mermaid}
----
-title: invoices entity
----
 erDiagram
    invoices {
       integer InvoiceId PK

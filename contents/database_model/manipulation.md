@@ -171,7 +171,7 @@ $R$と$S$の共通集合は，$R$にも属し，$S$にも属するタプル全�
 ### 直積演算
 
 ````{prf:definition}
-:label: definition-cartesian-product
+:label: definition-cartesian-product-relation
 :nonumber:
 
 $R(A_1, A_2, \ldots, A_n)$と$S(B_1, B_2, \ldots, B_m)$をリレーションとするとき，$R$と$S$の直積は，$R \times S$で書く．その定義は次の通りである．

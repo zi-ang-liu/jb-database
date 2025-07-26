@@ -67,11 +67,13 @@ Without data, you're just another person with an opinion.
 
 **データベースシステム（DBS）** はデータベース，DBMS，アプリケーションプログラムの総称．
 
-:::{figure-md} foo
+<!-- :::{figure-md} foo
 <img src="./images/database.drawio.png" alt="Database System" width="200px">
 
 データベースシステム
-:::
+::: -->
+
+![データベースシステム](./images/database.drawio.png "Database System")
 
 
 ## データモデル
@@ -247,4 +249,4 @@ SELECT * FROM employees WHERE age > 30;
 6. $\Omega = \{1, 2, 3\}$, $A = \{1, 2\}$の時，$A$の補集合$A^c$を求めなさい．
 7. $A = \{1, 2, 3\}$, $B = \{2, 3, 4\}$の時，$A$と$B$の差集合$A - B$を求めなさい．
 8. $A = \{1, 2, 3\}$の時，$A$の冪乗集合$\mathcal{P}(A)$を求めなさい．
-9. $A = \{春, 夏, 秋, 冬\}$, $B = \{花見, スキー\}$の時，$A$と$B$の直積$A \times B$を求めなさい．
+9. $A = \{\text{春}, \text{夏}, \text{秋}, \text{冬}\}$, $B = \{\text{花見}, \text{スキー}\}$の時，$A$と$B$の直積$A \times B$を求めなさい．
