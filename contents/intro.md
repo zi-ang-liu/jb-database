@@ -1,10 +1,5 @@
 # リレーショナル・データベース
 
-[劉 子昂](https://zi-ang-liu.github.io/)
-
-<!-- ```{tableofcontents}
-``` -->
-
 ## Links
 
 - 講義資料：[リレーショナル・データベース](https://zi-ang-liu.github.io/jb-database/intro.html#)
